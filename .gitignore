@@ -1,8 +1,5 @@
 /public/
-/resources/_gen/
-*.zip
 hugo
-hugo.exe
 hugo.linux
 hugo.darwin
 .DS_Store

@@ -1,6 +1,6 @@
-baseURL = "https://asahilinux.org/"
+baseURL = "https://knage.net/"
 languageCode = "en-us"
-title = "Asahi Linux"
+title = "Software Developer"
 
 [markup.goldmark.renderer]
 unsafe= true
