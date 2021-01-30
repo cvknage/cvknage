@@ -10,7 +10,7 @@ The theme and setup is forked from the [Asahi Linux](https://github.com/AsahiLin
 In order to build this site, you first need to clone this repository.
 
 ```bash
-git clone https://github.com/cvknage/cvknage.git
+git clone https://github.com/cvknage/cvknage.github.io.git knage.net
 ```
 
 Next, make sure you have Hugo installed. The best way to do that will depend on your platform, so check their [documentation](https://gohugo.io/getting-started/installing/).
@@ -18,7 +18,7 @@ Next, make sure you have Hugo installed. The best way to do that will depend on 
 Once everything is installed, move to the directory where this repository is cloned and run the following commands to start a development server
 
 ```bash
-cd cvknage
+cd knage.net
 hugo server
 ```
 
