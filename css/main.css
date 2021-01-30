@@ -643,8 +643,15 @@ to {
     font-size: 350%;
 }
 
-body.landing #community {
-    background-color: #9D2D48;
+#eye-catch .related-site-icons {
+    color: #6D6D6D;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.related-site-icons i {
+    margin-right: 20px;
 }
 
 div.center-title {
@@ -653,122 +660,6 @@ div.center-title {
 
 div.center-title h1, div.center-title h2 {
     text-align: center;
-}
-
-.community-links {
-    background-color: #7A162E;
-}
-
-.community-links div {
-    display: flex;
-    align-content: center;
-    margin: 0px auto;
-    width: 90%;
-    max-width: 62em;
-}
-
-div.community-card {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 40px 0px;
-}
-
-div.community-card i {
-    flex: 1;
-    padding-right: 30px;
-}
-
-div.community-card p {
-    flex: 9;
-    border-left: solid 1px #FFF;
-    font-family: 'Noto Sans JP', sans-serif;
-}
-
-.community-links p {
-    padding: 30px;
-}
-
-div.community-button {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-div.community-button a {
-    flex: 1;
-    text-align: center;
-    font-family: 'Varela Round', sans-serif;
-    padding: 15px;
-    max-width: 200px;
-    border-radius: 100px;
-}
-
-div.twitter-button a {
-    background-color: #00B9FF;
-}
-
-div.chat-button a {
-    background-color: #008E58;
-}
-
-.community-card i.fa-twitter {
-    color: #00B9FF;
-}
-
-.community-more {
-    display: flex;
-    justify-content: center;
-}
-
-/* Contribute */
-body.landing #contribute {
-    background-color: #FFF;
-}
-
-.contribute-card {
-    background-color: #848484;
-}
-
-/* Documentation */
-
-body.landing #documentation {
-    background-color: #D7EAFF;
-}
-
-.documentation-card {
-    background-color: #556E8A;
-}
-
-/* Centered cards */
-
-.center-card {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    margin: 0px auto;
-    padding: 30px 0px 70px 0px;
-    font-family: 'Noto Sans JP', sans-serif;
-}
-
-.center-card {
-    color: #FFF;
-}
-
-.center-card > * {
-    margin-top: 40px;
-}
-
-.center-card p {
-    width: 90%;
-    max-width: 62em;
-    text-align: center;
-}
-
-.center-card .more {
-    color: #79D5FF;
 }
 
 /* Single post */
@@ -904,23 +795,6 @@ ul.footer-services i {
     opacity: 0.8;
 }
 
-@media screen and (max-width: 1050px) {
-	.community-links > div {
-        display: block;
-    }
-    
-    div.chat-button {
-        padding-bottom: 40px;
-    }
-    
-    div.community-button {
-        justify-content: center;
-    }
-
-    div.community-more {
-        display: flex;
-    }
-}
 @media screen and (max-width: 750px) {
     .header-logo img.logo {
         height: 90px;
@@ -937,18 +811,6 @@ ul.footer-services i {
     
     div.header-menu {
         width: 90%;
-    }
-
-    .community-links > div {
-        width: 85%;
-    }
-    
-    div.community-more {
-        padding-bottom: 40px;
-    }
-
-    .center-card p {
-        width: 85%;
     }
 
     .post-wrapper {
@@ -971,19 +833,6 @@ ul.footer-services i {
     #eye-catch > div > div:nth-of-type(2) {
         padding: 50px 0px 50px 0px;
         border-left: none;
-    }
-    
-    .community-links p {
-        padding: 30px 0px 30px 30px;
-    }
-    
-    div.community-button {
-        flex-direction: column;
-    }
-    
-    div.community-button a {
-        width: 60%;
-        min-width: 200px;
     }
     
     .footer-menu {
