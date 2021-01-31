@@ -8,12 +8,8 @@ draft: false
 
 Name: Christophe Knage  
 Address: 2770 Kastrup  
-Website: www.knage.net  
-Age: <script>
-        var birthday  = new Date(1987, 4, 7);
-        var today = new Date(Date.now());
-        document.write(today.getFullYear() - birthday.getFullYear());
-     </script>  
+Website: [https://knage.net](https://knage.net)  
+Age: {{< partial "age" >}}  
 Born: Vejle, May 7’th 1987  
 Civil status: Un married.  
 

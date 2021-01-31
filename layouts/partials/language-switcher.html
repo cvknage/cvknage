@@ -1,0 +1,10 @@
+{{ if .IsTranslated }}
+{{ range .Translations }}
+    <li>
+		<span class="language-switcher"> 
+			<i class="fa fa-globe"></i>
+			<a href ="{{ .Permalink }}">{{ .Lang }}: {{ if .IsPage }} {{ end }} </a>
+		</span>
+    </li>
+{{ end}}
+{{ end }}

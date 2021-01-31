@@ -2,9 +2,9 @@
 <section id="eye-catch">
     <div>
         <div>
-            <h1>Software Developer</h1>
-            <p>My dream is to use technology to build products that help people and improve quality of life</p>
-            <a href="/cv" class="more">Learn more<i class="fas fa-angle-right more"></i></a>
+            <h1>{{ $.Site.Params.title }}</h1>
+            <p>{{ $.Site.Params.eyecatch.statement }}</p>
+            <a href="{{ "cv/" | relLangURL }}" class="more">{{ $.Site.Params.eyecatch.more }}<i class="fas fa-angle-right more"></i></a>
             <div class="related-site-icons">
                 <a href="https://github.com/cvknage" target="_blank"><i class="big-icon fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/knage/" target="_blank"><i class="big-icon fab fa-linkedin"></i></a>
