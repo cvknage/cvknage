@@ -23,9 +23,9 @@ Som person er jeg åben over for nye input. Jeg fungerer godt i et team, men jeg
 Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 
 ## Certificeringer
--- SAFe SPC4.5  
--- SAFe 4.0 Scrum Master  
--- Scrum Master  
+-- [SAFe SPC4.5](/documents/SAFe_SPC4_Certificate.pdf)  
+-- [SAFe 4.0 Scrum Master](/documents/SAFe-Certificate.pdf)  
+-- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Erhvervskompetencer
 ### Processmodeller
@@ -75,7 +75,7 @@ Arbejde med online skade teamet. Hvor vi stræber efter at gøre det så enkelt 
 
 ### 11.2012-03.2017: Scrum Master & Software Developer, Nykredit
 -- Scrum Master & Udvikler på et selvstyrende team som arbejder med hurtigt at digitalisere processer med kunden i centrum.  
--- Projekter: FastConnect, MødeKlar, mm.  
+-- Projekter: [FastConnect](/img/FastConnect.png), [MødeKlar](/img/MoedeKlar.png), mm.  
 11.2012-11.2014:  
 -- Leed udvikler på iOS delen af mitNykredit.  
 
@@ -98,7 +98,7 @@ Arbejde med online skade teamet. Hvor vi stræber efter at gøre det så enkelt 
 -- Software analyse & design  
 -- Softwareudvikling med Java go Java web teknologier  
 -- udvikling til mobile platforme (iOS & Android)  
--- Afgangsbevis fra Datamatiker uddannelsen  
+-- [Afgangsbevis fra Datamatiker uddannelsen](/documents/Diploma-of-AP-Graduate-in-Computer-Science.pdf)  
 
 ### 2003-2006: Vejle Tekniske Gymnasium (HTX), Vejle
 

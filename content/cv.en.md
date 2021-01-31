@@ -23,9 +23,9 @@ As a person I am open for new inputs. I function well in a group, but am also ca
 My dream is to use technology to build products that help people and improve quality of life.
 
 ## Certifications
--- SAFe SPC4.5  
--- SAFe 4.0 Scrum Master  
--- Scrum Master  
+-- [SAFe SPC4.5](/documents/SAFe_SPC4_Certificate.pdf)  
+-- [SAFe 4.0 Scrum Master](/documents/SAFe-Certificate.pdf)  
+-- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Work competences
 ### Process models
@@ -75,7 +75,7 @@ Working in the online claims team. Where we strive to make it as easy as possibl
 
 ### 11.2012-03.2017: Scrum Master & Software Developer, Nykredit
 -- Scrum Master & Developer on a close team dedicated to rapidly digitize currently manual processes in a streamlined and customer friendly manner.  
--- Projects: FastConnect, MødeKlar, mm.  
+-- Projects: [FastConnect](/img/FastConnect.png), [MødeKlar](/img/MoedeKlar.png), mm.  
 11.2012-11.2014:  
 -- Leed developer on the iOS version of mitNykredit.  
 
@@ -98,7 +98,7 @@ Working in the online claims team. Where we strive to make it as easy as possibl
 -- Software analysis & design
 -- Software development with Java and Java web technologies
 -- Development for the mobile platforms (iOS & Android)
--- Diploma of AP Graduate in Computer Science
+-- [Diploma of AP Graduate in Computer Science](/documents/Diploma-of-AP-Graduate-in-Computer-Science.pdf)
 
 ### 2003-2006: Vejle Tekniske Gymnasium (HTX), Vejle
 
