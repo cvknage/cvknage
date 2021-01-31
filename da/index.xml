@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software Udvikler</title><link>https://knage.net/da/</link><description>Recent content on Software Udvikler</description><generator>Hugo -- gohugo.io</generator><language>da-dk</language><atom:link href="https://knage.net/da/index.xml" rel="self" type="application/rss+xml"/><item><title>Curriculum Vitae</title><link>https://knage.net/da/cv/</link><pubDate>Sat, 30 Jan 2021 20:53:44 +0100</pubDate><guid>https://knage.net/da/cv/</guid><description>Curriculum Vitae Navn: Christophe Knage
 Adresse: 2770 Kastrup
 Hjemmeside: https://knage.net
-Alder: var birthday = new Date(1987, 4, 7); var today = new Date(Date.now()); document.write(today.getFullYear() - birthday.getFullYear()); Født: Vejle, den 7. maj 1987
+Alder: var birthday = new Date(1987, 4, 7); function calculateAge(birthday) { var ageDifMs = Date.now() - birthday; var ageDate = new Date(ageDifMs); return Math.abs(ageDate.getUTCFullYear() - 1970); } document.write(calculateAge(birthday)); Født: Vejle, den 7. maj 1987
 Civil status: Ugift.
 Resumé Jeg arbejder som Software Udvikler på et Scrum Team dedikert til at digitalisere salget hos Alka Forsikring.
-Udover min seneste erfaring med C# og en fuld Vue.js JavaScript web stak, har jeg arbejdet som Agil Coach på PFAs SAFe implementering og jeg har ligeledes adskillige år som Scrum Mastrer på bagen.</description></item></channel></rss>
+Udover min seneste erfaring med C# og en fuld Vue.</description></item></channel></rss>
