@@ -79,11 +79,11 @@ Arbejde med online skade teamet. Hvor vi stræber efter at gøre det så enkelt 
 11.2012-11.2014:  
 -- Leed udvikler på iOS delen af mitNykredit.  
 
-### 07.2012-10.2012: iOS Developer, Nodes (sagde op pga. arbejdsmiljø)
+### 07.2012-10.2012: iOS Developer, Nodes
 -- Udviklet Apps til iOS  
 -- På App Store: Viden om demens, RO’s Torv, mm.  
 
-### 03.2012-06.2012: Software Engineer, Zmags (afskediget pga. besparelser)
+### 03.2012-06.2012: Software Engineer, Zmags
 -- Arbejde efter Kanban  
 -- Arbejde med Java  
 -- Arbejde med JavaScript  

@@ -79,11 +79,11 @@ Working in the online claims team. Where we strive to make it as easy as possibl
 11.2012-11.2014:  
 -- Leed developer on the iOS version of mitNykredit.  
 
-### 07.2012-10.2012: iOS Developer, Nodes (quit because og bad work environment)
+### 07.2012-10.2012: iOS Developer, Nodes
 -- Developed Apps for iOS
 -- On AppStore: Viden om demens, RO’s Torv, mm.
 
-### 03.2012-06.2012: Software Engineer, Zmags (laid off because of cutbacks)
+### 03.2012-06.2012: Software Engineer, Zmags
 -- Worked acording to the Kanban principles
 -- Worked with Java
 -- Worked with JavaScript
