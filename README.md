@@ -2,8 +2,8 @@
 
 This is the repository for the knage.net website.
 
-It is based on [Hugo](https://gohugo.io) and is currently hosted on Github pages available at https://knage.net.
-The theme and setup is forked from the [Asahi Linux](https://github.com/AsahiLinux/AsahiLinux.github.io) website - because it looks slick, containc no JavaScript and this is my first dance with Hugo.
+It is based on [Hugo](https://gohugo.io) and is currently hosted on Github pages available at https://knage.net.  
+The theme and setup for this website is forked from the Asahi Linux website - because it looks slick, contains no JavaScript and this is my first dance with Hugo. If you are interrested in Linux and Apples M1 Macs; go check out [Asahi Linux](https://github.com/AsahiLinux/AsahiLinux.github.io).
 
 ## Getting Started
 
