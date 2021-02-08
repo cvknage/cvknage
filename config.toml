@@ -29,7 +29,7 @@ defaultContentLanguage = "en"
       licence = "Licens"
       brandslicence = "Alle produktnavne, logoer og brands tilhører deres respektive ejere."
       [languages.da.params.eyecatch]
-        more = "Lær mere"
+        more = "Læs mere"
         statement = "Mit mål er at bygge produkter der hjælper andre og øger livskvalitet"
 
 [markup.goldmark.renderer]
