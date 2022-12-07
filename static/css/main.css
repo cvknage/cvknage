@@ -723,35 +723,29 @@ div.center-title h1, div.center-title h2 {
 }
 
 .post a {
-    color: #E20052;
+    color: #0366d6;
     text-decoration: underline;
 }
 
 code {
-    color: #0D4F1A;
     padding: 0 .4em;
     font-weight: normal;
     font-size: 85%;
-    background-color: rgba(6, 102, 238, 0.05);
+    background-color: #0667ee18;
     border-radius: 6px;
 }
 
 pre code {
     padding: 0;
+    background: none;
 }
 
 pre {
     margin: 1em 0;
     padding: 1em;
     border-radius: 6px;
-    background: #25292f;
-    background-color: rgba(6, 102, 238, 0.05);
-    color: #fff;
+    background-color: #0667ee18;
     overflow-x: auto;
-}
-
-pre code {
-    background: none;
 }
 
 div.curlsh {
@@ -825,6 +819,20 @@ ul.blog-nav > li > a > .fa-arrow-right {
     font-size: 200%;
 }
 
+a.blog-heading-anchor {
+  color: black;
+  text-decoration: none; 
+}
+
+.blog-image {
+  width: 35em;
+}
+
+a.code-doc {
+  color: black;
+  text-decoration: underline; 
+}
+
 div#breadcrumbs, div.post-bottom {
     padding: 10px;
     background-color: #dedede;
@@ -860,6 +868,34 @@ div.post-bottom {
 .post-title, .meta  {
     font-weight: 400;
     font-size: 110%;
+}
+
+/* TOC */
+
+.post .toc ul li {
+  margin-bottom: 0px;
+  margin-top: 0px;
+} 
+
+.post .toc ul {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+/* Zoom Image */
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(1.5);
+  cursor: zoom-out
 }
 
 /* Footer */
