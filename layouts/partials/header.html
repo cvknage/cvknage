@@ -24,6 +24,7 @@
                 {{ range $.Site.Menus.main -}}
                 <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}"><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                 {{- end }}
+                <li><a href="/blog">Blog</a></li>
                 {{ partial "language-switcher.html" . }}
             </ul>
         </div>
