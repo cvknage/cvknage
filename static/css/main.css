@@ -508,8 +508,7 @@ p, i {
 }
 
 b, strong {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .white-text {
@@ -573,6 +572,7 @@ div.header-menu {
 
 .menu-container li {
     font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
     margin: 0px 20px;
 }
 
@@ -670,6 +670,7 @@ div.center-title h1, div.center-title h2 {
 
 #post-section {
     background-color: #EFEFEF;
+    min-height: 70vh;
 }
 
 .post {
@@ -686,13 +687,20 @@ div.center-title h1, div.center-title h2 {
 }
 
 .post-wrapper li {
-    list-style: circle;
     font-weight: 300;
     margin-left: 2em;
     line-height: 1.4em;
 }
 
-.post h1:nth-child(1), .post h2:nth-child(1), .post h3:nth-child(1)  {
+.post-wrapper ul li {
+    list-style: disc;
+}
+
+.post-wrapper ol li {
+    list-style: decimal;
+}
+
+.post h1:nth-child(1), .post h2:nth-child(1), .post h3:nth-child(1), blockquote p:nth-child(1)  {
     margin-top: 0px;
 }
 
@@ -703,21 +711,33 @@ div.center-title h1, div.center-title h2 {
     margin-top: 30px;
 }
 
-.post p, .code-box, .post li, blockquote {
+.post p, .code-box, .post ul, blockquote {
     margin-bottom: 15px;
     margin-top: 15px;
+    letter-spacing: 0.02em
+}
+
+.post ul li {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .post a {
-    color: #0366d6;
+    color: #E20052;
+    text-decoration: underline;
 }
 
 code {
-    color: white;
-    padding: .2em .4em;
+    color: #0D4F1A;
+    padding: 0 .4em;
+    font-weight: normal;
     font-size: 85%;
-    background: #25292f;
+    background-color: rgba(6, 102, 238, 0.05);
     border-radius: 6px;
+}
+
+pre code {
+    padding: 0;
 }
 
 pre {
@@ -725,14 +745,121 @@ pre {
     padding: 1em;
     border-radius: 6px;
     background: #25292f;
+    background-color: rgba(6, 102, 238, 0.05);
     color: #fff;
     overflow-x: auto;
+}
+
+pre code {
+    background: none;
+}
+
+div.curlsh {
+    text-align: center;
+}
+div.curlsh pre {
+    color: #d3506f;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 120%;
+    font-weight: bold;
 }
 
 blockquote {
     border: solid 1px;
     background-color: #e2e2e2;
     padding: 15px;
+}
+
+p img, figure img {
+    max-width: 100%;
+}
+
+.twitter-tweet {
+    margin: 0 auto;
+}
+
+.post figure figcaption p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 80%;
+}
+
+/* Blog */
+
+.blog-header {
+    border-bottom: 1px solid #999999;
+    text-align: center;
+}
+
+ul.blog-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul.blog-nav li {
+    list-style: none;
+    margin: 0px;
+    padding: 5px 15px;
+    background-color: #dedede;
+}
+
+ul.blog-nav li.nav-spacer {
+    background: none;
+}
+
+ul.blog-nav > li > a > .fa-arrow-left {
+    margin-right: 10px;
+}
+
+ul.blog-nav > li > a > .fa-arrow-right {
+    margin-left: 10px;
+}
+
+.blog-header h1.entry-title {
+    border: none;
+    margin: 25px 0px;
+    padding: 0px;
+    font-size: 200%;
+}
+
+div#breadcrumbs, div.post-bottom {
+    padding: 10px;
+    background-color: #dedede;
+}
+
+div#breadcrumbs a {
+    text-decoration: none;
+}
+
+div.post-bottom {
+    margin-top: 42px;
+    text-align: right;
+}
+
+.publishdate {
+    margin-right: 15px;
+}
+
+/* Post list */
+.post-list ul li {
+    background-color: #e0e0e0;
+    list-style: none;
+    margin-left: 0px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.post-list summary {
+    margin: 5px 0px;
+    font-size: 95%;
+}
+
+.post-title, .meta  {
+    font-weight: 400;
+    font-size: 110%;
 }
 
 /* Footer */
@@ -761,6 +888,7 @@ footer {
 .footer-links {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .footer-services {
@@ -785,14 +913,6 @@ ul.footer-services i {
     margin-left: 20px;
 }
 
-.footer-bottom {
-    text-align: center;
-    font-family: "Source Han Mono";
-    font-size: 80%;
-    background-color: #EFEFEF;
-    padding: 10px 0px;
-}
-
 .license, .disclaimer {
     display: block;
     font-size: 60%;
@@ -808,7 +928,7 @@ ul.footer-services i {
         flex-wrap: wrap;
     }
     
-	.menu-container li {
+    .menu-container li {
         margin: 0px 15px;
         line-height: 2em;
     }
@@ -819,6 +939,7 @@ ul.footer-services i {
 
     .post-wrapper {
         width: 85%;
+        margin: 30px auto;
     }
 
     .footer-menu {
