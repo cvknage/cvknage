@@ -6,7 +6,7 @@ slug = "raspberry-pi-headless-setup"
 author = "Christophe Knage"
 +++
 
-This post covers setting up a headless Raspberry Pi 4 from scratch.
+This post covers setting up a headless Raspberry Pi 4 from scratch and implementing an effective backup strategy.
 
 > This is part 1 of 4 in a mini series where we will configure a headless Raspberry Pi 4 as an efficient home server, with an effective backup strategy, capable of hosting [Network Attached Storage (NAS)](https://en.wikipedia.org/wiki/Network-attached_storage), [TimeMachine](https://support.apple.com/en-gb/HT201250), [Plex Media Server](https://www.plex.tv) and [Homebridge](https://homebridge.io).
 
