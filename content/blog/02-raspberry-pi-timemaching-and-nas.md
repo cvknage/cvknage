@@ -8,7 +8,7 @@ author = "Christophe Knage"
 
 This post covers configuring a Raspberry Pi 4 as a TimeMachine and NAS Server.
 
-> This is part 2 of 4 in a mini series where we will configure a headless Raspberry Pi 4 as an efficient home server capable of hosting [Network Attached Storage (NAS)](https://en.wikipedia.org/wiki/Network-attached_storage), [TimeMachine](https://support.apple.com/en-gb/HT201250), [Plex Media Server](https://www.plex.tv) and [Homebridge](https://homebridge.io).
+> This is part 2 of 4 in a mini series where we will configure a headless Raspberry Pi 4 as an efficient home server, with an effective backup strategy, capable of hosting [Network Attached Storage (NAS)](https://en.wikipedia.org/wiki/Network-attached_storage), [TimeMachine](https://support.apple.com/en-gb/HT201250), [Plex Media Server](https://www.plex.tv) and [Homebridge](https://homebridge.io).
 
 In this post we will focus on:
 - Configuring a SMB (Samba) with a NSA and TimeMAchine network share
