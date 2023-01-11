@@ -6,7 +6,7 @@ slug = "raspberry-pi-homebridge"
 author = "Christophe Knage"
 +++
 
-This post covers installing Homebridge on a Raspberry Pi 4.
+**This post covers installing Homebridge on a Raspberry Pi 4 B.**
 
 ### Sources
 

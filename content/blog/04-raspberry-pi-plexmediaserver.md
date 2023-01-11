@@ -6,7 +6,7 @@ slug = "raspberry-pi-plexmediaserver"
 author = "Christophe Knage"
 +++
 
-This post covers installing Plex Media Server on a Raspberry Pi 4 and keeping Plex up to date.
+**This post covers installing Plex Media Server on a Raspberry Pi 4 B and keeping Plex up to date.**
 
 ### Sources
 
