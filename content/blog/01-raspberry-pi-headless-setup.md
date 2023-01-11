@@ -18,6 +18,10 @@ Software Requirements
 - [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 - [RealVNC viewer](https://www.realvnc.com/en/connect/download/viewer/) (Optional)
 
+# Getting Started
+
+[Raspberry Pi](https://www.raspberrypi.com) has excellent documentation on how to setup and configure a Raspberry Pi. This post wil lean heavily on the official documentation and focus on the essential parts to get up and running. 
+
 ## Installing Raspberry Pi OS
 
 - Raspberry Pi Imager
@@ -34,9 +38,18 @@ Software Requirements
 - Enable VNC
 - [Creating a Virtual Desktop](https://www.raspberrypi.com/documentation/computers/remote-access.html#creating-a-virtual-desktop)
 
-
+#
 ### Sources
 
 - [Raspberry Pi Documentation - Installing the Operating System](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system)
 - [Raspberry Pi Documentation - Virtual Network Computing (VNC)](https://www.raspberrypi.com/documentation/computers/remote-access.html#virtual-network-computing-vnc)
 - [Headless Raspberry Pi 4 Remote Desktop VNC Setup (Mac + Windows, 13 Steps)](https://desertbot.io/blog/headless-raspberry-pi-4-remote-desktop-vnc-setup)
+
+<span style="font-weight:300;font-size:12px">
+    <p style="margin: 0;">
+        Raspberry Pi documentation is copyright &copy; 2012-2023 Raspberry Pi Ltd and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA) licence.
+    </p>
+    <p style="margin: 0;">
+        Some content originates from the <a href="http://elinux.org/">eLinux wiki</a> , and is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> licence.
+    </p>
+</span>
