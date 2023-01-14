@@ -24,11 +24,20 @@ Software Requirements
 
 ## Installing Raspberry Pi OS
 
-- Raspberry Pi Imager
-- Advanced settings
-    - Change hostname and password
-    - Enable ssh
-    - Add wifi configuration
+Raspberry Pi have made it easy to install Raspberry Pi OS using [Raspberry Pi Imager](https://www.raspberrypi.com/software/) which can download the Raspberry Pi OS image automatically and install it on your SD card.  
+![Raspberry Pi Imager](/img/blog/01/Raspberry_Pi_Imager.png)  
+
+For this install we are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.  
+![Raspberry Pi Imager Select OS](/img/blog/01/Raspberry_Pi_Imager__Select_OS.png)  
+
+For security reasons, WiFi and SSH is not enabled by default. To enable it we have to open the Advanced Menu.  
+![Raspberry Pi Imager Select Advanced Settings](/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png)  
+
+In the Advanced options we are going to Enable SSH, Set username and password, Configure wireless LAN (don't forget to set the correct Wireless LAN country).  
+![Raspberry Pi Imager Advanced Settings](/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png)  
+
+Having chosen the options we want, we select out SD card from the menu and write the Raspberry Pi OS image to it.  
+**--ADD IMAGE HERE--**
 
 ## Login and setup Raspberry Pi
 - ssh login
@@ -53,3 +62,9 @@ Software Requirements
         Some content originates from the <a href="http://elinux.org/">eLinux wiki</a> , and is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> licence.
     </p>
 </span>
+
+<style>
+img {
+    width: 35em;
+}
+</style>
