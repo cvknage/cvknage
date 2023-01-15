@@ -728,16 +728,18 @@ div.center-title h1, div.center-title h2 {
 }
 
 code {
-    color: #0D4F1A;
+    color: #25292f;
     padding: 0 .4em;
     font-weight: normal;
     font-size: 85%;
-    background-color: rgba(6, 102, 238, 0.05);
+    background: #c7c9d3;
     border-radius: 6px;
 }
 
 pre code {
     padding: 0;
+    background: none;
+    color: #c7c9d3;
 }
 
 pre {
@@ -745,13 +747,8 @@ pre {
     padding: 1em;
     border-radius: 6px;
     background: #25292f;
-    background-color: rgba(6, 102, 238, 0.05) !important;
     color: #fff;
     overflow-x: auto;
-}
-
-pre code {
-    background: none;
 }
 
 div.curlsh {
