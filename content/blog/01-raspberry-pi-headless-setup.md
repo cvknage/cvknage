@@ -89,21 +89,76 @@ sudo apt full-upgrade
 ```
 Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
 
+<br/>
+
+**Congratulations! You now have a headless Raspberry Pi 4 B server.**
+
 ## RealVNC (Optional)
 
-- Enable VNC
-[`raspi-config`](https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool)
+If you want to gain remote access to the Raspberry Pi's Desktop, read a bit further. 
+
+<br/>
+
+### Enable VNC Server
+
+To gain graphical remote access to the Raspberry Pi 4 B, we have to enable the VNC Server with [`raspi-config`](https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool):
 ```bash
 sudo raspi-config
 ```
-- [Creating a Virtual Desktop](https://www.raspberrypi.com/documentation/computers/remote-access.html#creating-a-virtual-desktop)
+Then Navigate to **Interfacing Options**.  
+Scroll down and select **VNC** › **Yes**  
+
+<br/>
+
+### Creating a Virtual Desktop
+
+Because our Raspberry Pi 4 B is headless, it may not be running a graphical desktop. 
+
+VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.
+
+To create a virtual desktop, run the following command:
+```console
+vncserver
+```
+Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
+(Note, the Raspberry Pi's hostname can also be used together with the display number e.g. `raspberrypi.local:1`)
+
+On the device you’ll use to take control, enter this information into VNC Viewer.  
+
+<br/>
+
+To destroy a virtual desktop, run the following command:
+```console
+vncserver -kill :<display-number>
+```
+This will also stop any existing connections to this virtual desktop.
+
+<br/>
+
+### Installing RealVNC Viewer
+
+Browse to: https://www.realvnc.com/en/connect/download/viewer/  
+Download and install the version applicable for your system.
+
+<br/>
+
+### Connect over VNC
+
+Launch RealVNC Viewer on your computer and enter the name of your Raspberry Pi 4 B server (`raspberrypi.local`) in to the address bar.  
+<img alt="RealVNC Viewer New Connection" src="/img/blog/01/RealVNC_Viewer__New_Connection.png" class="image"/>  
+When prompted enter your **username** and **password**.
+
+<br/>
+
+**And there you have it, the Raspberry Pi OS Desktop.**  
+<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/01/RealVNC_Viewer__Raspberry_Pi_Desktop.png" class="image"/>
 
 #
 ### Sources
 
 - [Raspberry Pi Documentation - Installing the Operating System](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system)
 - [Raspberry Pi Documentation - Updating and Upgrading Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/os.html#updating-and-upgrading-raspberry-pi-os)
-- [Raspberry Pi Documentation - Virtual Network Computing (VNC)](https://www.raspberrypi.com/documentation/computers/remote-access.html#virtual-network-computing-vnc)
+- [Raspberry Pi Documentation - Virtual Network Computing (VNC)](https://www.raspberrypi.com/documentation/computers/remote-access.html#vnc)
 - [Headless Raspberry Pi 4 Remote Desktop VNC Setup (Mac + Windows, 13 Steps)](https://desertbot.io/blog/headless-raspberry-pi-4-remote-desktop-vnc-setup)
 
 <!--
