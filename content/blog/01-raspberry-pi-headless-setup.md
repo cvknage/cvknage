@@ -25,16 +25,16 @@ Software Requirements
 ## Installing Raspberry Pi OS
 
 Raspberry Pi have made it easy to install Raspberry Pi OS using [Raspberry Pi Imager](https://www.raspberrypi.com/software/) which can download the Raspberry Pi OS image automatically and install it on your SD card.  
-![Raspberry Pi Imager](/img/blog/01/Raspberry_Pi_Imager.png)  
+<img alt="Raspberry Pi Imager" src="/img/blog/01/Raspberry_Pi_Imager.png" class="image"/>
 
 For this install we are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.  
-![Raspberry Pi Imager Select OS](/img/blog/01/Raspberry_Pi_Imager__Select_OS.png)  
+<img alt="Raspberry Pi Imager Select OS" src="/img/blog/01/Raspberry_Pi_Imager__Select_OS.png" class="image"/>
 
 For security reasons, WiFi and SSH is not enabled by default. To enable it we have to open the Advanced Menu.  
-![Raspberry Pi Imager Select Advanced Settings](/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png)  
+<img alt="Raspberry Pi Imager Select Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png" class="image"/>
 
 In the Advanced options we are going to Enable SSH, Set username and password, Configure wireless LAN (don't forget to set the correct Wireless LAN country).  
-![Raspberry Pi Imager Advanced Settings](/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png)  
+<img alt="Raspberry Pi Imager Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png" class="image"/>
 
 Having chosen the options we want, we select out SD card from the menu and write the Raspberry Pi OS image to it.  
 **--ADD IMAGE HERE--**
@@ -64,7 +64,7 @@ Having chosen the options we want, we select out SD card from the menu and write
 </span>
 
 <style>
-img {
+.image {
     width: 35em;
 }
 </style>
