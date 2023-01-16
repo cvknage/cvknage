@@ -34,8 +34,11 @@ defaultContentLanguage = "en"
 
 pluralizelisttitles = false
 
-[markup.goldmark.renderer]
-unsafe = true
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
 
 [minify.tdewolff.html]
 keepWhitespace = true
@@ -52,7 +55,3 @@ term = ["HTML", "RSS"]
 
 [privacy.twitter]
 enableDNT = true
-
-[markup]
-  [markup.highlight]
-    noClasses = false
