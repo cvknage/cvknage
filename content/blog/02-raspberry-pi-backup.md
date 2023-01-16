@@ -22,9 +22,53 @@ Hardware Requirements
 Software Requirements
 - [PiShrink](https://github.com/Drewsif/PiShrink)
 
+<br/>
+
+In this post I assume you have read [part 1](/2022/12/raspberry-pi-headless-setup/) in this series and thus have a Raspberry Pi with Desktop you can `SSH` in to @ `raspberrypi.local`.
+
 ## Backing up the Raspberry Pi
 
-The easiest way to get back up and running after it's gone all wrong, is having a full system image at the ready.
+The easiest way to get back up and running after it's gone all wrong, is having a full bootable system image ready to flash on to your microSD card with Raspberry Pi Imager.
+
+On your Raspberry Pi, you can create such an image using the `dd` command to copy the current running installation to an .img file on some external storage plugged in to the Raspberry Pi's USB port.
+
+<br/>
+
+### Setting up the external storage
+
+First you need to plug in your external storage to the Raspberry Pi's USB port.  
+Because you installed Raspberry Pi with Desktop, removable media will be auto mounted to `/media/pi` by the the [`pcmanfm`](https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html) desktop process.
+
+you can use the `lsblk` tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
+```bash
+lsblk -f
+```
+[output]
+```
+pi@raspberrypi:~ $ lsblk -f
+NAME        FSTYPE  FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                       
+├─sda1      vfat    FAT32 EFI         D2D7-4855                                           
+├─sda2      hfsplus       Monterey    99b629a1-2994-45cf-b8c1-cff6d7450694                
+├─sda3      hfsplus       Ventura     3516e24d-84c2-4f9e-9559-71de730a7277                
+├─sda4      ext4    1.0   TimeMachine fc924351-26c8-4c01-a25f-e44a6869c5f1  614.6G    25% /media/pi/TimeMachine
+└─sda5      ext4    1.0   NAS         665507c3-aee6-41bc-8be8-3594a65468d9    1.3T    45% /media/pi/NAS
+mmcblk0                                                                                   
+├─mmcblk0p1 vfat    FAT32 boot        444F-BE04                             200.3M    21% /boot
+└─mmcblk0p2 ext4    1.0   rootfs      665507c3-aee6-41bc-8be8-3594a65468d9   19.4G    28% /
+pi@raspberrypi:~ $ 
+```
+
+`mmcblk0` is the microSD card with your full installation on it that you wish to backup.  
+`sda` is my SSD with 5 partitions on it. In this post I will use partition `sda5` labeled NAS mounted at `/media/pi/NAS` as the destination for the backup.
+
+<br/>
+
+### Basking up the microSD card
+
+<br/>
+
+### Compressing the backup with PiShrink
 
 ## Automating the process
 
@@ -83,3 +127,4 @@ The above line means that the script with run **"At 00:00 on day-of-month 1 in e
 ### Sources
 
 - [Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink](https://robotzero.one/headless-pi-zero-backup-clone/)
+- [USB storage auto-mount in /media/pi](https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675)
