@@ -57,13 +57,13 @@ Your Raspberry Pi can be found on your network using its hostname (example: `ras
 
 First lets clear out any previous references to `raspberrypi.local`.  
 Open a Terminal window and run the following command:
-```console
+```bash
 ssh-keygen -R raspberrypi.local
 ```
 Don't worry if you get a host not found error. This just means there where no previous references to `raspberrypi.local`.
 
 Then sign in to your Raspberry Pi with the following command:
-```console
+```bash
 ssh pi@raspberrypi.local
 ```
 If the command hangs, press `Ctrl-C` and try again.  
@@ -79,12 +79,12 @@ Before you start using your Raspberry Pi, you want to make sure that your system
 The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian.
 
 Before installing software, you should update your package list with `apt update` using this command:
-```console
+```bash
 sudo apt update
 ```
 
 Next, `upgrade` all your installed packages to their latest versions with the following command:
-```console
+```bash
 sudo apt full-upgrade
 ```
 Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
@@ -117,7 +117,7 @@ Because your Raspberry Pi is headless, it may not be running a graphical desktop
 VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.
 
 To create a virtual desktop, run the following command:
-```console
+```bash
 vncserver
 ```
 Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
@@ -126,7 +126,7 @@ Make note of the IP address/display number that VNC Server will print to your Te
 On the device you’ll use to take control, enter this information into VNC Viewer.
 
 To destroy a virtual desktop, run the following command:
-```console
+```bash
 vncserver -kill :<display-number>
 ```
 This will also stop any existing connections to this virtual desktop.
