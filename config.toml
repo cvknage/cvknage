@@ -52,3 +52,7 @@ term = ["HTML", "RSS"]
 
 [privacy.twitter]
 enableDNT = true
+
+[markup]
+  [markup.highlight]
+    noClasses = false

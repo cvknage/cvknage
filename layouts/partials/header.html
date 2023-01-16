@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ if not .IsHome }}{{.Title}} - {{ end }} Christophe Knage</title>
     <link rel="stylesheet" href="/css/main.css?{{ slicestr (readFile "static/css/main.css" | md5) 0 8 }}">
+    <link rel="stylesheet" href="/css/syntax.css?{{ slicestr (readFile "static/css/syntax.css" | md5) 0 8 }}">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link id="favicon" rel="icon" href="/favicon/favicon.ico">

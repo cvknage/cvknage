@@ -728,26 +728,23 @@ div.center-title h1, div.center-title h2 {
 }
 
 code {
-    color: #25292f;
     padding: 0 .4em;
     font-weight: normal;
     font-size: 85%;
-    background: #c7c9d3;
+    background-color: #0667ee18;
     border-radius: 6px;
 }
 
 pre code {
     padding: 0;
     background: none;
-    color: #c7c9d3;
 }
 
 pre {
     margin: 1em 0;
     padding: 1em;
     border-radius: 6px;
-    background: #25292f;
-    color: #fff;
+    background-color: #0667ee18;
     overflow-x: auto;
 }
 
