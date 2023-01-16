@@ -29,19 +29,19 @@ The easiest way to get back up and running after it's gone all wrong, is having 
 ## Automating the process
 
 
-```console
+```bash
 touch ./Documents/sd-card-backup.sh
 chmod +x ./Documents/sd-card-backup.sh
 ```
 
 Open the file `sd-card-backup.sh` in `nano`
 
-```console
+```bash
 nano ./Documents/sd-card-backup.sh
 ```
 
 Add below content to the file `sd-card-backup.sh` (make sure `BACKUPFILENAME` is correct)
-``` bash
+```bash
 #!/bin/bash
 
 CURRENT_DATETIME=`date +"%Y-%m-%dT%H-%M-%S"`
@@ -66,7 +66,7 @@ find ${BACKUP_DIRECTORY} -maxdepth 1 -name "*.img.gz"  -type f -mtime +365  -del
 
 Open crontab by typing 
 
-```console
+```bash
 crontab -e
 ```
 
