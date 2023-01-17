@@ -112,7 +112,7 @@ Scroll down and select **VNC** › **Yes**
 
 ### Installing RealVNC Viewer
 
-Browse to: <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">https&#58;&#47;&#47;www.realvnc.com/en/connect/download/viewer/</a>  
+Browse to: <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">https&#58;//www.realvnc.com/en/connect/download/viewer/</a>  
 Download and install the version applicable for your system.
 
 <br/>
