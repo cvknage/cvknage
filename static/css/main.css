@@ -824,6 +824,11 @@ a.blog-heading-anchor {
   text-decoration: none; 
 }
 
+a.code-doc {
+  color: black;
+  text-decoration: underline; 
+}
+
 div#breadcrumbs, div.post-bottom {
     padding: 10px;
     background-color: #dedede;

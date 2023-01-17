@@ -24,22 +24,26 @@ Software Requirements
 
 <br/>
 
-In this post I assume you have read [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server") in this series and thus have a Raspberry Pi with Desktop you can `SSH` in to @ `raspberrypi.local`.
+In this post I assume you have read [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server") in this series and thus have a Raspberry Pi with Desktop you can <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a> in to @ `raspberrypi.local`.
 
 ## Backing up the Raspberry Pi
 
 The easiest way to get back up and running after it's gone all wrong, is having a full bootable system image ready to flash on to your microSD card with Raspberry Pi Imager.
 
-On your Raspberry Pi, you can create such an image using the `dd` command to copy the current running installation to an .img file on some external storage plugged in to the Raspberry Pi's USB port.
+On your Raspberry Pi, you can create such an image using the <a href="https://manpages.debian.org/bullseye/coreutils/dd.1.en.html" target="_blank" class="code-doc">`dd`</a> command to copy the current running installation to an .img file on some external storage plugged in to the Raspberry Pi's USB port.
 
 <br/>
 
 ### Setting up the external storage
 
 First you need to plug in your external storage to the Raspberry Pi's USB port.  
-Because you installed Raspberry Pi with Desktop, removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank">`pcmanfm`</a> desktop process.
+Because you installed Raspberry Pi with Desktop, removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process.
 
-you can use the `lsblk` tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
+<a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> uses <a href="https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html" target="_blank" class="code-doc">`udisksctl`</a> on the backend to mount your drive, so you can also mount the drive manually like this:
+```bash
+```
+
+You can use the <a href="https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html" target="_blank" class="code-doc">`lsblk`</a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
 ```bash
 lsblk -f
 ```
@@ -78,7 +82,7 @@ touch ./Documents/sd-card-backup.sh
 chmod +x ./Documents/sd-card-backup.sh
 ```
 
-Open the file `sd-card-backup.sh` in `nano`
+Open the file `sd-card-backup.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>
 
 ```bash
 nano ./Documents/sd-card-backup.sh
@@ -108,7 +112,7 @@ sudo pishrink.sh -z ${BACKUP_FILENAME}
 find ${BACKUP_DIRECTORY} -maxdepth 1 -name "*.img.gz"  -type f -mtime +365  -delete
 ```
 
-Open crontab by typing 
+Open <a href="https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html" target="_blank" class="code-doc">`crontab`</a> by typing 
 
 ```bash
 crontab -e

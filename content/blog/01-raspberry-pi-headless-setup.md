@@ -30,10 +30,10 @@ Raspberry Pi have made it easy to install Raspberry Pi OS using <a href="https:/
 For this install you are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.  
 <img alt="Raspberry Pi Imager Select OS" src="/img/blog/01/Raspberry_Pi_Imager__Select_OS.png" class="image"/>
 
-For security reasons, WiFi and SSH is not enabled by default. To enable it you have to open the Advanced Menu.  
+For security reasons, WiFi and <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a> is not enabled by default. To enable it you have to open the Advanced Menu.  
 <img alt="Raspberry Pi Imager Select Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png" class="image"/>
 
-In the Advanced options you are going to Enable SSH, Set username and password, Configure wireless LAN (don't forget to set the correct Wireless LAN country).  
+In the Advanced options you are going to Enable <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a>, Set username and password, Configure wireless LAN (don't forget to set the correct Wireless LAN country).  
 <img alt="Raspberry Pi Imager Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png" class="image"/>
 
 Having chosen the options you want, select your micro SD card from the menu and write the Raspberry Pi OS image to it.  
@@ -45,9 +45,9 @@ Give the Raspberry Pi some time to boot up - about 90 seconds or so on first boo
 
 ## Login and setup Raspberry Pi
 
-With your Raspberry Pi now booted and on the network you can connect to it using `SSH`.  
-If you are on **Windows**, and need to get acquainted with `SSH` read this before continuing: <a href="https://learn.microsoft.com/en-us/windows/iot-core/connect-your-device/ssh" target="_blank">Secure Shell (SSH)</a>.  
-**macOS** and other <a href="https://en.wikipedia.org/wiki/Unix-like" target="_blank">UNIX-like systems</a> have `SSH` preinstalled. Here is a quick guide: <a href="https://osxdaily.com/2017/04/28/howto-ssh-client-mac/" target="_blank">OSXDaily - How to SSH</a>
+With your Raspberry Pi now booted and on the network you can connect to it using <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a>.  
+If you are on **Windows**, and need to get acquainted with <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a> read this before continuing: <a href="https://learn.microsoft.com/en-us/windows/iot-core/connect-your-device/ssh" target="_blank">Secure Shell (SSH)</a>.  
+**macOS** and other <a href="https://en.wikipedia.org/wiki/Unix-like" target="_blank">UNIX-like systems</a> have <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a> preinstalled. Here is a quick guide: <a href="https://osxdaily.com/2017/04/28/howto-ssh-client-mac/" target="_blank">OSXDaily - How to SSH</a>
 
 Your Raspberry Pi can be found on your network using its hostname (example: `raspberrypi.local`). However to do this on **Windows**, <a href="https://support.apple.com/kb/DL999" target="_blank">Bonjour for Windows</a> needs to be installed.
 
@@ -78,16 +78,16 @@ Before you start using your Raspberry Pi, you want to make sure that your system
 
 The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian.
 
-Before installing software, you should update your package list with `apt update` using this command:
+Before installing software, you should update your package list with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt update`</a> using this command:
 ```bash
 sudo apt update
 ```
 
-Next, `upgrade` all your installed packages to their latest versions with the following command:
+Next, <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`upgrade`</a> all your installed packages to their latest versions with the following command:
 ```bash
 sudo apt full-upgrade
 ```
-Note that `full-upgrade` is used in preference to a simple `upgrade`, as it also picks up any dependency changes that may have been made.
+Note that <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`full-upgrade`</a> is used in preference to a simple <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`upgrade`</a>, as it also picks up any dependency changes that may have been made.
 
 <br/>
 
@@ -101,7 +101,7 @@ If you want to gain remote access to the Raspberry Pi's Desktop, read a bit furt
 
 ### Enable VNC Server
 
-To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool" target="_blank">`raspi-config`</a>:
+To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool" target="_blank" class="code-doc">`raspi-config`</a>:
 ```bash
 sudo raspi-config
 ```
