@@ -10,5 +10,5 @@ author = "Christophe Knage"
 
 ### Sources
 
-- [How to Setup a Raspberry Pi Plex Server](https://pimylifeup.com/raspberry-pi-plex-server/)
-- [Updating Plex Media Server](https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server)
+- <a href="https://pimylifeup.com/raspberry-pi-plex-server/" target="_blank">How to Setup a Raspberry Pi Plex Server</a>
+- <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server" target="_blank">Updating Plex Media Server</a>

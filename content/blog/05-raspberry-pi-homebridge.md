@@ -10,4 +10,4 @@ author = "Christophe Knage"
 
 ### Sources
 
-- [Install Homebridge on Raspbian](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian/da8aff0269bfe3b3b1f6ccbd984cbee1d72e56f3)
+- <a href="https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian/da8aff0269bfe3b3b1f6ccbd984cbee1d72e56f3" target="_blank">Install Homebridge on Raspbian</a>

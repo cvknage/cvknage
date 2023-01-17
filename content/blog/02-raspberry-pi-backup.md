@@ -10,21 +10,21 @@ author = "Christophe Knage"
 
 Having a plan for how to recover when things break down is essential when you depend on your server.
 
-> This is part 2 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting [Network Attached Storage (NAS)](https://en.wikipedia.org/wiki/Network-attached_storage), [TimeMachine](https://support.apple.com/en-gb/HT201250), [Plex Media Server](https://www.plex.tv) and [Homebridge](https://homebridge.io).
+> This is part 2 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
 
 ### Prerequisites
 
 Hardware Requirements
-- [Raspberry Pi 4 B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
-- [microSD](https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards)
+- <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
+- <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards" target="_blank">microSD</a>
 - External Storage (e.g. SSD in a USB 3.0 enclosure)
 
 Software Requirements
-- [PiShrink](https://github.com/Drewsif/PiShrink)
+- <a href="https://github.com/Drewsif/PiShrink" target="_blank">PiShrink</a>
 
 <br/>
 
-In this post I assume you have read [part 1](/2022/12/raspberry-pi-headless-setup/) in this series and thus have a Raspberry Pi with Desktop you can `SSH` in to @ `raspberrypi.local`.
+In this post I assume you have read [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server") in this series and thus have a Raspberry Pi with Desktop you can `SSH` in to @ `raspberrypi.local`.
 
 ## Backing up the Raspberry Pi
 
@@ -37,7 +37,7 @@ On your Raspberry Pi, you can create such an image using the `dd` command to cop
 ### Setting up the external storage
 
 First you need to plug in your external storage to the Raspberry Pi's USB port.  
-Because you installed Raspberry Pi with Desktop, removable media will be auto mounted to `/media/pi` by the the [`pcmanfm`](https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html) desktop process.
+Because you installed Raspberry Pi with Desktop, removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank">`pcmanfm`</a> desktop process.
 
 you can use the `lsblk` tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
 ```bash
@@ -121,10 +121,10 @@ Type the frequency of script execution in the following manner
 0 0 1 */1 * /home/pi/Documents/sd-card-backup.sh
 ```
 
-The above line means that the script with run **"At 00:00 on day-of-month 1 in every month."** You can configure this according to your needs. I recommend using [crontab.guru](https://crontab.guru/#0_4_*/21_*_*) to get the right settings for the cron job.
+The above line means that the script with run **"At 00:00 on day-of-month 1 in every month."** You can configure this according to your needs. I recommend using <a href="https://crontab.guru/#0_4_*/21_*_*" target="_blank">crontab.guru</a> to get the right settings for the cron job.
 
 #
 ### Sources
 
-- [Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink](https://robotzero.one/headless-pi-zero-backup-clone/)
-- [USB storage auto-mount in /media/pi](https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675)
+- <a href="https://robotzero.one/headless-pi-zero-backup-clone/" target="_blank">Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink</a>
+- <a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target="_blank">USB storage auto-mount in /media/pi</a>

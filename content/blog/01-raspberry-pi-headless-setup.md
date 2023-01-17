@@ -8,23 +8,23 @@ author = "Christophe Knage"
 
 **This post covers setting up a headless Raspberry Pi 4 B from scratch.**
 
-[Raspberry Pi](https://www.raspberrypi.com) has excellent documentation on how to setup and configure a Raspberry Pi. This post leans on the official documentation and focus on the parts that are essential to get up and running. 
+<a href="https://www.raspberrypi.com" target="_blank">Raspberry Pi</a> has excellent documentation on how to setup and configure a Raspberry Pi. This post leans on the official documentation and focus on the parts that are essential to get up and running. 
 
-> This is part 1 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting [Network Attached Storage (NAS)](https://en.wikipedia.org/wiki/Network-attached_storage), [TimeMachine](https://support.apple.com/en-gb/HT201250), [Plex Media Server](https://www.plex.tv) and [Homebridge](https://homebridge.io).
+> This is part 1 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
 
 ### Prerequisites
 
 Hardware Requirements
-- [Raspberry Pi 4 B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
-- [microSD](https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards)
+- <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
+- <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards" target="_blank">microSD</a>
 
 Software Requirements
-- [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
-- [RealVNC viewer](https://www.realvnc.com/en/connect/download/viewer/) (Optional)
+- <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>
+- <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">RealVNC viewer</a> (Optional)
 
 ## Installing Raspberry Pi OS
 
-Raspberry Pi have made it easy to install Raspberry Pi OS using [Raspberry Pi Imager](https://www.raspberrypi.com/software/) which can download the Raspberry Pi OS image automatically and install it on your micro SD card.  
+Raspberry Pi have made it easy to install Raspberry Pi OS using <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a> which can download the Raspberry Pi OS image automatically and install it on your micro SD card.  
 <img alt="Raspberry Pi Imager" src="/img/blog/01/Raspberry_Pi_Imager.png" class="image"/>
 
 For this install you are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.  
@@ -46,10 +46,10 @@ Give the Raspberry Pi some time to boot up - about 90 seconds or so on first boo
 ## Login and setup Raspberry Pi
 
 With your Raspberry Pi now booted and on the network you can connect to it using `SSH`.  
-If you are on **Windows**, and need to get acquainted with `SSH` read this before continuing: [Secure Shell (SSH)](https://learn.microsoft.com/en-us/windows/iot-core/connect-your-device/ssh).  
-**macOS** and other [UNIX-like systems](https://en.wikipedia.org/wiki/Unix-like) have `SSH` preinstalled. Here is a quick guide: [OSXDaily - How to SSH](https://osxdaily.com/2017/04/28/howto-ssh-client-mac/)
+If you are on **Windows**, and need to get acquainted with `SSH` read this before continuing: <a href="https://learn.microsoft.com/en-us/windows/iot-core/connect-your-device/ssh" target="_blank">Secure Shell (SSH)</a>.  
+**macOS** and other <a href="https://en.wikipedia.org/wiki/Unix-like" target="_blank">UNIX-like systems</a> have `SSH` preinstalled. Here is a quick guide: <a href="https://osxdaily.com/2017/04/28/howto-ssh-client-mac/" target="_blank">OSXDaily - How to SSH</a>
 
-Your Raspberry Pi can be found on your network using its hostname (example: `raspberrypi.local`). However to do this on **Windows**, [Bonjour for Windows](https://support.apple.com/kb/DL999) needs to be installed.
+Your Raspberry Pi can be found on your network using its hostname (example: `raspberrypi.local`). However to do this on **Windows**, <a href="https://support.apple.com/kb/DL999" target="_blank">Bonjour for Windows</a> needs to be installed.
 
 <br/>
 
@@ -101,7 +101,7 @@ If you want to gain remote access to the Raspberry Pi's Desktop, read a bit furt
 
 ### Enable VNC Server
 
-To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with [`raspi-config`](https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool):
+To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool" target="_blank">`raspi-config`</a>:
 ```bash
 sudo raspi-config
 ```
@@ -112,7 +112,7 @@ Scroll down and select **VNC** › **Yes**
 
 ### Installing RealVNC Viewer
 
-Browse to: https://www.realvnc.com/en/connect/download/viewer/  
+Browse to: <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">https&#58;&#47;&#47;www.realvnc.com/en/connect/download/viewer/</a>  
 Download and install the version applicable for your system.
 
 <br/>
@@ -154,18 +154,18 @@ This will also stop any existing connections to this virtual desktop.
 #
 ### Sources
 
-- [Raspberry Pi Documentation - Installing the Operating System](https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system)
-- [Raspberry Pi Documentation - Updating and Upgrading Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/os.html#updating-and-upgrading-raspberry-pi-os)
-- [Raspberry Pi Documentation - Virtual Network Computing (VNC)](https://www.raspberrypi.com/documentation/computers/remote-access.html#vnc)
-- [Headless Raspberry Pi 4 Remote Desktop VNC Setup (Mac + Windows, 13 Steps)](https://desertbot.io/blog/headless-raspberry-pi-4-remote-desktop-vnc-setup)
+- <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system" target="_blank">Raspberry Pi Documentation - Installing the Operating System</a>
+- <a href="https://www.raspberrypi.com/documentation/computers/os.html#updating-and-upgrading-raspberry-pi-os" target="_blank">Raspberry Pi Documentation - Updating and Upgrading Raspberry Pi OS</a>
+- <a href="https://www.raspberrypi.com/documentation/computers/remote-access.html#vnc" target="_blank">Raspberry Pi Documentation - Virtual Network Computing (VNC)</a>
+- <a href="https://desertbot.io/blog/headless-raspberry-pi-4-remote-desktop-vnc-setup" target="_blank">Headless Raspberry Pi 4 Remote Desktop VNC Setup (Mac + Windows, 13 Steps)</a>
 
 <!--
 <span style="font-weight:300;font-size:12px">
     <p style="margin: 0;">
-        Raspberry Pi documentation is copyright &copy; 2012-2023 Raspberry Pi Ltd and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA) licence.
+        Raspberry Pi documentation is copyright &copy; 2012-2023 Raspberry Pi Ltd and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA) licence.
     </p>
     <p style="margin: 0;">
-        Some content originates from the <a href="http://elinux.org/">eLinux wiki</a> , and is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> licence.
+        Some content originates from the <a href="http://elinux.org/" target="_blank">eLinux wiki</a> , and is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike 3.0 Unported</a> licence.
     </p>
 </span>
 -->
