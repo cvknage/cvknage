@@ -110,29 +110,6 @@ Scroll down and select **VNC** › **Yes**
 
 <br/>
 
-### Creating a Virtual Desktop
-
-Because your Raspberry Pi is headless, it may not be running a graphical desktop. 
-
-VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.
-
-To create a virtual desktop, run the following command:
-```bash
-vncserver
-```
-Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
-(Note, the Raspberry Pi's hostname can also be used together with the display number e.g. `raspberrypi.local:1`)
-
-On the device you’ll use to take control, enter this information into VNC Viewer.
-
-To destroy a virtual desktop, run the following command:
-```bash
-vncserver -kill :<display-number>
-```
-This will also stop any existing connections to this virtual desktop.
-
-<br/>
-
 ### Installing RealVNC Viewer
 
 Browse to: https://www.realvnc.com/en/connect/download/viewer/  
@@ -150,6 +127,29 @@ When prompted enter your **username** and **password**.
 
 **And there you have it, the Raspberry Pi OS Desktop.**  
 <img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/01/RealVNC_Viewer__Raspberry_Pi_Desktop.png" class="image"/>
+
+<br/>
+
+#### Troubleshooting: Creating a Virtual Desktop {#virtual-desktop}
+
+If you see a black screen instead of the Raspberry Pi Desktop, it may be because your Raspberry Pi isn't running a graphical desktop. 
+
+VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.
+
+To create a virtual desktop, run the following command:
+```bash
+vncserver
+```
+Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
+(Note, the Raspberry Pi's hostname can also be used together with the display number e.g. `raspberrypi.local:1`)
+
+On the device you’ll use to take control, enter this information into VNC Viewer.
+
+To destroy a virtual desktop, run the following command:
+```bash
+vncserver -kill :<display-number>
+```
+This will also stop any existing connections to this virtual desktop.
 
 #
 ### Sources
