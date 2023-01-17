@@ -8,7 +8,7 @@ draft: false
 
 Navn: Christophe Knage  
 Adresse: 2770 Kastrup  
-Hjemmeside: [https://knage.net](https://knage.net/da/)  
+Hjemmeside: [https://knage.net]({{<ref"/">}})  
 Alder: {{< partial "age" >}}  
 Født: Vejle, den 7. maj 1987  
 Civil status: Ugift.  
