@@ -81,6 +81,7 @@ Then make your first backup of your mocroSD card with <a href="https://manpages.
 ``` bash
 sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/'RaspberryPi-(year-month-date).img' bs=1M
 ```
+<!--
 [output]
 ```
 pi@raspberrypi:~ $ sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/'RaspberryPi-(year-month-date).img' bs=1M
@@ -89,6 +90,7 @@ pi@raspberrypi:~ $ sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/'R
 31046238208 bytes (31 GB, 29 GiB) copied, 754.574 s, 41.1 MB/s
 pi@raspberrypi:~ $
 ```
+-->
 
 After some time, you should have the file `RaspberryPi-(year-month-date).img` in your backup directory. the .img file will be the full size of your microSD card, in my case ca. 31 GB.
 
@@ -113,6 +115,7 @@ Then shrink your image like this. Again, this will take some time:
 ``` bash
 sudo pishrink.sh -z "/media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img"
 ```
+<!--
 [output]
 ```
 pi@raspberrypi:~ $ sudo pishrink.sh -z "/media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img"
@@ -147,6 +150,7 @@ pishrink.sh: Using gzip on the shrunk image ...
 pishrink.sh: Shrunk /media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img.gz from 29G to 4.6G ...
 pi@raspberrypi:~ $ 
 ```
+-->
 
 This will leave you with a significantly smaller file `RaspberryPi-(year-month-date).img.gz`, in my case ca. 4.6 GB.
 
