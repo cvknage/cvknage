@@ -38,7 +38,6 @@ On your Raspberry Pi, you can create such an image using the <a href="https://ma
 
 First you need to plug your external storage in to the Raspberry Pi's USB port.  
 
-
 You can use the <a href="https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html" target="_blank" class="code-doc">`lsblk`</a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
 ```bash
 lsblk -f
