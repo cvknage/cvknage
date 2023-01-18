@@ -130,7 +130,7 @@ When prompted enter your **username** and **password**.
 
 <br/>
 
-#### Troubleshooting: Creating a Virtual Desktop {#virtual-desktop}
+#### Troubleshooting: Creating a Virtual Desktop
 
 If you see a black screen instead of the Raspberry Pi Desktop, it may be because your Raspberry Pi isn't running a graphical desktop. 
 
