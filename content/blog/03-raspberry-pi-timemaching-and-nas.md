@@ -28,6 +28,56 @@ Software Requirements
 
 ## Setting up the external storage
 
+I use a cheap USB 3.0 enclosure with a 2 TB SSD inside and I want to use one partition for Time Machine and another partition for my NAS.  
+(I also have a EFI bootloader partition as well as 2 partitions with bootable recovery images for the latest major macOS versions.)
+
+If you to format and partition your drive, here is a nice guide: <a href="https://thesecmaster.com/how-to-partition-and-format-the-hard-drives-on-raspberry-pi/" target="_blank">How to Partition and Format the Hard Drives on Raspberry Pi?</a> 
+
+> **Note:**  
+> If you are looking for a new external storage disk, it is worth noting that the Raspberry Pi 4 is known to be picky about what adapters will work in the USB 3.0 ports  
+A community built list of adapters that are known to work with the Raspberry Pi 4, as well as those known not to work out of the box can be found <a href="https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/" target="_blank">here</a>.
+>
+> If you already have a disk that is causing problems, a solution may be found <a href="https://www.pragmaticlinux.com/2021/03/fix-for-getting-your-ssd-working-via-usb-3-on-your-raspberry-pi/" target="_blank">here</a>.
+
+After connecting your external storage in to the Raspberry Pi's USB port, you can use the <a href="https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html" target="_blank" class="code-doc">`lsblk`</a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
+```bash
+lsblk -f
+```
+[output]
+```
+pi@raspberrypi:~ $ lsblk -f
+NAME        FSTYPE  FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sda                                                                                       
+├─sda1      vfat    FAT32 EFI         D2D7-4855                                           
+├─sda2      hfsplus       Monterey    99b629a1-2994-45cf-b8c1-cff6d7450694                
+├─sda3      hfsplus       Ventura     3516e24d-84c2-4f9e-9559-71de730a7277                
+├─sda4      ext4    1.0   TimeMachine fc924351-26c8-4c01-a25f-e44a6869c5f1  614.6G    25% /media/pi/TimeMachine
+└─sda5      ext4    1.0   NAS         665507c3-aee6-41bc-8be8-3594a65468d9    1.3T    45% /media/pi/NAS
+mmcblk0                                                                                   
+├─mmcblk0p1 vfat    FAT32 boot        444F-BE04                             200.3M    21% /boot
+└─mmcblk0p2 ext4    1.0   rootfs      665507c3-aee6-41bc-8be8-3594a65468d9   19.4G    28% /
+pi@raspberrypi:~ $ 
+```
+
+`sda4` is my TimeMachine partition mounted as `/media/pi/TimeMachine`.  
+`sda5` is my NAS partition mounted at `/media/pi/NAS`.  
+
+Because you installed Raspberry Pi with Desktop (in [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server")), removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process.
+
+<a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> uses <a href="https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html" target="_blank" class="code-doc">`udisksctl`</a> on the backend to mount your drive, so you can also mount the `sda5` partition manually like this:
+```bash
+udisksctl mount -b /dev/sda5
+```
+
+If you installed Raspberry Pi OS Lite, you can [enable the VNC server]({{<relref"/blog/01-raspberry-pi-headless-setup#enable-vnc-server">}} "Enable VNC Server") and [create a Virtual Desktop]({{<relref"/blog/01-raspberry-pi-headless-setup#troubleshooting-creating-a-virtual-desktop">}} "Creating a Virtual Desktop"), which loads the fault desktop session with the a <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process, which in turn enables auto mounting.  
+Or you can use this <a href="https://github.com/bswebdk/scripts/blob/master/uamount.sh" target="_blank">script</a> to generate <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rules and add their corresponding entries to <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> to make your partitions auto mount on to your desired location.  
+
+
+
+
+
+
+
 ### Prevent macOS recovery partition auto mount
 
 edit <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a>
