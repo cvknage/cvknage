@@ -57,13 +57,13 @@ Your Raspberry Pi can be found on your network using its hostname (example: `ras
 
 First lets clear out any previous references to `raspberrypi.local`.  
 Open a Terminal window and run the following command:
-```bash
+```console
 ssh-keygen -R raspberrypi.local
 ```
 Don't worry if you get a host not found error. This just means there where no previous references to `raspberrypi.local`.
 
 Then sign in to your Raspberry Pi with the following command:
-```bash
+```console
 ssh pi@raspberrypi.local
 ```
 If the command hangs, press `Ctrl-C` and try again.  
@@ -79,12 +79,12 @@ Before you start using your Raspberry Pi, you want to make sure that your system
 The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian.
 
 Before installing software, you should update your package list with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt update`</a> using this command:
-```bash
+```console
 sudo apt update
 ```
 
 Next, <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`upgrade`</a> all your installed packages to their latest versions with the following command:
-```bash
+```console
 sudo apt full-upgrade
 ```
 Note that <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`full-upgrade`</a> is used in preference to a simple <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`upgrade`</a>, as it also picks up any dependency changes that may have been made.
@@ -102,7 +102,7 @@ If you want to gain remote access to the Raspberry Pi's Desktop, read a bit furt
 ### Enable VNC Server
 
 To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool" target="_blank" class="code-doc">`raspi-config`</a>:
-```bash
+```console
 sudo raspi-config
 ```
 Then Navigate to **Interfacing Options**.  
@@ -137,7 +137,7 @@ If you see a black screen instead of the Raspberry Pi Desktop, it may be because
 VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.
 
 To create a virtual desktop, run the following command:
-```bash
+```console
 vncserver
 ```
 Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
@@ -146,7 +146,7 @@ Make note of the IP address/display number that VNC Server will print to your Te
 On the device you’ll use to take control, enter this information into VNC Viewer.
 
 To destroy a virtual desktop, run the following command:
-```bash
+```console
 vncserver -kill :<display-number>
 ```
 This will also stop any existing connections to this virtual desktop.

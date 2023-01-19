@@ -39,7 +39,7 @@ On your Raspberry Pi, you can create such an image using the <a href="https://ma
 First you need to plug your external storage in to the Raspberry Pi's USB port.  
 
 You can use the <a href="https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html" target="_blank" class="code-doc">`lsblk`</a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:
-```bash
+```console
 lsblk -f
 ```
 [output]
@@ -64,7 +64,7 @@ pi@raspberrypi:~ $
 Because you installed Raspberry Pi with Desktop (in [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server")), removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process.
 
 <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> uses <a href="https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html" target="_blank" class="code-doc">`udisksctl`</a> on the backend to mount your drive, so you can also mount the `sda5` partition manually like this:
-```bash
+```console
 udisksctl mount -b /dev/sda5
 ```
 
@@ -73,12 +73,12 @@ udisksctl mount -b /dev/sda5
 ### Backing up the microSD card
 
 With your drive properly mounted, you can use <a href="https://manpages.debian.org/bullseye/coreutils/mkdir.1.en.html" target="_blank" class="code-doc">`mkdir`</a> to create a directory to store the backup: 
-``` bash
+```console
 sudo mkdir /media/pi/NAS/Raspberry/BACKUPS
 ```
 
 Then make your first backup of your mocroSD card with <a href="https://manpages.debian.org/bullseye/coreutils/dd.1.en.html" target="_blank" class="code-doc">`dd`</a>. This will take some time:
-``` bash
+```console
 sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/'RaspberryPi-(year-month-date).img' bs=1M
 ```
 <!--
@@ -105,14 +105,14 @@ This is really good because if your current microSD card gives up, your new card
 <br/>
 
 Install <a href="https://github.com/Drewsif/PiShrink" target="_blank">PiShrink</a> with <a href="https://manpages.debian.org/bullseye/wget/wget.1.en.html" target="_blank" class="code-doc">`wget`</a>, <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/mv.1.en.html" target="_blank" class="code-doc">`mv`</a>:
-```bash
+```console
 wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh
 chmod +x pishrink.sh
 sudo mv pishrink.sh /usr/local/bin
 ```
 
 Then shrink your image like this. Again, this will take some time:
-``` bash
+```console
 sudo pishrink.sh -z "/media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img"
 ```
 <!--
@@ -159,13 +159,13 @@ This will leave you with a significantly smaller file `RaspberryPi-(year-month-d
 The backup process can easily be scripted, so it happens periodically on a cadence to your liking.
 
 First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
-```bash
+```console
 touch ./Documents/sd-card-backup.sh
 chmod +x ./Documents/sd-card-backup.sh
 ```
 
 Then open the file `sd-card-backup.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
-```bash
+```console
 nano ./Documents/sd-card-backup.sh
 ```
 
@@ -195,7 +195,7 @@ find ${BACKUP_DIRECTORY} -maxdepth 1 -name "*.img.gz"  -type f -mtime +365  -del
 ```
 
 Open <a href="https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html" target="_blank" class="code-doc">`crontab`</a> with the commend:
-```bash
+```console
 crontab -e
 ```
 
