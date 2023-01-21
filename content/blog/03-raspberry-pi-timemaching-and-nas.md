@@ -113,23 +113,20 @@ sudo apt update
 sudo apt install samba avahi-daemon
 ```
 
-According to <a href="https://en.wikipedia.org/wiki/Samba_(software)" target="_blank">WikipediA</a>: <a href="https://www.samba.org/" target="_blank">Samba</a> *"is a free software re-implementation of the SMB networking protocol"*, which officially supported by Apple: <a href="https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html" target="_blank">Time Machine Over SMB Specification</a>.
+<a href="https://www.samba.org/" target="_blank">Samba</a> is a free software re-implementation of the SMB networking protocol, which is officially supported by <a href="https://support.apple.com/en-us/HT202784#nas" target="_blank">Apple</a>.  
+Since macOS Mavericks Apple has preferred SMB over AFP and AFP seems to have been discontinued entirely as of macOS Big Sur.
 
-<a href="https://www.samba.org/" target="_blank">Samba</a> is all you really need to get a TimeMachine and NAS up and running, but you can make it a lot easier to connect to the TimeMachine and NAS from your Mac, using <a href="https://www.avahi.org/" target="_blank">Avahi</a>.
-
-<a href="https://www.avahi.org/" target="_blank">Avahi</a> is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. This is what we in Apple language know as <a href="https://en.wikipedia.org/wiki/Bonjour_(software)" target="_blank">Bonjour</a>.
+<a href="https://www.avahi.org/" target="_blank">Avahi</a> is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. In Apple language, this is know as <a href="https://developer.apple.com/bonjour/" target="_blank">Bonjour</a>.
 
 <br/>
 
 ### Configuring Samba
-
-In order for <a href="https://www.samba.org/" target="_blank">Samba</a> to work with your TimeMachine and NAS, you need to configure it editing the <a href="https://www.samba.org/" target="_blank">Samba</a> configuration file in <a href="https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html" target="_blank" class="code-doc">`/etc/samba/smb.conf`</a>
  
 In order for <a href="https://www.samba.org/" target="_blank">Samba</a> to work well with macOS you need to configure <a href="https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html" target="_blank" class="code-doc">`vfs_fruit`</a> - Enhanced OS X and Netatalk interoperability. 
 
-Open the <a href="https://www.samba.org/" target="_blank">Samba</a> configuration file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+You do this by editing the <a href="https://www.samba.org/" target="_blank">Samba</a> configuration file<a href="https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html" target="_blank" class="code-doc">`/etc/samba/smb.conf`</a>  in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
 ```console
-sudo nano etc/samba/smb.conf
+sudo nano /etc/samba/smb.conf
 ```
 
 Near the top of the file you will find something like this:
@@ -176,6 +173,9 @@ This is where you tell <a href="https://www.samba.org/" target="_blank">Samba</a
 
 At the bottom of this section add the following:
 ```make
+### Adding Shares ###
+# https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#idm51
+
 [TimeMachine]
     comment = TimeMachine
     path = /media/pi/TimeMachine
@@ -208,19 +208,117 @@ Now you can test if your configuration is free from errors with <a href="https:/
 ```console
 sudo testparm -s
 ```
+[output]
+```
+pi@raspberrypi:~ $ sudo testparm -s
+Load smb config files from /etc/samba/smb.conf
+Loaded services file OK.
+Weak crypto is allowed
+Server role: ROLE_STANDALONE
+
+# Global parameters
+[global]
+	log file = /var/log/samba/log.%m
+	logging = file
+	map to guest = Bad User
+	max log size = 1000
+	obey pam restrictions = Yes
+	pam password change = Yes
+	panic action = /usr/share/samba/panic-action %d
+	passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+	passwd program = /usr/bin/passwd %u
+	server min protocol = SMB2
+	server role = standalone server
+	unix password sync = Yes
+	usershare allow guests = Yes
+	fruit:nfs_aces = no
+	fruit:delete_empty_adfiles = yes
+	fruit:wipe_intentionally_left_blank_rfork = yes
+	fruit:zero_file_id = yes
+	fruit:posix_rename = yes
+	fruit:veto_appledouble = no
+	fruit:model = MacSamba
+	fruit:metadata = stream
+	idmap config * : backend = tdb
+	inherit permissions = Yes
+	vfs objects = catia fruit streams_xattr
+
+
+[TimeMachine]
+	comment = TimeMachine
+	inherit acls = Yes
+	path = /media/pi/TimeMachine
+	read only = No
+	valid users = pi
+	fruit:time machine = yes
+
+
+[NAS]
+	comment = NAS
+	inherit acls = Yes
+	path = /media/pi/NAS
+	read only = No
+	valid users = pi
+pi@raspberrypi:~ $ 
+```
+
+Your output should look similar to the mine just above. ⬆
 
 Then restart the <a href="https://www.samba.org/" target="_blank">Samba</a> service to reload the configuration changes:
 ```console
 sudo service smbd reload
 ```
 
-You can now connect to your <a href="https://www.samba.org/" target="_blank">Samba</a> shares from your Mac by pressing `Command-K` in Finder, enter the IP of your Raspberry Pi and authenticate with your user credentials. 
-
-This however, will be made much easier when you configure <a href="https://www.avahi.org/" target="_blank">Avahi</a> with autodiscovery for your shares.
+You can now connect to your <a href="https://www.samba.org/" target="_blank">Samba</a> shares from your Mac by pressing `Command-K` in Finder and enter the IP of your Raspberry Pi like this: `smb://192.168.0.200/TimeMachine`  
+<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Connect_to_server__TimeMachine.png" class="blog-image"/>  
+ Authenticate with your user credentials when prompted.
 
 <br/>
 
 ### Configuring Avahi
+
+You can make the process of logging in to your TimeMachine and NAS from your Mac a lot easier by configuring <a href="https://www.avahi.org/" target="_blank">Avahi</a> to advertise the <a href="https://www.samba.org/" target="_blank">Samba</a> shares on your network.
+
+You have to create a new service in `/etc/avahi/services/samba.service`:
+```console
+sudo nano /etc/avahi/services/samba.service
+```
+
+Then add the following configuration that I shamelessly stole from <a href="https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/#configuring-avahi" target="_blank">here</a> (where a detailed description is available):
+```xml
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name replace-wildcards="yes">%h</name>
+  <service>
+    <type>_smb._tcp</type>
+    <port>445</port>
+  </service>
+  <service>
+    <type>_device-info._tcp</type>
+    <port>9</port>
+    <txt-record>model=MacPro7,1@ECOLOR=226,226,224</txt-record>
+  </service>
+  <service>
+    <type>_adisk._tcp</type>
+    <port>9</port>
+    <txt-record>dk0=adVN=TimeMachine,adVF=0x82</txt-record>
+    <txt-record>sys=adVF=0x100</txt-record>
+  </service>
+</service-group>
+```
+
+<a href="https://www.avahi.org/" target="_blank">Avahi</a> should pick up your changes automatically and our Raspberry Pi should now appear in the sidebar of Finder.  
+<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Raspberry_Pi_in_Finder.png" class="blog-image"/>
+
+If it doesn't, you can restart the <a href="https://manpages.debian.org/bullseye/avahi-daemon/avahi-daemon.8.en.html" target="_blank" class="code-doc">`avahi-daemon`</a> <a href="https://manpages.debian.org/bullseye/init-system-helpers/service.8.en.html" target="_blank" class="code-doc">`service`</a>:
+```console
+sudo service avahi-daemon restart
+```
+
+<br/>
+
+**And there you have it! Your very own Raspberry Pi TimeMachine and NAS server.**
 
 ## NAS Backup (Optional)
 
@@ -276,6 +374,6 @@ To delete files in the destination folder that are not in the source folder (del
 #
 ### Sources
 
-- <a href="https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/#configuring-avahi" target="_blank">Using a Raspberry Pi for Time Machine</a>
 - <a href="https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X" target="_blank">Configure Samba to Work Better with Mac OS X</a>
+- <a href="https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/" target="_blank">Using a Raspberry Pi for Time Machine</a>
 - <a href="https://jansblog.org/2021/05/16/samba-based-timemachine-with-big-sur/" target="_blank">Samba-based TimeMachine with Big Sur</a>

@@ -824,6 +824,10 @@ a.blog-heading-anchor {
   text-decoration: none; 
 }
 
+.blog-image {
+  width: 35em;
+}
+
 a.code-doc {
   color: black;
   text-decoration: underline; 
