@@ -74,7 +74,66 @@ udisksctl mount -b /dev/sda5
 ```
 
 If you installed Raspberry Pi OS Lite, you can [enable the VNC server]({{<relref"/blog/01-raspberry-pi-headless-setup#enable-vnc-server">}} "Enable VNC Server") and [create a Virtual Desktop]({{<relref"/blog/01-raspberry-pi-headless-setup#troubleshooting-creating-a-virtual-desktop">}} "Creating a Virtual Desktop"), which loads the default desktop session with the a <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process, which in turn enables auto mounting.  
-Or you can use this <a href="https://github.com/bswebdk/scripts/blob/master/uamount.sh" target="_blank">script</a> to generate <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rules and add their corresponding entries to <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> to make your partitions auto mount at your desired location.  
+Or you can use this <a href="https://github.com/bswebdk/scripts/blob/master/uamount.sh" target="_blank">`uamount.sh`</a> script to generate <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rules and add their corresponding entries to <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> to make your partitions auto mount at your desired location.
+
+<details>
+<summary style="cursor: pointer">Click to expand: <code><a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">udev</a></code> mounting rule example</summary>
+
+**Using the `uamount.sh` script**
+
+Install the `uamount.sh` script:
+```console
+wget https://github.com/bswebdk/scripts/blob/master/uamount.sh
+```
+
+To get help run (or just read the top of the script):
+```console
+./uamount.sh --help
+```
+
+To create a <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rule for `/dev/sda` on `/media/MYDRIVE` use:
+```console
+sudo ./uamount.sh /dev/sda MYDRIVE
+```
+
+To remove the mounting rule again use:
+```console
+sudo ./uamount.sh /dev/sda
+```
+
+<br/>
+
+**Manually create a <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rule**
+
+Edit <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+```console
+sudo nano /etc/fstab
+```
+
+And add an entry for the desired partition:
+```
+UUID=665507c3-aee6-41bc-8be8-3594a65468d9   /media/pi/NAS  ext4    defaults,noauto  0  0
+```
+The parameter `noauto` is important here as it tels the system not to mount during the init process.
+
+Then create a new <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rule:
+```console
+sudo nano /lib/udev/rules.d/automount-nas.rules
+```
+
+And add the actions for **"add"** and **"remove"**
+```
+ACTION=="add", ENV{ID_FS_UUID_ENC}=="665507c3-aee6-41bc-8be8-3594a65468d9", RUN+="/bin/mount /dev/%k"
+ACTION=="remove", ENV{ID_FS_UUID_ENC}=="665507c3-aee6-41bc-8be8-3594a65468d9", RUN+="/bin/umount /dev/%k"
+```
+</details>
+
+<br/>
+
+> **Note:**  
+Auto mounting removable media directly from <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> without using a <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rule is not recommended.  
+Since <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> is read during the system init process, removing the drive from the Raspberry Pi will cause the system to hang for a long time on boot or even fail to boot completely.  
+Using a <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rule defers the mounting procedure in to user space which will prevent boot failure.
 
 <br/>
 
