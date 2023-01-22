@@ -26,5 +26,9 @@ Software Requirements
 
 <h1 style="font-size: 100%">Sources</h1>
 
+- <a href="https://www.electromaker.io/tutorial/blog/how-to-install-plex-on-raspberry-pi" target="_blank">How to Install Plex on the Raspberry Pi 4</a>
 - <a href="https://pimylifeup.com/raspberry-pi-plex-server/" target="_blank">How to Setup a Raspberry Pi Plex Server</a>
 - <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server" target="_blank">Updating Plex Media Server</a>
+- <a href="https://support.plex.tv/articles/categories/plex-media-server/" target="_blank">Plex Media Server</a>
+- <a href="https://support.plex.tv/articles/200288586-installation/#:~:text=Download%20the%20.deb%20package" target="_blank">Install Plex Media Server on Debian Linux</a>
+- <a href="https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/#:~:text=DEB-based%20distros" target="_blank">Enable repository updating on Debian Linux</a>
