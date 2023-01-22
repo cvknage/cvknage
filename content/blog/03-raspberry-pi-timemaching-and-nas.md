@@ -67,7 +67,7 @@ mmcblk0
 pi@raspberrypi:~ $ 
 ```
 
-`sda4` is my TimeMachine partition mounted as `/media/pi/TimeMachine`.  
+`sda4` is my TimeMachine partition mounted at `/media/pi/TimeMachine`.  
 `sda5` is my NAS partition mounted at `/media/pi/NAS`.  
 
 Because you installed Raspberry Pi with Desktop (in [part 1]({{<relref"/blog/01-raspberry-pi-headless-setup">}} "Headless Raspberry Pi Server")), removable media will be auto mounted to `/media/pi` by the the <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process.
@@ -78,7 +78,8 @@ udisksctl mount -b /dev/sda5
 ```
 
 If you installed Raspberry Pi OS Lite, you can [enable the VNC server]({{<relref"/blog/01-raspberry-pi-headless-setup#enable-vnc-server">}} "Enable VNC Server") and [create a Virtual Desktop]({{<relref"/blog/01-raspberry-pi-headless-setup#troubleshooting-creating-a-virtual-desktop">}} "Creating a Virtual Desktop"), which loads the default desktop session with the a <a href="https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html" target="_blank" class="code-doc">`pcmanfm`</a> desktop process, which in turn enables auto mounting.  
-Or you can use this <a href="https://github.com/bswebdk/scripts/blob/master/uamount.sh" target="_blank">`uamount.sh`</a> script to generate <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rules and add their corresponding entries to <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> to make your partitions auto mount at your desired location.
+
+Otherwise you can use this <a href="https://github.com/bswebdk/scripts/blob/master/uamount.sh" target="_blank">`uamount.sh`</a> script to generate <a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">`udev`</a> mounting rules and add their corresponding entries to <a href="https://manpages.debian.org/bullseye/mount/fstab.5.en.html" target="_blank" class="code-doc">`fstab`</a> to make your partitions auto mount at your desired location.
 
 <details>
 <summary style="cursor: pointer">Click to expand: <code><a href="https://manpages.debian.org/bullseye/udev/udev.7.en.html" target="_blank" class="code-doc">udev</a></code> mounting rule example</summary>
