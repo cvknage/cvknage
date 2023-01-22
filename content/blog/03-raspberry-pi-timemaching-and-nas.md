@@ -392,18 +392,32 @@ sudo service avahi-daemon restart
 
 ## NAS Backup (Optional)
 
-Make sure the BACKUP drive is mounted before running the script. 
+Now that your Mac is automatically backed up by TimeMachine, and your Raspberry Pi is backed up automatically using the script from [part 2]({{<relref"/blog/02-raspberry-pi-backup#automating-the-process">}} "Raspberry Pi Backup"). you might be wondering; how do I backup the data on my NAS? 
+
+Well, a simple and reliable method of doing just that is using <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> to periodically sync the contents on your NAS with another drive.
+
+<br/>
 
 ### <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> backup script
 
-<a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a>  
-<a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>
+First make sure your new backup drive is mounted correctly.
+
+Then create a new file for the <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> backup script with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and set execution permissions with <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
 touch ./Documents/nas-backup.sh
 chmod +x ./Documents/nas-backup.sh
 ```
 
+Edit the file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+```console
+sudo nano ./Documents/nas-backup.sh
+```
+
+And paste the following (make sure the variables `SOURCE_DIRECTORY` and `BACKUP_DIRECTORY` are correct for you):
 ```bash
+#!/bin/bash
+
+SOURCE_DIRECTORY="/media/pi/NAS/"
 BACKUP_DIRECTORY="/media/pi/BACKUP/NAS"
 
 # Exit script if Backup Directory does not exist
@@ -417,22 +431,35 @@ echo "rsync start: ${START_DATETIME}" >> ./Documents/nas-backup.log
 echo "rsync start: ${START_DATETIME}"
 
 # rsync entire NAS to BACKUP 
-/usr/bin/rsync -aP --exclude="lost+found" /media/pi/NAS/ "${BACKUP_DIRECTORY}" >> ./Documents/nas-backup.log
+/usr/bin/rsync -aP --exclude="lost+found" "${SOURCE_DIRECTORY}" "${BACKUP_DIRECTORY}" >> ./Documents/nas-backup.log
 
 END_DATETIME=`date +"%Y-%m-%dT%H-%M-%S"`
 echo "rsync finished: ${END_DATETIME}" >> ./Documents/nas-backup.log
 echo "rsync finished: ${END_DATETIME}"
 ```
 
-Follow `nas-backup.log`
+Open <a href="https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html" target="_blank" class="code-doc">`crontab`</a> with the commend:
+```console
+crontab -e
+```
 
+At the end of the document, type the frequency of script execution in the following manner
+```bash
+0 0 * * * /home/pi/Documents/nas-backup.sh
+```
+
+I recommend running this script at least once a day.  
+The script only copies the delta between each sync, so after the first sync only new changes are added. 
+
+Files deleted from your NAS accidentally or intentionally will not be automatically removed from your backup.
+
+You can follow what the script has been and actively is syncing, by looking in `./Documents/nas-backup.log`:
 <a href="https://manpages.debian.org/bullseye/coreutils/tail.1.en.html" target="_blank" class="code-doc">`tail`</a>
 ```console
 tail -F -s20 ./Documents/nas-backup.log
 ```
 
 To delete files in the destination folder that are not in the source folder (deleted files, temporary rsync files, etc.)
-
 ```bash
 # dry-run
 /usr/bin/rsync -aPn --del --exclude="lost+found" /media/pi/NAS/ /media/pi/BACKUP/NAS
@@ -444,6 +471,9 @@ To delete files in the destination folder that are not in the source folder (del
 #
 ### Sources
 
-- <a href="https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X" target="_blank">Configure Samba to Work Better with Mac OS X</a>
 - <a href="https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/" target="_blank">Using a Raspberry Pi for Time Machine</a>
 - <a href="https://jansblog.org/2021/05/16/samba-based-timemachine-with-big-sur/" target="_blank">Samba-based TimeMachine with Big Sur</a>
+- <a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target="_blank">USB storage auto-mount in /media/pi</a>
+- <a href="https://forums.raspberrypi.com/viewtopic.php?p=1165998" target="_blank">SSH connection refused if external hdd is not present</a>
+- <a href="https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X" target="_blank">Configure Samba to Work Better with Mac OS X</a>
+- <a href="https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html" target="_blank">Time Machine over SMB Specification</a>
