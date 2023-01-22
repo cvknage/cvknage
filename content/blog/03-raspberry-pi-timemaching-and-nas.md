@@ -334,8 +334,10 @@ sudo service smbd reload
 ```
 
 You can now connect to your <a href="https://www.samba.org/" target="_blank">Samba</a> shares from your Mac by pressing `Command-K` in Finder and enter the IP of your Raspberry Pi like this: `smb://192.168.0.200/TimeMachine`  
-<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Connect_to_server__TimeMachine.png" class="blog-image"/>  
- Authenticate with your user credentials when prompted.
+{{<zoom-image>}}
+<img alt="Finder Connect to Server - TimeMachine" src="/img/blog/03/Connect_to_server__TimeMachine.png" class="blog-image"/>
+{{</zoom-image>}}  
+Authenticate with your user credentials when prompted.
 
 <br/>
 
@@ -381,10 +383,15 @@ The first 2 services configures <a href="https://www.avahi.org/" target="_blank"
 
 The 3'rd service configures <a href="https://www.avahi.org/" target="_blank">Avahi</a> to advertise the Raspberry Pi as a <a href="https://support.apple.com/kb/SP810" target="_blank">Mac Pro (Rack, 2019)</a>, which sets a nice icon in macOS Finder.  
 You can change this icon to any device name listed in `/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist`.  Open the file with Xcode and search for "@ECOLOR" to easily highlight your available options.  
-<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Xcode_Device_Names_for_Avahi.png" class="blog-image"/>
+{{<zoom-image>}}
+<img alt="Device naves for Avahi" src="/img/blog/03/Xcode_Device_Names_for_Avahi.png" class="blog-image"/>
+{{</zoom-image>}}
+
 
 <a href="https://www.avahi.org/" target="_blank">Avahi</a> should pick up your changes automatically and our Raspberry Pi should now appear in the sidebar of Finder.  
-<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Raspberry_Pi_in_Finder.png" class="blog-image"/>
+{{<zoom-image>}}
+<img alt="Avahi displays Raspberry Pi in Finder" src="/img/blog/03/Raspberry_Pi_in_Finder.png" class="blog-image"/>
+{{</zoom-image>}}
 
 If it doesn't, you can restart the <a href="https://manpages.debian.org/bullseye/avahi-daemon/avahi-daemon.8.en.html" target="_blank" class="code-doc">`avahi-daemon`</a> <a href="https://manpages.debian.org/bullseye/init-system-helpers/service.8.en.html" target="_blank" class="code-doc">`service`</a>:
 ```console

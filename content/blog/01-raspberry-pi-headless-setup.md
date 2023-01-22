@@ -29,19 +29,29 @@ Software Requirements
 ## Installing Raspberry Pi OS
 
 Raspberry Pi have made it easy to install Raspberry Pi OS using <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a> which can download the Raspberry Pi OS image automatically and install it on your micro SD card.  
+{{<zoom-image>}}
 <img alt="Raspberry Pi Imager" src="/img/blog/01/Raspberry_Pi_Imager.png" class="blog-image"/>
+{{</zoom-image>}}
 
 For this install you are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.  
+{{<zoom-image>}}
 <img alt="Raspberry Pi Imager Select OS" src="/img/blog/01/Raspberry_Pi_Imager__Select_OS.png" class="blog-image"/>
+{{</zoom-image>}}
 
 For security reasons, WiFi and <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a> is not enabled by default. To enable it you have to open the Advanced Menu.  
+{{<zoom-image>}}
 <img alt="Raspberry Pi Imager Select Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png" class="blog-image"/>
+{{</zoom-image>}}
 
 In the Advanced options you are going to Enable <a href="https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html" target="_blank" class="code-doc">`SSH`</a>, Set username and password, Configure wireless LAN (don't forget to set the correct Wireless LAN country).  
+{{<zoom-image>}}
 <img alt="Raspberry Pi Imager Advanced Settings" src="/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png" class="blog-image"/>
+{{</zoom-image>}}
 
 Having chosen the options you want, select your micro SD card from the menu and write the Raspberry Pi OS image to it.  
+{{<zoom-image>}}
 <img alt="Raspberry Pi Imager Write Image" src="/img/blog/01/Raspberry_Pi_Imager__Write_Image.png" class="blog-image"/>
+{{</zoom-image>}}
 
 Eject the micro SD card, remove it from your computer and insert it in to the Raspberry Pi.  
 Plug the USB-C power supply in to the Raspberry Pis power port.  
@@ -124,13 +134,17 @@ Download and install the version applicable for your system.
 ### Connect over VNC
 
 Launch RealVNC Viewer on your computer and enter the name of your Raspberry Pi server (`raspberrypi.local`) in to the address bar.  
-<img alt="RealVNC Viewer New Connection" src="/img/blog/01/RealVNC_Viewer__New_Connection.png" class="blog-image"/>  
+{{<zoom-image>}}
+<img alt="RealVNC Viewer New Connection" src="/img/blog/01/RealVNC_Viewer__New_Connection.png" class="blog-image"/>
+{{</zoom-image>}}  
 When prompted enter your **username** and **password**.
 
 <br/>
 
 **And there you have it, the Raspberry Pi OS Desktop.**  
+{{<zoom-image>}}
 <img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/01/RealVNC_Viewer__Raspberry_Pi_Desktop.png" class="blog-image"/>
+{{</zoom-image>}}
 
 <br/>
 

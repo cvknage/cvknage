@@ -882,6 +882,22 @@ div.post-bottom {
   margin-top: 0px;
 }
 
+/* Zoom Image */
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(1.5);
+  cursor: zoom-out
+}
+
 /* Footer */
 
 footer {
