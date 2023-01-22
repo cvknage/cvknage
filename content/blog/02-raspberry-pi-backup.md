@@ -72,6 +72,9 @@ Because you installed Raspberry Pi with Desktop (in [part 1]({{<relref"/blog/01-
 udisksctl mount -b /dev/sda5
 ```
 
+> **Note:**  
+I describe mounting in greater detail in [part 3: Raspberry Pi as TimeMachine and NAS - Setting up the external storage]({{<relref"/blog/03-raspberry-pi-timemaching-and-nas#setting-up-the-external-storage">}} "Setting up the external storage")
+
 <br/>
 
 ### Backing up the microSD card
