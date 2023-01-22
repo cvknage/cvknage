@@ -14,7 +14,7 @@ This post however takes a different approach, where you will configure <a href="
 
 > This is part 3 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
 
-### Prerequisites
+**Prerequisites**
 
 Hardware Requirements
 - <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
@@ -25,6 +25,10 @@ Hardware Requirements
 Software Requirements
 - <a href="https://www.samba.org/" target="_blank">Samba</a>
 - <a href="https://www.avahi.org/" target="_blank">Avahi</a>
+
+<br/>
+
+{{<toc>}}
 
 ## Setting up the external storage
 
@@ -398,7 +402,7 @@ Well, a simple and reliable method of doing just that is using <a href="https://
 
 <br/>
 
-### <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> backup script
+### Backup script
 
 First make sure your new backup drive is mounted correctly.
 
@@ -468,8 +472,7 @@ To delete files in the destination folder that are not in the source folder (del
 /usr/bin/rsync -aP --del --exclude="lost+found" /media/pi/NAS/ /media/pi/BACKUP/NAS
 ```
 
-#
-### Sources
+<h1 style="font-size: 100%">Sources</h1>
 
 - <a href="https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/" target="_blank">Using a Raspberry Pi for Time Machine</a>
 - <a href="https://jansblog.org/2021/05/16/samba-based-timemachine-with-big-sur/" target="_blank">Samba-based TimeMachine with Big Sur</a>

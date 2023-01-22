@@ -870,6 +870,18 @@ div.post-bottom {
     font-size: 110%;
 }
 
+/* TOC */
+
+.post .toc ul li {
+  margin-bottom: 0px;
+  margin-top: 0px;
+} 
+
+.post .toc ul {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
 /* Footer */
 
 footer {

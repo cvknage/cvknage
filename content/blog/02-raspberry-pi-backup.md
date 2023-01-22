@@ -12,7 +12,7 @@ Having a plan for how to recover when things break down is essential when you de
 
 > This is part 2 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
 
-### Prerequisites
+**Prerequisites**
 
 Hardware Requirements
 - <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
@@ -21,6 +21,10 @@ Hardware Requirements
 
 Software Requirements
 - <a href="https://github.com/Drewsif/PiShrink" target="_blank">PiShrink</a>
+
+<br/>
+
+{{<toc>}}
 
 <br/>
 
@@ -206,8 +210,7 @@ At the end of the document, type the frequency of script execution in the follow
 
 The above line means that the script with run **At 00:00 on day-of-month 1 in every month**. You can configure this according to your needs. I recommend using <a href="https://crontab.guru/#0_0_1_*/1_*" target="_blank">crontab.guru</a> to get the right settings for you.
 
-#
-### Sources
+<h1 style="font-size: 100%">Sources</h1>
 
 - <a href="https://robotzero.one/headless-pi-zero-backup-clone/" target="_blank">Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink</a>
 - <a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target="_blank">USB storage auto-mount in /media/pi</a>

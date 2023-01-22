@@ -12,7 +12,7 @@ author = "Christophe Knage"
 
 > This is part 1 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
 
-### Prerequisites
+**Prerequisites**
 
 Hardware Requirements
 - <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
@@ -21,6 +21,10 @@ Hardware Requirements
 Software Requirements
 - <a href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi Imager</a>
 - <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">RealVNC viewer</a> (Optional)
+
+<br/>
+
+{{<toc>}}
 
 ## Installing Raspberry Pi OS
 
@@ -151,8 +155,7 @@ vncserver -kill :<display-number>
 ```
 This will also stop any existing connections to this virtual desktop.
 
-#
-### Sources
+<h1 style="font-size: 100%">Sources</h1>
 
 - <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system" target="_blank">Raspberry Pi Documentation - Installing the Operating System</a>
 - <a href="https://www.raspberrypi.com/documentation/computers/os.html#updating-and-upgrading-raspberry-pi-os" target="_blank">Raspberry Pi Documentation - Updating and Upgrading Raspberry Pi OS</a>

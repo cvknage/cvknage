@@ -39,6 +39,10 @@ pluralizelisttitles = false
     unsafe = true
   [markup.highlight]
     noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
 
 [minify.tdewolff.html]
 keepWhitespace = true
