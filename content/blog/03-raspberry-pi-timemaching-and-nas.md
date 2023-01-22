@@ -354,18 +354,29 @@ Then add the following configuration that I shamelessly stole from <a href="http
     <port>445</port>
   </service>
   <service>
-    <type>_device-info._tcp</type>
-    <port>9</port>
-    <txt-record>model=MacPro7,1@ECOLOR=226,226,224</txt-record>
-  </service>
-  <service>
     <type>_adisk._tcp</type>
     <port>9</port>
     <txt-record>dk0=adVN=TimeMachine,adVF=0x82</txt-record>
     <txt-record>sys=adVF=0x100</txt-record>
   </service>
+  <service>
+    <type>_device-info._tcp</type>
+    <port>9</port>
+    <txt-record>model=MacPro7,1@ECOLOR=226,226,224</txt-record>
+  </service>
 </service-group>
 ```
+In short, you are declaring 3 services.
+
+The first 2 services configures <a href="https://www.avahi.org/" target="_blank">Avahi</a> to follow Apples <a href="https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html#//apple_ref/doc/uid/TP40017496-CH1-SW1" target="_blank">Advertising Time Machine Availability Through Bonjour</a> documentation by:  
+<span>
+    1. Advertising that your Raspberry Pi is running a <a href="https://www.samba.org/" target="_blank">Samba</a> on port 445.  
+    2. Advertising that the share named "TimeMachine" is available for TimeMachine backups.  
+</span>
+
+The 3'rd service configures <a href="https://www.avahi.org/" target="_blank">Avahi</a> to advertise the Raspberry Pi as a <a href="https://support.apple.com/kb/SP810" target="_blank">Mac Pro (Rack, 2019)</a>, which sets a nice icon in macOS Finder.  
+You can change this icon to any device name listed in `/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist`.  Open the file with Xcode and search for "@ECOLOR" to easily highlight your available options.  
+<img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Xcode_Device_Names_for_Avahi.png" class="blog-image"/>
 
 <a href="https://www.avahi.org/" target="_blank">Avahi</a> should pick up your changes automatically and our Raspberry Pi should now appear in the sidebar of Finder.  
 <img alt="RealVNC Viewer Raspberry Pi Desktop" src="/img/blog/03/Raspberry_Pi_in_Finder.png" class="blog-image"/>
