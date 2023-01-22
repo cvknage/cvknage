@@ -7,10 +7,9 @@ draft: false
 # Curriculum Vitae
 
 Navn: Christophe Knage  
-Adresse: 2770 Kastrup  
+Adresse: 3450 Allerød  
 Hjemmeside: [https://knage.net]({{<ref"/">}})  
-Alder: {{< partial "age" >}}  
-Født: Vejle, den 7. maj 1987  
+Alder: {{<age>}}Født maj 1987{{</age>}}  
 Civil status: Ugift.  
 
 ## Resumé
