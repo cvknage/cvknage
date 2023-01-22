@@ -1,6 +1,6 @@
 +++
-date = "2022-12-08T20:00:00+01:00"
-draft = true
+date = "2023-01-21T20:00:00+01:00"
+draft = false
 title = "Raspberry Pi as Plex Media Server"
 slug = "raspberry-pi-plexmediaserver"
 author = "Christophe Knage"
@@ -8,7 +8,23 @@ author = "Christophe Knage"
 
 **This post covers installing Plex Media Server on a Raspberry Pi 4 B and keeping Plex up to date.**
 
-### Sources
+> This is part 4 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
+
+**Prerequisites**
+
+Hardware Requirements
+- <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4 B</a>
+- <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards" target="_blank">microSD</a>
+- External Storage (e.g. SSD in a USB 3.0 enclosure)
+
+Software Requirements
+- <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a>
+
+<br/>
+
+{{<toc>}}
+
+<h1 style="font-size: 100%">Sources</h1>
 
 - <a href="https://pimylifeup.com/raspberry-pi-plex-server/" target="_blank">How to Setup a Raspberry Pi Plex Server</a>
 - <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server" target="_blank">Updating Plex Media Server</a>
