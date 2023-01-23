@@ -81,6 +81,41 @@ To update your <a href="https://www.plex.tv/media-server-downloads/#plex-media-s
 
 ## Install Plex Media Server from Repository
 
+You can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> directly from the official Plex repository.
+
+This however requires a bit of setting up first. It is well worth it in the end though, as it makes [Updating Plex Media Server](#updating-plex-media-server) a lot easier.
+
+### Setup Plex Media Server Repository
+
+First you need to install <a href="https://manpages.debian.org/bullseye/apt/apt-transport-https.1.en.html" target="_blank" class="code-doc">`apt-transport-https`</a>.  
+This allows the <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> package manager to install packages over the `https` which the Plex repository uses:
+```console
+sudo apt update
+sudo apt install apt-transport-https
+```
+
+Then you need to download the Plex <a href="https://manpages.debian.org/bullseye/gpg/gpg.1.en.html" target="_blank" class="code-doc">`gpg`</a> key using <a href="https://manpages.debian.org/bullseye/wget/wget.1.en.html" target="_blank" class="code-doc">`wget`</a> and add it to your keyring with <a href="https://manpages.debian.org/bullseye/coreutils/tee.1.en.html" target="_blank" class="code-doc">`tee`</a>:
+```console
+wget -O- https://downloads.plex.tv/plex-keys/PlexSign.key | gpg --dearmor | sudo tee /usr/share/keyrings/plex-repository-keyring.gpg > /dev/null
+```
+
+After that you can add the official Plex <a href="https://manpages.debian.org/bullseye/dpkg-dev/deb.5.en.html" target="_blank" class="code-doc">`deb`</a> repository to the sources:
+```console
+echo deb [signed-by=/usr/share/keyrings/plex-repository-keyring.gpg] https://downloads.plex.tv/repo/deb public | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+```
+
+With the official Plex repository added, you need to run <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt update`</a> again, to refresh the package list.  
+Then you can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a>:
+```console
+sudo apt update
+sudo apt install plexmediaserver
+```
+
+<br/>
+
+**There you have it, <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a>, Installed!**  
+To update your <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> installation, continue reading below: [Updating Plex Media Server](#updating-plex-media-server).
+
 ## Updating Plex Media Server
 
 ### Updating Plex Media Server Automatically
@@ -117,6 +152,10 @@ find ${BACKUP_DIRECTORY} -maxdepth 1 -name "*.tar.gz"  -type f -mtime +90  -dele
 - <a href="https://www.electromaker.io/tutorial/blog/how-to-install-plex-on-raspberry-pi" target="_blank">How to Install Plex on the Raspberry Pi 4</a>
 - <a href="https://pimylifeup.com/raspberry-pi-plex-server/" target="_blank">How to Setup a Raspberry Pi Plex Server</a>
 - <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server" target="_blank">Updating Plex Media Server</a>
+
+
 - <a href="https://support.plex.tv/articles/categories/plex-media-server/" target="_blank">Plex Media Server</a>
 - <a href="https://support.plex.tv/articles/200288586-installation/#:~:text=Download%20the%20.deb%20package" target="_blank">Install Plex Media Server on Debian Linux</a>
 - <a href="https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/#:~:text=DEB-based%20distros" target="_blank">Enable repository updating on Debian Linux</a>
+
+- <a href="https://stackoverflow.com/a/71384057" target="_blank">Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead</a>
