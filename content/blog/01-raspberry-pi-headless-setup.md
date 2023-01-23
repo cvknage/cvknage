@@ -158,7 +158,7 @@ To create a virtual desktop, run the following command:
 ```console
 vncserver
 ```
-Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.167.5.149:1).  
+Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.168.0.200:1).  
 (Note, the Raspberry Pi's hostname can also be used together with the display number e.g. `raspberrypi.local:1`)
 
 On the device you’ll use to take control, enter this information into VNC Viewer.
