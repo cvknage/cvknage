@@ -10,7 +10,7 @@ author = "Christophe Knage"
 
 <a href="https://www.raspberrypi.com" target="_blank">Raspberry Pi</a> has excellent documentation on how to setup and configure a Raspberry Pi. This post leans on the official documentation and focus on the parts that are essential to get up and running. 
 
-> This is part 1 of 5 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, with an effective backup strategy, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a>, <a href="https://www.plex.tv" target="_blank">Plex Media Server</a> and <a href="https://homebridge.io" target="_blank">Homebridge</a>.
+> This is part 1 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a> and <a href="https://www.plex.tv" target="_blank">Plex Media Server</a>.
 
 **Prerequisites**
 
