@@ -192,11 +192,28 @@ The script will only install an update if one is available, so it is safe to run
 
 ## Backup Plex Media Server Data
 
+*"The Plex Media Server data directory contains nearly all the information about your server installation. This includes the database file with your library information as well as metadata, artwork, caches, and more."* - <a href="https://support.plex.tv/articles/202529153-why-is-my-plex-media-server-directory-so-large/" target="_blank">plex.tv</a> 
+
+When you have spent time getting your Plex library set up just the way you like it. It can be a god idea to have a backup of the data directory, just in case a something goes wrong and your library gets messed up.
+
+> **Note:**  
+In [part 2 - Raspberry Pi Backup]({{<relref"/blog/02-raspberry-pi-backup">}} "Raspberry Pi Backup") I describe how to mount external storage to your Raspberry Pi and make a backup of the entire microCD Card.  
+You can reference this section: [Setting up the external storage]({{<relref"/blog/02-raspberry-pi-backup#setting-up-the-external-storage">}} "Raspberry Pi Backup").
+
+With external storage mounted to your Raspberry Pi, you can follow steps similar what you just did in: [Update Plex Media Server Automatically](#update-plex-media-server-automatically).
+
+First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
 touch ./Documents/plex-media-backup.sh
 chmod +x ./Documents/plex-media-backup.sh
 ```
 
+Then open the file `plex-media-backup.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+```console
+nano ./Documents/plex-media-backup.sh
+```
+
+Add this script to the file `plex-media-backup.sh` (make sure the `BACKUP_DIRECTORY` variable is correct for you):
 ```bash
 #!/bin/bash
 
@@ -217,15 +234,23 @@ sudo tar czPf "${BACKUP_FILENAME}" --exclude="/var/lib/plexmediaserver/Library/A
 find ${BACKUP_DIRECTORY} -maxdepth 1 -name "*.tar.gz"  -type f -mtime +90  -delete
 ```
 
+Open <a href="https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html" target="_blank" class="code-doc">`crontab`</a> with the commend:
+```console
+crontab -e
+```
+
+At the end of the document, type the frequency of script execution in the following manner
+```bash
+0 0 */10 * * /home/pi/Documents/plex-media-backup.sh
+```
+
+The above line means that the script with run **At 00:00 on every 10th day-of-month**. You can configure this according to your needs. I recommend using <a href="https://crontab.guru/#0_0_*/10_*_*" target="_blank">crontab.guru</a> to get the right settings for you.
+
 <h1 style="font-size: 100%">Sources</h1>
-
-- <a href="https://www.electromaker.io/tutorial/blog/how-to-install-plex-on-raspberry-pi" target="_blank">How to Install Plex on the Raspberry Pi 4</a>
-- <a href="https://pimylifeup.com/raspberry-pi-plex-server/" target="_blank">How to Setup a Raspberry Pi Plex Server</a>
-- <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/#updating-plex-media-server" target="_blank">Updating Plex Media Server</a>
-
 
 - <a href="https://support.plex.tv/articles/categories/plex-media-server/" target="_blank">Plex Media Server</a>
 - <a href="https://support.plex.tv/articles/200288586-installation/#:~:text=Download%20the%20.deb%20package" target="_blank">Install Plex Media Server on Debian Linux</a>
 - <a href="https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/#:~:text=DEB-based%20distros" target="_blank">Enable repository updating on Debian Linux</a>
-
+- <a href="https://support.plex.tv/articles/202915258-where-is-the-plex-media-server-data-directory-located/" target="_blank">Where is the Plex Media Server data directory located?</a>
+- <a href="https://linuxize.com/post/how-to-install-plex-media-server-on-ubuntu-20-04/" target="_blank">How to Install Plex Media Server on Ubuntu 20.04</a>
 - <a href="https://stackoverflow.com/a/71384057" target="_blank">Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead</a>
