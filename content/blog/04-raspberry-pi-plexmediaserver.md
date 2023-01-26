@@ -82,13 +82,13 @@ You can now access your <a href="https://www.plex.tv/media-server-downloads/#ple
 
 ### Update from plex.tv
 
-To update your Plex Media Server installation, you can simply follow the [install instructions](#download-and-install-from-plextv) again from the top, and install the updated version on top of your existing install.
+To update your <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> installation, you can simply follow the [install instructions](#download-and-install-from-plextv) again from the top, and install the updated version on top of your existing install.
 
 ## Install from official Plex repository
 
-You can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> directly from the official Plex repository.
+You can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> directly from the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository.
 
-This however requires a bit of setting up first. It is well worth it in the end though, as it makes updating your Plex Media Server installation a lot easier.
+This however requires a bit of setting up first. It is well worth it in the end though, as it makes updating your <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> installation a lot easier.
 
 ### Setup official Plex repository
 
@@ -104,7 +104,7 @@ Then you need to download the Plex <a href="https://manpages.debian.org/bullseye
 wget -O- https://downloads.plex.tv/plex-keys/PlexSign.key | gpg --dearmor | sudo tee /usr/share/keyrings/plex-repository-keyring.gpg > /dev/null
 ```
 
-After that you can add the official Plex <a href="https://manpages.debian.org/bullseye/dpkg-dev/deb.5.en.html" target="_blank" class="code-doc">`deb`</a> repository to the sources:
+After that you can add the official <a href="https://www.plex.tv" target="_blank">Plex</a> <a href="https://manpages.debian.org/bullseye/dpkg-dev/deb.5.en.html" target="_blank" class="code-doc">`deb`</a> repository to the sources:
 ```console
 echo deb [signed-by=/usr/share/keyrings/plex-repository-keyring.gpg] https://downloads.plex.tv/repo/deb public | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
 ```
@@ -113,7 +113,7 @@ echo deb [signed-by=/usr/share/keyrings/plex-repository-keyring.gpg] https://dow
 
 ### Install Plex Media Server from official Plex repository
 
-With the official Plex repository added, you need to run <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt update`</a> again, to refresh the package list.  
+With the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository added, you need to run <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt update`</a> again, to refresh the package list.  
 Then you can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a>:
 ```console
 sudo apt update
@@ -128,7 +128,7 @@ sudo apt install plexmediaserver
 
 ### Update from official Plex repository
 
-When a new version is released, you can simply update Plex Media Server with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>:
+When a new version is released, you can simply update <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>:
 ```console
 sudo apt update
 sudo apt install --only-upgrade plexmediaserver
@@ -136,7 +136,7 @@ sudo apt install --only-upgrade plexmediaserver
 
 #### Troubleshooting: Updating from repository
 
-During the installation process, the official Plex repository is sometimes disabled. To enable the repository, open the `plexmediaserver.list` file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a> and uncomment the line starting with "deb":
+During the installation process, the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository is sometimes disabled. To enable the repository, open the `plexmediaserver.list` file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a> and uncomment the line starting with "deb":
 ```console
 sudo nano /etc/apt/sources.list.d/plexmediaserver.list
 ```
@@ -150,12 +150,12 @@ deb https://downloads.plex.tv/repo/deb/ public main
 
 ## Update Plex Media Server Automatically
 
-Whether you downloaded and installed Plex Media plex.tv or from the official repository with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>, it is easy to keep your installation up to date automatically.
+Whether you downloaded and installed <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> from plex.tv or from the official repository with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>, it is easy to keep your installation up to date automatically.
 
 > **Note:**  
 If you followed [Download and Install from plex.tv](#download-and-install-from-plextv), you first have to [Setup official Plex repository](#setup-official-plex-repository) before continuing.
 
-With the official Plex repository set up on your Raspberry Pi, you are now ready to automate the Plex Media Server update process.
+With the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository set up on your Raspberry Pi, you are now ready to automate the <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> update process.
 
 First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
@@ -194,7 +194,7 @@ The script will only install an update if one is available, so it is safe to run
 
 *"The Plex Media Server data directory contains nearly all the information about your server installation. This includes the database file with your library information as well as metadata, artwork, caches, and more."* - <a href="https://support.plex.tv/articles/202529153-why-is-my-plex-media-server-directory-so-large/" target="_blank">plex.tv</a> 
 
-When you have spent time getting your Plex library set up just the way you like it. It can be a god idea to have a backup of the data directory, just in case a something goes wrong and your library gets messed up.
+When you have spent time getting your <a href="https://www.plex.tv" target="_blank">Plex</a> library set up just the way you like it. It can be a god idea to have a backup of the data directory, just in case a something goes wrong and your library gets messed up.
 
 > **Note:**  
 In [part 2 - Raspberry Pi Backup]({{<relref"/blog/02-raspberry-pi-backup">}} "Raspberry Pi Backup") I describe how to mount external storage to your Raspberry Pi and make a backup of the entire microCD Card.  
