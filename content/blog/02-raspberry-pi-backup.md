@@ -10,7 +10,8 @@ author = "Christophe Knage"
 
 Having a plan for how to recover when things break down is essential when you depend on your server.
 
-> This is part 2 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a> and <a href="https://www.plex.tv" target="_blank">Plex Media Server</a>.
+> This is part 2 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a> and <a href="https://www.plex.tv" target="_blank">Plex Media Server</a>.  
+Through this series we will also look at how we can make automatic backups to keep uor data safe.
 
 **Prerequisites**
 
