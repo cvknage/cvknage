@@ -148,18 +148,18 @@ This will leave you with a significantly smaller file `RaspberryPi-(year-month-d
 
 The backup process can easily be scripted, so it happens periodically on a cadence to your liking.
 
-First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
+First, create a new file for the <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> backup script with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and set execution permissions with <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
 touch ./Documents/sd-card-backup.sh
 chmod +x ./Documents/sd-card-backup.sh
 ```
 
-Then open the file `sd-card-backup.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+Edit the file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
 ```console
 nano ./Documents/sd-card-backup.sh
 ```
 
-Add this script to the file `sd-card-backup.sh` (make sure the `SD_CARD` and `BACKUP_DIRECTORY` variables are correct for you)
+And paste the following (make sure the `SD_CARD` and `BACKUP_DIRECTORY` variables are correct for you)
 ```bash
 #!/bin/bash
 

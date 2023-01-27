@@ -158,18 +158,18 @@ If you followed [Download and Install from plex.tv](#download-and-install-from-p
 
 With the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository set up on your Raspberry Pi, you are now ready to automate the <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> update process.
 
-First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
+First, create a new file with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and set execution permissions with <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
 touch ./Documents/plex-mediaserver-update.sh
 chmod +x ./Documents/plex-mediaserver-update.sh
 ```
 
-Then open the file `plex-mediaserver-update.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+Then edit the file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
 ```console
 nano ./Documents/plex-mediaserver-update.sh
 ```
 
-Add this script to the file `plex-mediaserver-update.sh`:
+And paste the following:
 ```bash
 #!/bin/bash
 
@@ -203,18 +203,18 @@ You can reference this section: [Setting up the external storage]({{<relref"/blo
 
 With external storage mounted to your Raspberry Pi, you can follow steps similar what you just did in: [Update Plex Media Server Automatically](#update-plex-media-server-automatically).
 
-First, create a script file and make it executable with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
+First, create a new file with <a href="https://manpages.debian.org/bullseye/coreutils/touch.1.en.html" target="_blank" class="code-doc">`touch`</a> and set execution permissions with <a href="https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html" target="_blank" class="code-doc">`chmod`</a>:
 ```console
 touch ./Documents/plex-media-backup.sh
 chmod +x ./Documents/plex-media-backup.sh
 ```
 
-Then open the file `plex-media-backup.sh` in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
+Then edit the file in <a href="https://manpages.debian.org/bullseye/nano/nano.1.en.html" target="_blank" class="code-doc">`nano`</a>:
 ```console
 nano ./Documents/plex-media-backup.sh
 ```
 
-Add this script to the file `plex-media-backup.sh` (make sure the `BACKUP_DIRECTORY` variable is correct for you):
+And paste the following (make sure the `BACKUP_DIRECTORY` variable is correct for you):
 ```bash
 #!/bin/bash
 

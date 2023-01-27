@@ -453,13 +453,19 @@ You can follow what the script has been and actively is syncing, by looking in `
 ```console
 tail -F -s20 ./Documents/nas-backup.log
 ```
+<br/>
 
-To delete files in the destination folder that are not in the source folder (deleted files, temporary rsync files, etc.)
+### Backup cleanup
+
+Since the <a href="https://manpages.debian.org/bullseye/rsync/rsync.1.en.html" target="_blank" class="code-doc">`rsync`</a> script never deletes files in the backup directory automatically, you may at some point want to clean your backup directory of old files (deleted files, temporary rsync files, etc.).
+
+To perform a dry-run, and verify that you are deleting the correct files use this command:
 ```bash
-# dry-run
 /usr/bin/rsync -aPn --del --exclude="lost+found" /media/pi/NAS/ /media/pi/BACKUP/NAS
+```
 
-# DELETE FILES - verify with dry-run first
+To delete all files from your backup directory, that are not in your source directory use this command (please verify with dry-run first):
+```bash
 /usr/bin/rsync -aP --del --exclude="lost+found" /media/pi/NAS/ /media/pi/BACKUP/NAS
 ```
 
