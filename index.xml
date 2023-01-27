@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software Developer</title><link>https://knage.net/</link><description>Recent content on Software Developer</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://knage.net/index.xml" rel="self" type="application/rss+xml"/><item><title>Curriculum Vitae</title><link>https://knage.net/cv/</link><pubDate>Sat, 30 Jan 2021 20:53:44 +0100</pubDate><guid>https://knage.net/cv/</guid><description>Curriculum Vitae Name: Christophe Knage
-Address: 2770 Kastrup
-Website: https://knage.net
-Age: var birthday = new Date(1987, 4, 7); function calculateAge(birthday) { var ageDifMs = Date.now() - birthday; var ageDate = new Date(ageDifMs); return Math.abs(ageDate.getUTCFullYear() - 1970); } document.write(calculateAge(birthday)); Born: Vejle, May 7’th 1987
-Civil status: Un married.
-Resumé I currently work as a Software Developer on a Scrum Team dedicated to the digitalisation of insurance sales at Alka Forsikring.</description></item></channel></rss>

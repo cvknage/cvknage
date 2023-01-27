@@ -1,0 +1,268 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<title>Headless Raspberry Pi Server - Christophe Knage</title>
+<link rel=stylesheet href=/css/main.css?a8493fb9>
+<link rel=stylesheet href=/css/syntax.css?04afe1b7>
+<link href=https://use.fontawesome.com/releases/v5.6.1/css/all.css rel=stylesheet>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link id=favicon rel=icon href=/favicon/favicon.ico>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Noto+Sans+JP:wght@300;500;700&family=Noto+Serif+JP:wght@200;500&family=Varela+Round&display=swap" rel=stylesheet>
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes">
+<meta property="og:image" content="/img/logo.png">
+<meta property="og:title" content="Headless Raspberry Pi Server -  Christophe Knage">
+</head>
+<body>
+<header id=header>
+<div class=header-logo>
+<a href=/><img src=/img/logo.png class=logo alt=logo></a>
+</div>
+<div class=header-menu>
+<ul class="menu-container flex-container"><li><a href=/cv/>Curriculum Vitae</a></li>
+<li><a href=/blog>Blog</a></li>
+</ul>
+</div>
+</header>
+<section id=post-section>
+<div class=post-wrapper>
+<div class=post>
+<div id=breadcrumbs>
+<a href=https://knage.net/>
+<i class="fas fa-home"></i>
+</a>
+/
+<a href=https://knage.net/blog/>
+Blogs
+</a>
+/
+<a href=https://knage.net/2023/01/raspberry-pi-headless-setup/>
+Headless Raspberry Pi Server
+</a>
+</div>
+<div class=blog-header>
+<h1 class=entry-title>Headless Raspberry Pi Server</h1>
+</div>
+<p><strong>This post covers setting up a headless Raspberry Pi 4 B from scratch.</strong></p>
+<p><a href=https://www.raspberrypi.com target=_blank>Raspberry Pi</a> has excellent documentation on how to setup and configure a Raspberry Pi. This post leans on the official documentation and focus on the parts that are essential to get up and running.</p>
+<blockquote>
+<p>This is part 1 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href=https://en.wikipedia.org/wiki/Network-attached_storage target=_blank>Network Attached Storage (NAS)</a>, <a href=https://support.apple.com/en-gb/HT201250 target=_blank>TimeMachine</a> and <a href=https://www.plex.tv target=_blank>Plex Media Server</a>.<br>
+Through this series we will also look at how we can make automatic backups to keep uor data safe.</p>
+</blockquote>
+<p><strong>Prerequisites</strong></p>
+<p>Hardware Requirements</p>
+<ul>
+<li><a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target=_blank>Raspberry Pi 4 B</a></li>
+<li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards target=_blank>microSD</a></li>
+</ul>
+<p>Software Requirements</p>
+<ul>
+<li><a href=https://www.raspberrypi.com/software/ target=_blank>Raspberry Pi Imager</a></li>
+<li><a href=https://www.realvnc.com/en/connect/download/viewer/ target=_blank>RealVNC viewer</a> (Optional)</li>
+</ul>
+<br>
+<div class=toc>
+<strong>Table of Contents</strong>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#installing-raspberry-pi-os>Installing Raspberry Pi OS</a></li>
+<li><a href=#login-and-setup-raspberry-pi>Login and setup Raspberry Pi</a>
+<ul>
+<li><a href=#logging-in>Logging in</a></li>
+<li><a href=#getting-the-latest-updates>Getting the latest updates</a></li>
+</ul>
+</li>
+<li><a href=#realvnc-optional>RealVNC (Optional)</a>
+<ul>
+<li><a href=#enable-vnc-server>Enable VNC Server</a></li>
+<li><a href=#installing-realvnc-viewer>Installing RealVNC Viewer</a></li>
+<li><a href=#connect-over-vnc>Connect over VNC</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<h2 id=installing-raspberry-pi-os>
+<a class=blog-heading-anchor href=#installing-raspberry-pi-os>
+Installing Raspberry Pi OS
+</a>
+</h2>
+<p>Raspberry Pi have made it easy to install Raspberry Pi OS using <a href=https://www.raspberrypi.com/software/ target=_blank>Raspberry Pi Imager</a> which can download the Raspberry Pi OS image automatically and install it on your micro SD card.<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="Raspberry Pi Imager" src=/img/blog/01/Raspberry_Pi_Imager.png class=blog-image>
+</label>
+</span>
+</p>
+<p>For this install you are going to be using the Recommended Raspberry Pi OS (32-bit) with Desktop.<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="Raspberry Pi Imager Select OS" src=/img/blog/01/Raspberry_Pi_Imager__Select_OS.png class=blog-image>
+</label>
+</span>
+</p>
+<p>For security reasons, WiFi and <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a> is not enabled by default. To enable it you have to open the Advanced Menu.<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="Raspberry Pi Imager Select Advanced Settings" src=/img/blog/01/Raspberry_Pi_Imager__Click_Advanced_Settings.png class=blog-image>
+</label>
+</span>
+</p>
+<p>In the Advanced options you are going to Enable <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a>, Set username and password, Configure wireless LAN (don&rsquo;t forget to set the correct Wireless LAN country).<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="Raspberry Pi Imager Advanced Settings" src=/img/blog/01/Raspberry_Pi_Imager__Advanced_Settings.png class=blog-image>
+</label>
+</span>
+</p>
+<p>Having chosen the options you want, select your micro SD card from the menu and write the Raspberry Pi OS image to it.<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="Raspberry Pi Imager Write Image" src=/img/blog/01/Raspberry_Pi_Imager__Write_Image.png class=blog-image>
+</label>
+</span>
+</p>
+<p>Eject the micro SD card, remove it from your computer and insert it in to the Raspberry Pi.<br>
+Plug the USB-C power supply in to the Raspberry Pis power port.<br>
+Give the Raspberry Pi some time to boot up - about 90 seconds or so on first boot.</p>
+<h2 id=login-and-setup-raspberry-pi>
+<a class=blog-heading-anchor href=#login-and-setup-raspberry-pi>
+Login and setup Raspberry Pi
+</a>
+</h2>
+<p>With your Raspberry Pi now booted and on the network you can connect to it using <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a>.<br>
+If you are on <strong>Windows</strong>, and need to get acquainted with <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a> read this before continuing: <a href=https://learn.microsoft.com/en-us/windows/iot-core/connect-your-device/ssh target=_blank>Secure Shell (SSH)</a>.<br>
+<strong>macOS</strong> and other <a href=https://en.wikipedia.org/wiki/Unix-like target=_blank>UNIX-like systems</a> have <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a> preinstalled. Here is a quick guide: <a href=https://osxdaily.com/2017/04/28/howto-ssh-client-mac/ target=_blank>OSXDaily - How to SSH</a></p>
+<p>Your Raspberry Pi can be found on your network using its hostname (example: <code>raspberrypi.local</code>). However to do this on <strong>Windows</strong>, <a href=https://support.apple.com/kb/DL999 target=_blank>Bonjour for Windows</a> needs to be installed.</p>
+<br>
+<h3 id=logging-in>
+<a class=blog-heading-anchor href=#logging-in>
+Logging in
+</a>
+</h3>
+<p>First lets clear out any previous references to <code>raspberrypi.local</code>.<br>
+Open a Terminal window and run the following command:</p>
+<pre><code class=language-console data-lang=console>ssh-keygen -R raspberrypi.local
+</code></pre><p>Don&rsquo;t worry if you get a host not found error. This just means there where no previous references to <code>raspberrypi.local</code>.</p>
+<p>Then sign in to your Raspberry Pi with the following command:</p>
+<pre><code class=language-console data-lang=console>ssh pi@raspberrypi.local
+</code></pre><p>If the command hangs, press <code>Ctrl-C</code> and try again.<br>
+If prompted with a warning, hit enter to accept the default (<strong>yes</strong>).<br>
+When prompted, type the password you set in Raspberry Pi Imager and hit <code>Enter</code> - don&rsquo;t worry if the prompt doesn&rsquo;t seem to register that you are typing, it is.</p>
+<br>
+<h3 id=getting-the-latest-updates>
+<a class=blog-heading-anchor href=#getting-the-latest-updates>
+Getting the latest updates
+</a>
+</h3>
+<p>Before you start using your Raspberry Pi, you want to make sure that your system is up to date.</p>
+<p>The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian.</p>
+<p>Before installing software, you should update your package list with <a href=https://manpages.debian.org/bullseye/apt/apt.8.en.html target=_blank class=code-doc><code>apt update</code></a> using this command:</p>
+<pre><code class=language-console data-lang=console>sudo apt update
+</code></pre><p>Next, <a href=https://manpages.debian.org/bullseye/apt/apt.8.en.html target=_blank class=code-doc><code>upgrade</code></a> all your installed packages to their latest versions with the following command:</p>
+<pre><code class=language-console data-lang=console>sudo apt full-upgrade
+</code></pre><p>Note that <a href=https://manpages.debian.org/bullseye/apt/apt.8.en.html target=_blank class=code-doc><code>full-upgrade</code></a> is used in preference to a simple <a href=https://manpages.debian.org/bullseye/apt/apt.8.en.html target=_blank class=code-doc><code>upgrade</code></a>, as it also picks up any dependency changes that may have been made.</p>
+<br>
+<p><strong>Congratulations! You now have a headless Raspberry Pi server.</strong></p>
+<h2 id=realvnc-optional>
+<a class=blog-heading-anchor href=#realvnc-optional>
+RealVNC (Optional)
+</a>
+</h2>
+<p>If you want to gain remote access to the Raspberry Pi&rsquo;s Desktop, read a bit further.</p>
+<br>
+<h3 id=enable-vnc-server>
+<a class=blog-heading-anchor href=#enable-vnc-server>
+Enable VNC Server
+</a>
+</h3>
+<p>To gain graphical remote access to the Raspberry Pi, you have to enable the VNC Server with <a href=https://www.raspberrypi.com/documentation/computers/configuration.html#the-raspi-config-tool target=_blank class=code-doc><code>raspi-config</code></a>:</p>
+<pre><code class=language-console data-lang=console>sudo raspi-config
+</code></pre><p>Then Navigate to <strong>Interfacing Options</strong>.<br>
+Scroll down and select <strong>VNC</strong> › <strong>Yes</strong></p>
+<br>
+<h3 id=installing-realvnc-viewer>
+<a class=blog-heading-anchor href=#installing-realvnc-viewer>
+Installing RealVNC Viewer
+</a>
+</h3>
+<p>Browse to: <a href=https://www.realvnc.com/en/connect/download/viewer/ target=_blank>https://www.realvnc.com/en/connect/download/viewer/</a><br>
+Download and install the version applicable for your system.</p>
+<br>
+<h3 id=connect-over-vnc>
+<a class=blog-heading-anchor href=#connect-over-vnc>
+Connect over VNC
+</a>
+</h3>
+<p>Launch RealVNC Viewer on your computer and enter the name of your Raspberry Pi server (<code>raspberrypi.local</code>) in to the address bar.<br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="RealVNC Viewer New Connection" src=/img/blog/01/RealVNC_Viewer__New_Connection.png class=blog-image>
+</label>
+</span>
+<br>
+When prompted enter your <strong>username</strong> and <strong>password</strong>.</p>
+<br>
+<p><strong>And there you have it, the Raspberry Pi OS Desktop.</strong><br>
+<span class=click-zoom>
+<label>
+<input type=checkbox>
+<img alt="RealVNC Viewer Raspberry Pi Desktop" src=/img/blog/01/RealVNC_Viewer__Raspberry_Pi_Desktop.png class=blog-image>
+</label>
+</span>
+</p>
+<br>
+<h4 id=troubleshooting-creating-a-virtual-desktop>
+<a class=blog-heading-anchor href=#troubleshooting-creating-a-virtual-desktop>
+Troubleshooting: Creating a Virtual Desktop
+</a>
+</h4>
+<p>If you see a black screen instead of the Raspberry Pi Desktop, it may be because your Raspberry Pi isn&rsquo;t running a graphical desktop.</p>
+<p>VNC Server can create a virtual desktop for you, giving you graphical remote access on demand. This virtual desktop exists only in your Raspberry Pi’s memory.</p>
+<p>To create a virtual desktop, run the following command:</p>
+<pre><code class=language-console data-lang=console>vncserver
+</code></pre><p>Make note of the IP address/display number that VNC Server will print to your Terminal (e.g. 192.168.0.200:1).<br>
+(Note, the Raspberry Pi&rsquo;s hostname can also be used together with the display number e.g. <code>raspberrypi.local:1</code>)</p>
+<p>On the device you’ll use to take control, enter this information into VNC Viewer.</p>
+<p>To destroy a virtual desktop, run the following command:</p>
+<pre><code class=language-console data-lang=console>vncserver -kill :&lt;display-number&gt;
+</code></pre><p>This will also stop any existing connections to this virtual desktop.</p>
+<h1 style=font-size:100%>Sources</h1>
+<ul>
+<li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#installing-the-operating-system target=_blank>Raspberry Pi Documentation - Installing the Operating System</a></li>
+<li><a href=https://www.raspberrypi.com/documentation/computers/os.html#updating-and-upgrading-raspberry-pi-os target=_blank>Raspberry Pi Documentation - Updating and Upgrading Raspberry Pi OS</a></li>
+<li><a href=https://www.raspberrypi.com/documentation/computers/remote-access.html#vnc target=_blank>Raspberry Pi Documentation - Virtual Network Computing (VNC)</a></li>
+<li><a href=https://desertbot.io/blog/headless-raspberry-pi-4-remote-desktop-vnc-setup target=_blank>Headless Raspberry Pi 4 Remote Desktop VNC Setup (Mac + Windows, 13 Steps)</a></li>
+</ul>
+<div class=post-bottom>Christophe Knage · <span class=publishdate>2023-01-27</span></div>
+</div>
+</div>
+</section>
+<footer id=footer>
+<div class=footer-menu>
+<div class=footer-logo>
+<a href=/>
+<img src=/favicon/favicon.png class=logo alt=logo>
+</a>
+<span class=license><a href=https://creativecommons.org/licenses/by-sa/4.0/>Licensed under CC BY-SA 4.0</a></span>
+<span class=disclaimer>All product names, logos, and brands are property of their respective owners.</span>
+</div>
+<div class=footer-links>
+<ul class=footer-services>
+<li><a href=https://github.com/cvknage target=_blank><i class="fab fa-github"></i></a></li>
+<li><a href=https://linkedin.com/in/knage/ target=_blank><i class="fab fa-linkedin"></i></a></li>
+</ul>
+<ul class=footer-menu-container>
+<li><a href=/cv/>Curriculum Vitae</a></li>
+<li><a href=/blog>Blog</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body>
+</html>
