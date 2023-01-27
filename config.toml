@@ -32,5 +32,30 @@ defaultContentLanguage = "en"
         more = "Læs mere"
         statement = "Mit mål er at bygge produkter der hjælper andre og øger livskvalitet"
 
-[markup.goldmark.renderer]
-unsafe= true
+pluralizelisttitles = false
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[minify.tdewolff.html]
+keepWhitespace = true
+
+[permalinks]
+blog = "/:year/:month/:slug/"
+
+[outputs]
+page = ["HTML"]
+home = ["HTML"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+
+[privacy.twitter]
+enableDNT = true

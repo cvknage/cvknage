@@ -7,10 +7,9 @@ draft: false
 # Curriculum Vitae
 
 Name: Christophe Knage  
-Address: 2770 Kastrup  
-Website: [https://knage.net](https://knage.net)  
-Age: {{< partial "age" >}}  
-Born: Vejle, May 7’th 1987  
+Address: 3450 Allerød  
+Website: [https://knage.net]({{<ref"/">}})  
+Age: {{<age>}}Born May 1987{{</age>}}  
 Civil status: Un married.  
 
 ## Resumé
