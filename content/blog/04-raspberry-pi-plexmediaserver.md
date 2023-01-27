@@ -8,11 +8,10 @@ author = "Christophe Knage"
 
 **This post covers installing Plex Media Server on a Raspberry Pi 4 B and keeping Plex up to date.**
 
-<a href="https://www.plex.tv" target="_blank">Plex</a> is in my opinion the best way to enjoy your media. Whether it's your old DVD collect, Lite TV or family photos, <a href="https://www.plex.tv" target="_blank">Plex</a> can make it look beautiful and easy to access.
+<a href="https://www.plex.tv" target="_blank">Plex</a> is in my opinion the best way to enjoy your media. Whether it's your old DVD collect, Live TV or family photos, <a href="https://www.plex.tv" target="_blank">Plex</a> can make it look beautiful and easy to access.
 
 The brain of <a href="https://www.plex.tv" target="_blank">Plex</a> is <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a>.  
-
-In this post I will go through 2 methods of installing <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> on your Raspberry Pi.
+In this post I will walk through two methods of installing <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> on your Raspberry Pi.
 
 > This is part 4 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href="https://en.wikipedia.org/wiki/Network-attached_storage" target="_blank">Network Attached Storage (NAS)</a>, <a href="https://support.apple.com/en-gb/HT201250" target="_blank">TimeMachine</a> and <a href="https://www.plex.tv" target="_blank">Plex Media Server</a>.
 
@@ -40,7 +39,7 @@ Browse to: <a href="https://www.plex.tv/media-server-downloads/#plex-media-serve
 <img alt="Plex Media Server Downloads Page" src="/img/blog/04/Plea_Media_Server__Download_Page.png" class="blog-image"/>
 {{</zoom-image>}}
 
-You need to know which architecture your Raspberry Pi OS is running, use <a href="https://manpages.debian.org/bullseye/util-linux/lscpu.1.en.html" target="_blank" class="code-doc">`lscpu`</a>:
+You need to know which architecture your Raspberry Pi OS is running. You can get this information with the <a href="https://manpages.debian.org/bullseye/util-linux/lscpu.1.en.html" target="_blank" class="code-doc">`lscpu`</a> command:
 ```console
 lscpu
 ```
@@ -86,28 +85,30 @@ To update your <a href="https://www.plex.tv/media-server-downloads/#plex-media-s
 
 ## Install from official Plex repository
 
-You can install <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> directly from the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository.
+The best way of installing <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> and keeping it up to date is with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> directly from the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository.
 
 This however requires a bit of setting up first. It is well worth it in the end though, as it makes updating your <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> installation a lot easier.
 
 ### Setup official Plex repository
 
 First you need to install <a href="https://manpages.debian.org/bullseye/apt/apt-transport-https.1.en.html" target="_blank" class="code-doc">`apt-transport-https`</a>.  
-This allows the <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> package manager to install packages over the `https` which the Plex repository uses:
+This allows the <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a> package manager to install packages over the `https` protocol which the Plex repository uses:
 ```console
 sudo apt update
 sudo apt install apt-transport-https
 ```
 
-Then you need to download the Plex <a href="https://manpages.debian.org/bullseye/gpg/gpg.1.en.html" target="_blank" class="code-doc">`gpg`</a> key using <a href="https://manpages.debian.org/bullseye/wget/wget.1.en.html" target="_blank" class="code-doc">`wget`</a> and add it to your keyring with <a href="https://manpages.debian.org/bullseye/coreutils/tee.1.en.html" target="_blank" class="code-doc">`tee`</a>:
+Then you need to download the Plex <a href="https://manpages.debian.org/bullseye/gpg/gpg.1.en.html" target="_blank" class="code-doc">`gpg`</a> key using <a href="https://manpages.debian.org/bullseye/wget/wget.1.en.html" target="_blank" class="code-doc">`wget`</a> and add it to your keyring:
 ```console
-wget -O- https://downloads.plex.tv/plex-keys/PlexSign.key | gpg --dearmor | sudo tee /usr/share/keyrings/plex-repository-keyring.gpg > /dev/null
+wget -O- https://downloads.plex.tv/plex-keys/PlexSign.key | gpg --dearmor | sudo tee /usr/share/keyrings/plex-archive-keyring.gpg > /dev/null
 ```
+Here the <a href="https://manpages.debian.org/bullseye/gpg/gpg.1.en.html" target="_blank" class="code-doc">`gpg`</a> command is used to unpack the ASCII armor of the the `PlexSign.key` and pipe the content to the <a href="https://manpages.debian.org/bullseye/coreutils/tee.1.en.html" target="_blank" class="code-doc">`tee`</a> command, that is in turn is used to pipe the content in to the `plex-archive-keyring.gpg`, because access to the `/usr/share/keyrings/` directory requires super user access. The output is then redirected to `/dev/null` as it is not needed.
 
 After that you can add the official <a href="https://www.plex.tv" target="_blank">Plex</a> <a href="https://manpages.debian.org/bullseye/dpkg-dev/deb.5.en.html" target="_blank" class="code-doc">`deb`</a> repository to the sources:
 ```console
-echo deb [signed-by=/usr/share/keyrings/plex-repository-keyring.gpg] https://downloads.plex.tv/repo/deb public | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+echo deb [signed-by=/usr/share/keyrings/plex-archive-keyring.gpg] https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
 ```
+Here <a href="https://manpages.debian.org/bullseye/coreutils/echo.1.en.html" target="_blank" class="code-doc">`echo`</a> is used to transform the text `deb [signed-by=/usr/share/keyrings/plex-archive-keyring.gpg] https://downloads.plex.tv/repo/deb public main` in to an output stream that can be piped to the <a href="https://manpages.debian.org/bullseye/coreutils/tee.1.en.html" target="_blank" class="code-doc">`tee`</a> command.
 
 <br/>
 
@@ -119,6 +120,8 @@ Then you can install <a href="https://www.plex.tv/media-server-downloads/#plex-m
 sudo apt update
 sudo apt install plexmediaserver
 ```
+
+You can now access your Plex Media Server in your from your Raspberry Pi’s IP on port 32400 e.g. http://192.168.0.200:32400 or on http://raspberrypi.local:32400 if you installed Avahi in part 3 (you do not need to configure Avahi - just install it).
 
 <br/>
 
@@ -141,16 +144,14 @@ During the installation process, the official <a href="https://www.plex.tv" targ
 sudo nano /etc/apt/sources.list.d/plexmediaserver.list
 ```
 
-Your `plexmediaserver.list` file should look similar to this:
+The contents of your `plexmediaserver.list` file should look like to this:
 ```bash
-# When enabling this repo please remember to add the PlexPublic.Key into the apt setup.
-# wget -q https://downloads.plex.tv/plex-keys/PlexSign.key -O - | sudo apt-key add -
-deb https://downloads.plex.tv/repo/deb/ public main
+deb [signed-by=/usr/share/keyrings/plex-archive-keyring.gpg] https://downloads.plex.tv/repo/deb public main
 ```
 
 ## Update Plex Media Server Automatically
 
-Whether you downloaded and installed <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> from plex.tv or from the official repository with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>, it is easy to keep your installation up to date automatically.
+Whether you downloaded and installed <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> from the downloads page on plex.tv or from the official <a href="https://www.plex.tv" target="_blank">Plex</a> repository with <a href="https://manpages.debian.org/bullseye/apt/apt.8.en.html" target="_blank" class="code-doc">`apt`</a>, it is easy to keep your installation up to date automatically.
 
 > **Note:**  
 If you followed [Download and Install from plex.tv](#download-and-install-from-plextv), you first have to [Setup official Plex repository](#setup-official-plex-repository) before continuing.
