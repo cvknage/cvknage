@@ -13,7 +13,8 @@ Alder: {{<age>}}Født maj 1987{{</age>}}
 Civil status: Ugift.  
 
 ## Resumé
-Jeg arbejder som Software Udvikler på et Scrum Team dedikert til at digitalisere salget hos Alka Forsikring.
+Jeg arbejder som Software Udvikler på et Scrum Team dedikeret til udviklingen af Alka Mobils website <a href="https://alkamobil.dk" target="_blank">https&#58;//alkamobil.dk</a>.  
+Her er ansvarlig for nyudvikling og vedligeholdelse på vores backend og frontend systemer samt de integrationer vi har til service udbydere som f.eks. MobilePay.
 
 Udover min seneste erfaring med C# og en fuld Vue.js JavaScript web stak, har jeg arbejdet som Agil Coach på PFAs SAFe implementering og jeg har ligeledes adskillige år som Scrum Mastrer på bagen. 
 
@@ -60,10 +61,12 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 -- DB2  
 
 ## Erhvervserfaring
-### 09.2018 - Nu: Software Udvikler, Alka Forsikring
+### 09.2018 - Nu: Software Udvikler, Alka Forsikring (Alka Mobil)
 Jeg har været i berørring med flere områder af Alkas software organisation, men noget af det arbejde jeg er stoltest af inkluderer: 
 
 At drive forandring i organissationen når det kommer til kode kvalitet, genbrugelige komponenter, automatiserede tests og bygge processer. 
+
+Arbejdet for Alka Mobil teamet, hvor vi på kort tid har været i stand til bygge en skalerbar infrastruktur som gør os i stand til hurtigt at levere nye features og skabe en god oplevelse for vores kunder.
 
 Arbejde med online skade teamet. Hvor vi stræber efter at gøre det så enkelt som muligt for kunden at få den hjælp de har behov for på få minutter. 
 
