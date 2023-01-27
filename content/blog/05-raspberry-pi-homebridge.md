@@ -1,5 +1,5 @@
 +++
-date = "2023-01-22T20:00:00+01:00"
+date = "2023-03-24T15:00:00+01:00"
 draft = true
 title = "Raspberry Pi as a Homebridge Server"
 slug = "raspberry-pi-homebridge"

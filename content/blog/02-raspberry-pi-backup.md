@@ -1,6 +1,6 @@
 +++
-date = "2022-12-08T20:00:00+01:00"
-draft = false
+date = "2023-02-10T15:00:00+01:00"
+draft = true
 title = "Raspberry Pi Backup"
 slug = "raspberry-pi-backup"
 author = "Christophe Knage"
@@ -55,9 +55,6 @@ Because you installed Raspberry Pi with Desktop (in [part 1]({{<relref"/blog/01-
 ```console
 udisksctl mount -b /dev/sda5
 ```
-
-> **Note:**  
-I describe mounting in greater detail in [part 3: Raspberry Pi as TimeMachine and NAS - Setting up the external storage]({{<relref"/blog/03-raspberry-pi-timemaching-and-nas#setting-up-the-external-storage">}} "Setting up the external storage")
 
 <br/>
 

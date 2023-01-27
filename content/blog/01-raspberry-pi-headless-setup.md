@@ -1,5 +1,5 @@
 +++
-date = "2022-12-07T22:00:00+01:00"
+date = "2023-01-27T15:00:00+01:00"
 draft = false
 title = "Headless Raspberry Pi Server"
 slug = "raspberry-pi-headless-setup"
