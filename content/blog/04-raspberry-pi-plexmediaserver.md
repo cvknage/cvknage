@@ -34,7 +34,7 @@ Software Requirements
 
 The easiest way to get <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">Plex Media Server</a> installed on your Raspberry Pi is downloading it right off the official downloads page: 
 
-Browse to: <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank">https&#58;//www.plex.tv/media-server-downloads/#plex-media-server</a> 
+Browse to: <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank" style="word-wrap: break-word">https&#58;//www.plex.tv/media-server-downloads/#plex-media-server</a> 
 
 {{<zoom-image>}}
 <img alt="Plex Media Server Downloads Page" src="/img/blog/04/Plea_Media_Server__Download_Page.png" class="blog-image"/>
