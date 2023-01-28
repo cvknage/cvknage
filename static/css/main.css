@@ -727,6 +727,14 @@ div.center-title h1, div.center-title h2 {
     text-decoration: underline;
 }
 
+.post-comments {
+  width: 100%;
+}
+
+.post-comments > .giscus {
+  margin-top: 70px;
+}
+
 code {
     padding: 0 .4em;
     font-weight: normal;
@@ -976,6 +984,10 @@ ul.footer-services i {
     .post-wrapper {
         width: 85%;
         margin: 30px auto;
+    }
+
+    .post-comments > .giscus {
+      margin-top: 30px;
     }
 
     .footer-menu {
