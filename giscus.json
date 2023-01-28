@@ -1,0 +1,6 @@
+{
+    "origins": ["https://knage.net"],
+    "originsRegex": [
+      "http://localhost:[0-9]+"
+    ]
+}
