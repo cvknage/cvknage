@@ -28,6 +28,51 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 -- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Erhvervskompetencer
+
+### Bruger aktivt
+*Frontend*  
+-- JavaScript, HTML 5 & CSS 3  
+-- Vue.js, Sass, Tailwind & webpack  
+-- NPM  
+-- Node.js  
+
+*Backend*  
+-- C# .NET & Sitecore 9.3  
+-- MsSQL med Entity Framework  
+
+*Versionsstyring*  
+-- Git & TFS  
+
+*APIs*  
+-- JSON REST  
+
+### Har tidligere brugt
+*Frontend*  
+-- AngularJS, Gulp & Bootstrap  
+-- TypeScript 2 & Angular 2  
+-- Flex (ActionSctipt 3 & MXML)  
+-- Bower & Yarn  
+
+*Backend*  
+-- Java / Java EE.  
+-- Tomcat, Maven, Jenkins  
+
+*Versionsstyring*  
+-- Subversion  
+
+*Mobil App udvikling*  
+-- iOS (Objective C)  
+-- Android (Java)  
+-- X-platform (Ionic 2 & Cordova)  
+
+*Database*  
+-- MySQL  
+-- DB2  
+
+*APIs*  
+-- HATEOAS, HAL JSON  
+-- SOAP XML  
+
 ### Processmodeller
 -- SAFe  
 -- Rapid Digitization  
@@ -35,30 +80,6 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 -- Kanban  
 -- eXtreme Programming (XP)  
 -- Unified Process (UP)  
-
-### Udviklingsmetoder
--- Objektorienteret analyse og design  
-
-### Programmering
--- TypeScript 2 & Angular 2  
--- JavaScript, Vue.js, webpack, AngularJS, Gulp  
--- HTML 5, CSS 3, SASS & Bootstrap  
--- NodeJS, NPM, Bower & Yarn  
--- XML & JSON  
--- REST APIs  
--- Git & Subversion  
--- Java / Java EE. (JSP & Servlet)  
--- Eclipse IDE, Tomcat, Maven, Jenkins  
--- Flex (ActionSctipt 3 & MXML)  
-
-### Mobil udvikling
--- iOS (Objective C)  
--- Android (Java)  
--- X-platform (Ionic 2 & Cordova)  
-
-### Databasesystemer
--- MySQL  
--- DB2  
 
 ## Erhvervserfaring
 ### 09.2018 - Nu: Software Udvikler, Alka Forsikring (Alka Mobil)

@@ -28,6 +28,50 @@ My dream is to use technology to build products that help people and improve qua
 -- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Work competences
+### Currently using
+*Frontend*  
+-- JavaScript, HTML 5 & CSS 3  
+-- Vue.js, Sass, Tailwind & webpack  
+-- NPM  
+-- Node.js  
+
+*Backend*  
+-- C# .NET & Sitecore 9.3  
+-- MsSQL with Entity Framework  
+
+*Version control*  
+-- Git & TFS  
+
+*APIs*  
+-- JSON REST  
+
+### Previously used
+*Frontend*  
+-- AngularJS, Gulp & Bootstrap  
+-- TypeScript 2 & Angular 2  
+-- Flex (ActionSctipt 3 & MXML)  
+-- Bower & Yarn  
+
+*Backend*  
+-- Java / Java EE.  
+-- Tomcat, Maven, Jenkins  
+
+*Version control*  
+-- Subversion  
+
+*Mobile App development*  
+-- iOS (Objective C)  
+-- Android (Java)  
+-- X-platform (Ionic 2 & Cordova)  
+
+*Database*  
+-- MySQL  
+-- DB2  
+
+*APIs*  
+-- HATEOAS, HAL JSON  
+-- SOAP XML  
+
 ### Process models
 -- SAFe  
 -- Rapid Digitization  
@@ -35,30 +79,6 @@ My dream is to use technology to build products that help people and improve qua
 -- Kanban  
 -- eXtreme Programming (XP)  
 -- Unified Process (UP)  
-
-### Development methods
--- Object oriented analysis and design  
-
-### Programming
--- TypeScript 2 & Angular 2  
--- JavaScript, Vue.js, webpack, AngularJS, Gulp  
--- HTML 5, CSS 3, SASS & Bootstrap  
--- NodeJS, NPM, Bower & Yarn  
--- XML & JSON  
--- REST APIs  
--- Git & Subversion  
--- Java / Java EE. (JSP & Servlet)  
--- Eclipse IDE, Tomcat, Maven, Jenkins  
--- Flex (ActionSctipt 3 & MXML)  
-
-### Mobile development
--- iOS (Objective C)  
--- Android (Java)  
--- X-platform (Ionic 2 & Cordova)  
-
-### Database systems
--- MySQL  
--- DB2  
 
 ## Work experience
 ### 09.2018 - Present: Software Developer, Alka Forsikring (Alka Mobil)
