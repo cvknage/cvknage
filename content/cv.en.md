@@ -7,13 +7,14 @@ draft: false
 # Curriculum Vitae
 
 Name: Christophe Knage  
-Address: 3450 Allerød  
-Website: [https://knage.net]({{<ref"/">}})  
 Age: {{<age>}}Born May 1987{{</age>}}  
-Civil status: Un married.  
+Address: 3450 Allerød  
+Nationality: Danish  
+Website: [https://knage.net]({{<ref"/">}})  
 
 ## Resumé
-I currently work as a Software Developer on a Scrum Team dedicated to the digitalisation of insurance sales at Alka Forsikring.
+I currently work as a Software Developer on a Scrum Team dedicated to the debelopment of Alka Mobils website <a href="https://alkamobil.dk" target="_blank">https&#58;//alkamobil.dk</a>.  
+Here I am responsible for development and maintenance of our backend and frontend systems as well as integrations to our service partners like MobilePay.
 
 Apart from recent experience in languages such as C# and a full Vue.js JavaScript web stack, I have worked as an Agile Coach on a large scale SAFe implementation and have several years as a scrum master under my belt.
 
@@ -27,6 +28,50 @@ My dream is to use technology to build products that help people and improve qua
 -- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Work competences
+### Currently using
+*Frontend*  
+-- JavaScript, HTML 5 & CSS 3  
+-- Vue.js, Sass, Tailwind & webpack  
+-- NPM  
+-- Node.js  
+
+*Backend*  
+-- C# .NET & Sitecore 9.3  
+-- MsSQL with Entity Framework  
+
+*Version control*  
+-- Git & TFS  
+
+*APIs*  
+-- JSON REST  
+
+### Previously used
+*Frontend*  
+-- AngularJS, Gulp & Bootstrap  
+-- TypeScript 2 & Angular 2  
+-- Flex (ActionSctipt 3 & MXML)  
+-- Bower & Yarn  
+
+*Backend*  
+-- Java / Java EE.  
+-- Tomcat, Maven, Jenkins  
+
+*Version control*  
+-- Subversion  
+
+*Mobile App development*  
+-- iOS (Objective C)  
+-- Android (Java)  
+-- X-platform (Ionic 2 & Cordova)  
+
+*Database*  
+-- MySQL  
+-- DB2  
+
+*APIs*  
+-- HATEOAS, HAL JSON  
+-- SOAP XML  
+
 ### Process models
 -- SAFe  
 -- Rapid Digitization  
@@ -35,35 +80,13 @@ My dream is to use technology to build products that help people and improve qua
 -- eXtreme Programming (XP)  
 -- Unified Process (UP)  
 
-### Development methods
--- Object oriented analysis and design  
-
-### Programming
--- TypeScript 2 & Angular 2  
--- JavaScript, Vue.js, webpack, AngularJS, Gulp  
--- HTML 5, CSS 3, SASS & Bootstrap  
--- NodeJS, NPM, Bower & Yarn  
--- XML & JSON  
--- REST APIs  
--- Git & Subversion  
--- Java / Java EE. (JSP & Servlet)  
--- Eclipse IDE, Tomcat, Maven, Jenkins  
--- Flex (ActionSctipt 3 & MXML)  
-
-### Mobile development
--- iOS (Objective C)  
--- Android (Java)  
--- X-platform (Ionic 2 & Cordova)  
-
-### Database systems
--- MySQL  
--- DB2  
-
 ## Work experience
-### 09.2018 - Present: Software Developer, Alka Forsikring
+### 09.2018 - Present: Software Developer, Alka Forsikring (Alka Mobil)
 I have touched on several areas of the Alka Software Development organisation, but some of the work I am the proudest of includes:
 
 Driving change in the organisation regarding code quality, reusable components, and automated testing and build pipelines.
+
+Working in the Alka Mobile team, where we in a short time have managed to build a scalable infrastructure that enables us to quickly develop new features and create a fantastic customer experience.
 
 Working in the online claims team. Where we strive to make it as easy as possible for the customers to get the help they need in a matter of minutes.
 
