@@ -7,10 +7,10 @@ draft: false
 # Curriculum Vitae
 
 Name: Christophe Knage  
-Address: 3450 Allerød  
-Website: [https://knage.net]({{<ref"/">}})  
 Age: {{<age>}}Born May 1987{{</age>}}  
-Civil status: Un married.  
+Address: 3450 Allerød  
+Nationality: Danish  
+Website: [https://knage.net]({{<ref"/">}})  
 
 ## Resumé
 I currently work as a Software Developer on a Scrum Team dedicated to the debelopment of Alka Mobils website <a href="https://alkamobil.dk" target="_blank">https&#58;//alkamobil.dk</a>.  
