@@ -15,7 +15,7 @@ defaultContentLanguage = "en"
       brandslicence = "All product names, logos, and brands are property of their respective owners."
       [languages.en.params.eyecatch]
         more = "Learn more"
-        statement = "My dream is to use technology to build products that help people and improve quality of life"
+        statement = "I aspire to build products that help people and improve quality of life"
 
   [languages.da]
     title = "Software Udvikler"
