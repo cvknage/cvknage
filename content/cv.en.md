@@ -20,7 +20,7 @@ Apart from recent experience in languages such as C# and a full Vue.js JavaScrip
 
 As a person I am open for new inputs. I function well in a group, but am also capable of working effectively on my own. I am responsible and a fast learner. I am not afraid to take on a challenge.
 
-My dream is to use technology to build products that help people and improve quality of life.
+I aspire to build products that help people and improve quality of life.
 
 ## Certifications
 -- [SAFe SPC4.5](/documents/SAFe_SPC4_Certificate.pdf)  
