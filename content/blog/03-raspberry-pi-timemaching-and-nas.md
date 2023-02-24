@@ -366,7 +366,7 @@ The first 2 services configures <a href="https://www.avahi.org/" target="_blank"
 </span>
 
 The 3'rd service configures <a href="https://www.avahi.org/" target="_blank">Avahi</a> to advertise the Raspberry Pi as a <a href="https://support.apple.com/kb/SP810" target="_blank">Mac Pro (Rack, 2019)</a>, which sets a nice icon in macOS Finder.  
-You can change this icon to any device name listed in `/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist`.  Open the file with Xcode and search for "@ECOLOR" to easily highlight your available options.  
+You can change this icon to any device name listed in <code style="word-wrap: break-word">/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist</code>.  Open the file with Xcode and search for "@ECOLOR" to easily highlight your available options.  
 {{<zoom-image>}}
 <img alt="Device naves for Avahi" src="/img/blog/03/Xcode_Device_Names_for_Avahi.png" class="blog-image"/>
 {{</zoom-image>}}
