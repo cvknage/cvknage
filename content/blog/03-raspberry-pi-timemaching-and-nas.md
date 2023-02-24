@@ -372,7 +372,7 @@ You can change this icon to any device name listed in `/System/Library/CoreServi
 {{</zoom-image>}}
 
 
-<a href="https://www.avahi.org/" target="_blank">Avahi</a> should pick up your changes automatically and our Raspberry Pi should now appear in the sidebar of Finder.  
+<a href="https://www.avahi.org/" target="_blank">Avahi</a> should pick up your changes automatically and your Raspberry Pi should now appear in the sidebar of Finder.  
 {{<zoom-image>}}
 <img alt="Avahi displays Raspberry Pi in Finder" src="/img/blog/03/Raspberry_Pi_in_Finder.png" class="blog-image"/>
 {{</zoom-image>}}
