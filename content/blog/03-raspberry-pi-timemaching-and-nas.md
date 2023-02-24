@@ -1,6 +1,6 @@
 +++
 date = "2023-02-24T15:00:00+01:00"
-draft = true
+draft = false
 title = "Raspberry Pi as TimeMachine and NAS"
 slug = "raspberry-pi-timemachine-and-nas"
 author = "Christophe Knage"
