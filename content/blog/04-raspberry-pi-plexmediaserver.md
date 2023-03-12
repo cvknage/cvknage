@@ -1,6 +1,6 @@
 +++
-date = "2023-03-10T15:00:00+01:00"
-draft = true
+date = "2023-03-12T08:00:00+01:00"
+draft = false
 title = "Raspberry Pi as Plex Media Server"
 slug = "raspberry-pi-plexmediaserver"
 author = "Christophe Knage"
