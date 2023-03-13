@@ -36,9 +36,11 @@ The easiest way to get <a href="https://www.plex.tv/media-server-downloads/#plex
 
 Browse to: <a href="https://www.plex.tv/media-server-downloads/#plex-media-server" target="_blank" style="word-wrap: break-word">https&#58;//www.plex.tv/media-server-downloads/#plex-media-server</a> 
 
+<p>
 {{<zoom-image>}}
 <img alt="Plex Media Server Downloads Page" src="/img/blog/04/Plea_Media_Server__Download_Page.png" class="blog-image"/>
 {{</zoom-image>}}
+</p>
 
 You need to know which architecture your Raspberry Pi OS is running. You can get this information with the <a href="https://manpages.debian.org/bullseye/util-linux/lscpu.1.en.html" target="_blank" class="code-doc">`lscpu`</a> command:
 ```console
