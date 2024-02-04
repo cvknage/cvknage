@@ -1,8 +1,7 @@
 <!doctype html><html lang=en>
 <head>
 <meta charset=utf-8>
-<title>Raspberry Pi as TimeMachine and NAS - Christophe Knage</title>
-<link rel=stylesheet href=/css/main.css?652ea216>
+<title>Raspberry Pi as TimeMachine and NAS - Christophe Knage</title><link rel=stylesheet href=/css/main.css?652ea216>
 <link rel=stylesheet href=/css/syntax.css?04afe1b7>
 <link href=https://use.fontawesome.com/releases/v5.6.1/css/all.css rel=stylesheet>
 <link rel=preconnect href=https://fonts.gstatic.com>
@@ -11,19 +10,12 @@
 <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes">
 <meta property="og:image" content="/img/logo.png">
 <meta property="og:title" content="Raspberry Pi as TimeMachine and NAS -  Christophe Knage">
-</head>
-<body>
+</head><body>
 <header id=header>
 <div class=header-logo>
 <a href=/><img src=/img/logo.png class=logo alt=logo></a>
-</div>
-<div class=header-menu>
-<ul class="menu-container flex-container"><li><a href=/cv/>Curriculum Vitae</a></li>
-<li><a href=/blog>Blog</a></li>
-</ul>
-</div>
-</header>
-<section id=post-section>
+</div><div class=header-menu>
+<ul class="menu-container flex-container"><li><a href=/cv/>Curriculum Vitae</a></li><li><a href=/blog>Blog</a></li></ul></div></header><section id=post-section>
 <div class=post-wrapper>
 <div class=post>
 <div id=breadcrumbs>
@@ -38,89 +30,42 @@ Blogs
 <a href=https://knage.net/2023/02/raspberry-pi-timemachine-and-nas/>
 Raspberry Pi as TimeMachine and NAS
 </a>
-</div>
-<div class=blog-header>
-<h1 class=entry-title>Raspberry Pi as TimeMachine and NAS</h1>
-<ul class=blog-nav>
+</div><div class=blog-header>
+<h1 class=entry-title>Raspberry Pi as TimeMachine and NAS</h1><ul class=blog-nav>
 <li>
 <a href=https://knage.net/2023/02/raspberry-pi-backup/><i class="fas fa-arrow-left"></i>Previous</a>
-</li>
-<li class=nav-spacer></li>
-<li>
+</li><li class=nav-spacer></li><li>
 <a class=next href=https://knage.net/2023/03/raspberry-pi-plexmediaserver/>Next<i class="fas fa-arrow-right"></i></a>
-</li>
-</ul>
-</div>
-<p><strong>This post covers configuring a Raspberry Pi 4 B as a TimeMachine and NAS Server.</strong></p>
-<p>Raspberry Pi offers a great <a href=https://www.raspberrypi.com/tutorials/nas-box-raspberry-pi-tutorial/ target=_blank>guide</a> on how to setup a NAS server (that also supports TimeMachine) using <a href=https://www.openmediavault.org target=_blank>openmediavault</a>.</p>
-<p>This post however takes a different approach, where you will configure <a href=https://www.samba.org/ target=_blank>Samba</a> manually to make your TimeMachine and NAS available on your network.</p>
-<blockquote>
+</li></ul></div><p><strong>This post covers configuring a Raspberry Pi 4 B as a TimeMachine and NAS Server.</strong></p><p>Raspberry Pi offers a great <a href=https://www.raspberrypi.com/tutorials/nas-box-raspberry-pi-tutorial/ target=_blank>guide</a> on how to setup a NAS server (that also supports TimeMachine) using <a href=https://www.openmediavault.org target=_blank>openmediavault</a>.</p><p>This post however takes a different approach, where you will configure <a href=https://www.samba.org/ target=_blank>Samba</a> manually to make your TimeMachine and NAS available on your network.</p><blockquote>
 <p>This is part 3 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href=https://en.wikipedia.org/wiki/Network-attached_storage target=_blank>Network Attached Storage (NAS)</a>, <a href=https://support.apple.com/en-gb/HT201250 target=_blank>TimeMachine</a> and <a href=https://www.plex.tv target=_blank>Plex Media Server</a>.<br>
-Through this series we will also look at how we can make automatic backups to keep uor data safe.</p>
-</blockquote>
-<p><strong>Prerequisites</strong></p>
-<p>Hardware Requirements</p>
-<ul>
-<li><a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target=_blank>Raspberry Pi 4 B</a></li>
-<li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards target=_blank>microSD</a></li>
-<li>External Storage (e.g. SSD in a USB 3.0 enclosure)</li>
-<li>Second External Storage (e.g. HDD in a USB enclosure) (Optional)</li>
-</ul>
-<p>Software Requirements</p>
-<ul>
-<li><a href=https://www.samba.org/ target=_blank>Samba</a></li>
-<li><a href=https://www.avahi.org/ target=_blank>Avahi</a></li>
-</ul>
-<br>
+Through this series we will also look at how we can make automatic backups to keep uor data safe.</p></blockquote><p><strong>Prerequisites</strong></p><p>Hardware Requirements</p><ul>
+<li><a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target=_blank>Raspberry Pi 4 B</a></li><li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards target=_blank>microSD</a></li><li>External Storage (e.g. SSD in a USB 3.0 enclosure)</li><li>Second External Storage (e.g. HDD in a USB enclosure) (Optional)</li></ul><p>Software Requirements</p><ul>
+<li><a href=https://www.samba.org/ target=_blank>Samba</a></li><li><a href=https://www.avahi.org/ target=_blank>Avahi</a></li></ul><br>
 <div class=toc>
 <strong>Table of Contents</strong>
 <nav id=TableOfContents>
 <ul>
 <li><a href=#setting-up-the-external-storage>Setting up the external storage</a>
 <ul>
-<li><a href=#mounting-the-disk>Mounting the disk</a></li>
-</ul>
-</li>
-<li><a href=#setup-timemachine-and-nas>Setup TimeMachine and NAS</a>
+<li><a href=#mounting-the-disk>Mounting the disk</a></li></ul></li><li><a href=#setup-timemachine-and-nas>Setup TimeMachine and NAS</a>
 <ul>
-<li><a href=#install-dependencies>Install dependencies</a></li>
-<li><a href=#configuring-samba>Configuring Samba</a></li>
-<li><a href=#configuring-avahi>Configuring Avahi</a></li>
-</ul>
-</li>
-<li><a href=#nas-backup-optional>NAS Backup (Optional)</a>
+<li><a href=#install-dependencies>Install dependencies</a></li><li><a href=#configuring-samba>Configuring Samba</a></li><li><a href=#configuring-avahi>Configuring Avahi</a></li></ul></li><li><a href=#nas-backup-optional>NAS Backup (Optional)</a>
 <ul>
-<li><a href=#backup-script>Backup script</a></li>
-<li><a href=#backup-cleanup>Backup cleanup</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<h2 id=setting-up-the-external-storage>
+<li><a href=#backup-script>Backup script</a></li><li><a href=#backup-cleanup>Backup cleanup</a></li></ul></li></ul></nav></div><h2 id=setting-up-the-external-storage>
 <a class=blog-heading-anchor href=#setting-up-the-external-storage>
 Setting up the external storage
 </a>
-</h2>
-<p>I use a cheap USB 3.0 enclosure with a 2 TB SSD inside and I want to use one partition for Time Machine and another partition for my NAS.<br>
-(I also have a EFI bootloader partition as well as 2 bootable macOS recovery partitions.)</p>
-<p>If you need to format and partition your drive, here is a nice guide: <a href=https://thesecmaster.com/how-to-partition-and-format-the-hard-drives-on-raspberry-pi/ target=_blank>How to Partition and Format the Hard Drives on Raspberry Pi?</a></p>
-<blockquote>
+</h2><p>I use a cheap USB 3.0 enclosure with a 2 TB SSD inside and I want to use one partition for Time Machine and another partition for my NAS.<br>
+(I also have a EFI bootloader partition as well as 2 bootable macOS recovery partitions.)</p><p>If you need to format and partition your drive, here is a nice guide: <a href=https://thesecmaster.com/how-to-partition-and-format-the-hard-drives-on-raspberry-pi/ target=_blank>How to Partition and Format the Hard Drives on Raspberry Pi?</a></p><blockquote>
 <p><strong>Note:</strong><br>
 If you are looking for a new external storage disk, it is worth noting that the Raspberry Pi 4 is known to be picky about what adapters will work in the USB 3.0 ports<br>
-A community built list of adapters that are known to work with the Raspberry Pi 4, as well as those known not to work out of the box can be found <a href=https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/ target=_blank>here</a>.</p>
-<p>If you already own a disk that is causing problems, a solution may be found <a href=https://www.pragmaticlinux.com/2021/03/fix-for-getting-your-ssd-working-via-usb-3-on-your-raspberry-pi/ target=_blank>here</a>.</p>
-</blockquote>
-<br>
+A community built list of adapters that are known to work with the Raspberry Pi 4, as well as those known not to work out of the box can be found <a href=https://jamesachambers.com/raspberry-pi-4-usb-boot-config-guide-for-ssd-flash-drives/ target=_blank>here</a>.</p><p>If you already own a disk that is causing problems, a solution may be found <a href=https://www.pragmaticlinux.com/2021/03/fix-for-getting-your-ssd-working-via-usb-3-on-your-raspberry-pi/ target=_blank>here</a>.</p></blockquote><br>
 <h3 id=mounting-the-disk>
 <a class=blog-heading-anchor href=#mounting-the-disk>
 Mounting the disk
 </a>
-</h3>
-<p>After connecting your external storage in to the Raspberry Pi&rsquo;s USB port, you can use the <a href=https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html target=_blank class=code-doc><code>lsblk</code></a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:</p>
-<pre><code class=language-console data-lang=console>lsblk -f
-</code></pre><p>[output]</p>
-<pre><code>pi@raspberrypi:~ $ lsblk -f
+</h3><p>After connecting your external storage in to the Raspberry Pi&rsquo;s USB port, you can use the <a href=https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html target=_blank class=code-doc><code>lsblk</code></a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>lsblk -f
+</span></span></span></code></pre></div><p>[output]</p><pre tabindex=0><code>pi@raspberrypi:~ $ lsblk -f
 NAME        FSTYPE  FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINT
 sda                                                                                       
 ├─sda1      vfat    FAT32 EFI         D2D7-4855                                           
@@ -133,54 +78,32 @@ mmcblk0
 └─mmcblk0p2 ext4    1.0   rootfs      665507c3-aee6-41bc-8be8-3594a65468d9   19.4G    28% /
 pi@raspberrypi:~ $ 
 </code></pre><p><code>sda4</code> is my TimeMachine partition mounted at <code>/media/pi/TimeMachine</code>.<br>
-<code>sda5</code> is my NAS partition mounted at <code>/media/pi/NAS</code>.</p>
-<p>Because you installed Raspberry Pi with Desktop (in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>), removable media will be auto mounted to <code>/media/pi</code> by the the <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process.</p>
-<p><a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> uses <a href=https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html target=_blank class=code-doc><code>udisksctl</code></a> on the backend to mount your drive, so you can also mount the <code>sda5</code> partition manually like this:</p>
-<pre><code class=language-console data-lang=console>udisksctl mount -b /dev/sda5
-</code></pre><p>If you installed Raspberry Pi OS Lite, you can <a href=/2023/01/raspberry-pi-headless-setup/#enable-vnc-server title="Enable VNC Server">enable the VNC server</a> and <a href=/2023/01/raspberry-pi-headless-setup/#troubleshooting-creating-a-virtual-desktop title="Creating a Virtual Desktop">create a Virtual Desktop</a>, which loads the default desktop session with the a <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process, which in turn enables auto mounting.</p>
-<p>Otherwise you can use this <a href=https://github.com/bswebdk/scripts/blob/master/uamount.sh target=_blank><code>uamount.sh</code></a> script to generate <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rules and add their corresponding entries to <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> to make your partitions auto mount at your desired location.</p>
-<details>
+<code>sda5</code> is my NAS partition mounted at <code>/media/pi/NAS</code>.</p><p>Because you installed Raspberry Pi with Desktop (in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>), removable media will be auto mounted to <code>/media/pi</code> by the the <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process.</p><p><a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> uses <a href=https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html target=_blank class=code-doc><code>udisksctl</code></a> on the backend to mount your drive, so you can also mount the <code>sda5</code> partition manually like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>udisksctl mount -b /dev/sda5
+</span></span></span></code></pre></div><p>If you installed Raspberry Pi OS Lite, you can <a href=/2023/01/raspberry-pi-headless-setup/#enable-vnc-server title="Enable VNC Server">enable the VNC server</a> and <a href=/2023/01/raspberry-pi-headless-setup/#troubleshooting-creating-a-virtual-desktop title="Creating a Virtual Desktop">create a Virtual Desktop</a>, which loads the default desktop session with the a <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process, which in turn enables auto mounting.</p><p>Otherwise you can use this <a href=https://github.com/bswebdk/scripts/blob/master/uamount.sh target=_blank><code>uamount.sh</code></a> script to generate <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rules and add their corresponding entries to <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> to make your partitions auto mount at your desired location.</p><details>
 <summary style=cursor:pointer>Click to expand: <code><a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc>udev</a></code> mounting rule example</summary>
-<p><strong>Using the <code>uamount.sh</code> script</strong></p>
-<p>Install the <code>uamount.sh</code> script:</p>
-<pre><code class=language-console data-lang=console>wget https://github.com/bswebdk/scripts/blob/master/uamount.sh
-</code></pre><p>To get help run (or just read the top of the script):</p>
-<pre><code class=language-console data-lang=console>./uamount.sh --help
-</code></pre><p>To create a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule for <code>/dev/sda</code> on <code>/media/MYDRIVE</code> use:</p>
-<pre><code class=language-console data-lang=console>sudo ./uamount.sh /dev/sda MYDRIVE
-</code></pre><p>To remove the mounting rule again use:</p>
-<pre><code class=language-console data-lang=console>sudo ./uamount.sh /dev/sda
-</code></pre><br>
-<p><strong>Manually create a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule</strong></p>
-<p>Edit <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo nano /etc/fstab
-</code></pre><p>And add an entry for the desired partition:</p>
-<pre><code>UUID=665507c3-aee6-41bc-8be8-3594a65468d9   /media/pi/NAS  ext4    defaults,noauto  0  0
-</code></pre><p>The parameter <code>noauto</code> is important here as it tels the system not to mount during the init process.</p>
-<p>Then create a new <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule:</p>
-<pre><code class=language-console data-lang=console>sudo nano /lib/udev/rules.d/automount-nas.rules
-</code></pre><p>And add the actions for <strong>&ldquo;add&rdquo;</strong> and <strong>&ldquo;remove&rdquo;</strong></p>
-<pre><code>ACTION==&quot;add&quot;, ENV{ID_FS_UUID_ENC}==&quot;665507c3-aee6-41bc-8be8-3594a65468d9&quot;, RUN+=&quot;/bin/mount /dev/%k&quot;
-ACTION==&quot;remove&quot;, ENV{ID_FS_UUID_ENC}==&quot;665507c3-aee6-41bc-8be8-3594a65468d9&quot;, RUN+=&quot;/bin/umount /dev/%k&quot;
+<p><strong>Using the <code>uamount.sh</code> script</strong></p><p>Install the <code>uamount.sh</code> script:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>wget https://github.com/bswebdk/scripts/blob/master/uamount.sh
+</span></span></span></code></pre></div><p>To get help run (or just read the top of the script):</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>./uamount.sh --help
+</span></span></span></code></pre></div><p>To create a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule for <code>/dev/sda</code> on <code>/media/MYDRIVE</code> use:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo ./uamount.sh /dev/sda MYDRIVE
+</span></span></span></code></pre></div><p>To remove the mounting rule again use:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo ./uamount.sh /dev/sda
+</span></span></span></code></pre></div><br>
+<p><strong>Manually create a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule</strong></p><p>Edit <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano /etc/fstab
+</span></span></span></code></pre></div><p>And add an entry for the desired partition:</p><pre tabindex=0><code>UUID=665507c3-aee6-41bc-8be8-3594a65468d9   /media/pi/NAS  ext4    defaults,noauto  0  0
+</code></pre><p>The parameter <code>noauto</code> is important here as it tels the system not to mount during the init process.</p><p>Then create a new <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano /lib/udev/rules.d/automount-nas.rules
+</span></span></span></code></pre></div><p>And add the actions for <strong>&ldquo;add&rdquo;</strong> and <strong>&ldquo;remove&rdquo;</strong></p><pre tabindex=0><code>ACTION==&#34;add&#34;, ENV{ID_FS_UUID_ENC}==&#34;665507c3-aee6-41bc-8be8-3594a65468d9&#34;, RUN+=&#34;/bin/mount /dev/%k&#34;
+ACTION==&#34;remove&#34;, ENV{ID_FS_UUID_ENC}==&#34;665507c3-aee6-41bc-8be8-3594a65468d9&#34;, RUN+=&#34;/bin/umount /dev/%k&#34;
 </code></pre></details>
 <br>
 <blockquote>
 <p><strong>Note:</strong><br>
 Auto mounting removable media directly from <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> without using a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule is not recommended.<br>
 Since <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> is read during the system init process, removing the drive from the Raspberry Pi will cause the system to hang for a long time on boot or even fail to boot completely.<br>
-Using a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule defers the mounting procedure in to user space which will prevent boot failure.</p>
-</blockquote>
-<br>
+Using a <a href=https://manpages.debian.org/bullseye/udev/udev.7.en.html target=_blank class=code-doc><code>udev</code></a> mounting rule defers the mounting procedure in to user space which will prevent boot failure.</p></blockquote><br>
 <h4 id=prevent-partitions-from-auto-mounting>
 <a class=blog-heading-anchor href=#prevent-partitions-from-auto-mounting>
 Prevent partitions from auto mounting
 </a>
-</h4>
-<p>I don&rsquo;t want the 2 macOS recovery partitions to be mounted on the Raspberry Pi.</p>
-<p>To prevent this, edit <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo nano /etc/fstab
-</code></pre><p>And add an entry for each partition:</p>
-<pre><code>####################### fstab ########################
+</h4><p>I don&rsquo;t want the 2 macOS recovery partitions to be mounted on the Raspberry Pi.</p><p>To prevent this, edit <a href=https://manpages.debian.org/bullseye/mount/fstab.5.en.html target=_blank class=code-doc><code>fstab</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano /etc/fstab
+</span></span></span></code></pre></div><p>And add an entry for each partition:</p><pre tabindex=0><code>####################### fstab ########################
 proc                    /proc           proc    defaults            0   0
 PARTUUID=15ea4d29-01    /boot           vfat    defaults            0   2
 PARTUUID=15ea4d29-02    /               ext4    defaults,noatime    0   1
@@ -194,87 +117,66 @@ UUID=3516e24d-84c2-4f9e-9559-71de730a7277   /media/pi/Ventura   hfsplus  noauto 
 <a class=blog-heading-anchor href=#setup-timemachine-and-nas>
 Setup TimeMachine and NAS
 </a>
-</h2>
-<p>With your disk properly mounted, it&rsquo;s time setup the Raspberry Pi to host your TimeMachine and NAS.</p>
-<h3 id=install-dependencies>
+</h2><p>With your disk properly mounted, it&rsquo;s time setup the Raspberry Pi to host your TimeMachine and NAS.</p><h3 id=install-dependencies>
 <a class=blog-heading-anchor href=#install-dependencies>
 Install dependencies
 </a>
-</h3>
-<p>First you need to install the two software packages <a href=https://www.samba.org/ target=_blank>Samba</a> and <a href=https://www.avahi.org/ target=_blank>Avahi</a>:</p>
-<pre><code class=language-console data-lang=console>sudo apt update
-sudo apt install samba avahi-daemon
-</code></pre><p><a href=https://www.samba.org/ target=_blank>Samba</a> is a free software re-implementation of the SMB networking protocol, which is officially supported by <a href=https://support.apple.com/en-us/HT202784#nas target=_blank>Apple</a>.<br>
-Since macOS Mavericks Apple has preferred SMB over AFP and AFP seems to have been discontinued entirely as of macOS Big Sur.</p>
-<p><a href=https://www.avahi.org/ target=_blank>Avahi</a> is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. In Apple language, this is know as <a href=https://developer.apple.com/bonjour/ target=_blank>Bonjour</a>.</p>
-<br>
+</h3><p>First you need to install the two software packages <a href=https://www.samba.org/ target=_blank>Samba</a> and <a href=https://www.avahi.org/ target=_blank>Avahi</a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo apt update
+</span></span></span><span class=line><span class=cl><span class=go>sudo apt install samba avahi-daemon
+</span></span></span></code></pre></div><p><a href=https://www.samba.org/ target=_blank>Samba</a> is a free software re-implementation of the SMB networking protocol, which is officially supported by <a href=https://support.apple.com/en-us/HT202784#nas target=_blank>Apple</a>.<br>
+Since macOS Mavericks Apple has preferred SMB over AFP and AFP seems to have been discontinued entirely as of macOS Big Sur.</p><p><a href=https://www.avahi.org/ target=_blank>Avahi</a> is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. In Apple language, this is know as <a href=https://developer.apple.com/bonjour/ target=_blank>Bonjour</a>.</p><br>
 <h3 id=configuring-samba>
 <a class=blog-heading-anchor href=#configuring-samba>
 Configuring Samba
 </a>
-</h3>
-<p>In order for <a href=https://www.samba.org/ target=_blank>Samba</a> to work well with macOS you need to configure <a href=https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html target=_blank class=code-doc><code>vfs_fruit</code></a> - Enhanced OS X and Netatalk interoperability.</p>
-<p>You do this by editing the <a href=https://www.samba.org/ target=_blank>Samba</a> configuration file<a href=https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html target=_blank class=code-doc><code>/etc/samba/smb.conf</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo nano /etc/samba/smb.conf
-</code></pre><p>Near the top of the file you will find something like this:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=c>#======================= Global Settings =======================
-</span><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html
-</span><span class=c></span>
-<span class=err>[global]</span>
-</code></pre></div><p>The <code>[global]</code> tag marks global section of the file.<br>
-Parameters in this section apply to the server as a whole, or are defaults for sections that do not specifically define certain items.</p>
-<p>Add the following to the <code>[global]</code> section:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=c>### Basic Samba Options ###
-</span><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html
-</span><span class=c></span>
-   min <span class=nv>protocol</span> <span class=o>=</span> SMB2
-   ea <span class=nv>support</span> <span class=o>=</span> yes
-   inherit <span class=nv>permissions</span> <span class=o>=</span> yes
-
-
-<span class=c>### Make Samba like Apples by teaching it about fruit ###
-</span><span class=c># https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html
-</span><span class=c></span>
-   vfs <span class=nv>objects</span> <span class=o>=</span> catia fruit streams_xattr
-   fruit:metadata <span class=o>=</span> stream
-   fruit:model <span class=o>=</span> MacSamba
-   fruit:posix_rename <span class=o>=</span> yes
-   fruit:veto_appledouble <span class=o>=</span> no
-   fruit:nfs_aces <span class=o>=</span> no
-   fruit:wipe_intentionally_left_blank_rfork <span class=o>=</span> yes 
-   fruit:delete_empty_adfiles <span class=o>=</span> yes 
-   fruit:zero_file_id <span class=o>=</span> yes
-</code></pre></div><p>Further down the file, you will find a heading like this:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=c>#======================= Share Definitions =======================
-</span></code></pre></div><p>This is where you tell <a href=https://www.samba.org/ target=_blank>Samba</a> what to share on your network.</p>
-<p>At the bottom of this section add the following:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=c>### Adding Shares ###
-</span><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#idm51
-</span><span class=c></span>
-<span class=err>[TimeMachine]</span>
-    <span class=nv>comment</span> <span class=o>=</span> TimeMachine
-    <span class=nv>path</span> <span class=o>=</span> /media/pi/TimeMachine
-    valid <span class=nv>users</span> <span class=o>=</span> pi
-    <span class=nb>read</span> <span class=nv>only</span> <span class=o>=</span> no
-    inherit <span class=nv>acls</span> <span class=o>=</span> yes
-    fruit:time <span class=nv>machine</span> <span class=o>=</span> yes
-
-<span class=err>[NAS]</span>
-    <span class=nv>comment</span> <span class=o>=</span> NAS    
-    <span class=nv>path</span> <span class=o>=</span> /media/pi/NAS
-    valid <span class=nv>users</span> <span class=o>=</span> pi
-    <span class=nb>read</span> <span class=nv>only</span> <span class=o>=</span> no
-    inherit <span class=nv>acls</span> <span class=o>=</span> yes
-<span class=err>;</span>    <span class=err>spotlight</span> <span class=nv>backend</span> <span class=o>=</span> elasticsearch
-</code></pre></div><p>This creates 2 shares &ldquo;TimeMachine&rdquo; and &ldquo;NAS&rdquo; which can only be accessed by the <code>pi</code> user.</p>
-<p>You can now save and close the configuration file.</p>
-<p>Even though the <code>pi</code> user already exists, because you created it with raspberry Pi Imager in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>, you need to explicitly add the user to <a href=https://www.samba.org/ target=_blank>Samba</a>&rsquo;s password file with <a href=https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html target=_blank class=code-doc><code>smbpasswd</code></a> in order to connect with it from macOS:</p>
-<pre><code class=language-console data-lang=console>sudo smbpasswd -a pi
-</code></pre><p>If you want to add other users you can follow this guide: <a href=https://www.thegeekdiary.com/how-to-add-or-delete-a-samba-user-under-linux/ target=_blank>How to add or delete a samba user under Linux</a></p>
-<p>Now you can test if your configuration is free from errors with <a href=https://www.samba.org/samba/docs/current/man-html/testparm.1.html target=_blank class=code-doc><code>testparm</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo testparm -s
-</code></pre><p>[output]</p>
-<pre><code>pi@raspberrypi:~ $ sudo testparm -s
+</h3><p>In order for <a href=https://www.samba.org/ target=_blank>Samba</a> to work well with macOS you need to configure <a href=https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html target=_blank class=code-doc><code>vfs_fruit</code></a> - Enhanced OS X and Netatalk interoperability.</p><p>You do this by editing the <a href=https://www.samba.org/ target=_blank>Samba</a> configuration file<a href=https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html target=_blank class=code-doc><code>/etc/samba/smb.conf</code></a> in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano /etc/samba/smb.conf
+</span></span></span></code></pre></div><p>Near the top of the file you will find something like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=c>#======================= Global Settings =======================
+</span></span></span><span class=line><span class=cl><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html
+</span></span></span><span class=line><span class=cl><span class=c></span>
+</span></span><span class=line><span class=cl><span class=err>[global]</span>
+</span></span></code></pre></div><p>The <code>[global]</code> tag marks global section of the file.<br>
+Parameters in this section apply to the server as a whole, or are defaults for sections that do not specifically define certain items.</p><p>Add the following to the <code>[global]</code> section:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=c>### Basic Samba Options ###
+</span></span></span><span class=line><span class=cl><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html
+</span></span></span><span class=line><span class=cl><span class=c></span>
+</span></span><span class=line><span class=cl>   min <span class=nv>protocol</span> <span class=o>=</span> SMB2
+</span></span><span class=line><span class=cl>   ea <span class=nv>support</span> <span class=o>=</span> yes
+</span></span><span class=line><span class=cl>   inherit <span class=nv>permissions</span> <span class=o>=</span> yes
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>### Make Samba like Apples by teaching it about fruit ###
+</span></span></span><span class=line><span class=cl><span class=c># https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html
+</span></span></span><span class=line><span class=cl><span class=c></span>
+</span></span><span class=line><span class=cl>   vfs <span class=nv>objects</span> <span class=o>=</span> catia fruit streams_xattr
+</span></span><span class=line><span class=cl>   fruit:metadata <span class=o>=</span> stream
+</span></span><span class=line><span class=cl>   fruit:model <span class=o>=</span> MacSamba
+</span></span><span class=line><span class=cl>   fruit:posix_rename <span class=o>=</span> yes
+</span></span><span class=line><span class=cl>   fruit:veto_appledouble <span class=o>=</span> no
+</span></span><span class=line><span class=cl>   fruit:nfs_aces <span class=o>=</span> no
+</span></span><span class=line><span class=cl>   fruit:wipe_intentionally_left_blank_rfork <span class=o>=</span> yes 
+</span></span><span class=line><span class=cl>   fruit:delete_empty_adfiles <span class=o>=</span> yes 
+</span></span><span class=line><span class=cl>   fruit:zero_file_id <span class=o>=</span> yes
+</span></span></code></pre></div><p>Further down the file, you will find a heading like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=c>#======================= Share Definitions =======================
+</span></span></span></code></pre></div><p>This is where you tell <a href=https://www.samba.org/ target=_blank>Samba</a> what to share on your network.</p><p>At the bottom of this section add the following:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=c>### Adding Shares ###
+</span></span></span><span class=line><span class=cl><span class=c># https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#idm51
+</span></span></span><span class=line><span class=cl><span class=c></span>
+</span></span><span class=line><span class=cl><span class=err>[TimeMachine]</span>
+</span></span><span class=line><span class=cl>    <span class=nv>comment</span> <span class=o>=</span> TimeMachine
+</span></span><span class=line><span class=cl>    <span class=nv>path</span> <span class=o>=</span> /media/pi/TimeMachine
+</span></span><span class=line><span class=cl>    valid <span class=nv>users</span> <span class=o>=</span> pi
+</span></span><span class=line><span class=cl>    <span class=nb>read</span> <span class=nv>only</span> <span class=o>=</span> no
+</span></span><span class=line><span class=cl>    inherit <span class=nv>acls</span> <span class=o>=</span> yes
+</span></span><span class=line><span class=cl>    fruit:time <span class=nv>machine</span> <span class=o>=</span> yes
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>[NAS]</span>
+</span></span><span class=line><span class=cl>    <span class=nv>comment</span> <span class=o>=</span> NAS    
+</span></span><span class=line><span class=cl>    <span class=nv>path</span> <span class=o>=</span> /media/pi/NAS
+</span></span><span class=line><span class=cl>    valid <span class=nv>users</span> <span class=o>=</span> pi
+</span></span><span class=line><span class=cl>    <span class=nb>read</span> <span class=nv>only</span> <span class=o>=</span> no
+</span></span><span class=line><span class=cl>    inherit <span class=nv>acls</span> <span class=o>=</span> yes
+</span></span><span class=line><span class=cl><span class=err>;</span>    <span class=err>spotlight</span> <span class=nv>backend</span> <span class=o>=</span> elasticsearch
+</span></span></code></pre></div><p>This creates 2 shares &ldquo;TimeMachine&rdquo; and &ldquo;NAS&rdquo; which can only be accessed by the <code>pi</code> user.</p><p>You can now save and close the configuration file.</p><p>Even though the <code>pi</code> user already exists, because you created it with raspberry Pi Imager in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>, you need to explicitly add the user to <a href=https://www.samba.org/ target=_blank>Samba</a>&rsquo;s password file with <a href=https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html target=_blank class=code-doc><code>smbpasswd</code></a> in order to connect with it from macOS:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo smbpasswd -a pi
+</span></span></span></code></pre></div><p>If you want to add other users you can follow this guide: <a href=https://www.thegeekdiary.com/how-to-add-or-delete-a-samba-user-under-linux/ target=_blank>How to add or delete a samba user under Linux</a></p><p>Now you can test if your configuration is free from errors with <a href=https://www.samba.org/samba/docs/current/man-html/testparm.1.html target=_blank class=code-doc><code>testparm</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo testparm -s
+</span></span></span></code></pre></div><p>[output]</p><pre tabindex=0><code>pi@raspberrypi:~ $ sudo testparm -s
 Load smb config files from /etc/samba/smb.conf
 Loaded services file OK.
 Weak crypto is allowed
@@ -324,10 +226,8 @@ Server role: ROLE_STANDALONE
 	read only = No
 	valid users = pi
 pi@raspberrypi:~ $ 
-</code></pre><p>Your output should look similar to the mine just above. ⬆</p>
-<p>Then restart the <a href=https://www.samba.org/ target=_blank>Samba</a> service to reload the configuration changes:</p>
-<pre><code class=language-console data-lang=console>sudo service smbd reload
-</code></pre><p>You can now connect to your <a href=https://www.samba.org/ target=_blank>Samba</a> shares from your Mac by pressing <code>Command-K</code> in Finder and enter the IP of your Raspberry Pi like this: <code>smb://192.168.0.200/TimeMachine</code><br>
+</code></pre><p>Your output should look similar to the mine just above. ⬆</p><p>Then restart the <a href=https://www.samba.org/ target=_blank>Samba</a> service to reload the configuration changes:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo service smbd reload
+</span></span></span></code></pre></div><p>You can now connect to your <a href=https://www.samba.org/ target=_blank>Samba</a> shares from your Mac by pressing <code>Command-K</code> in Finder and enter the IP of your Raspberry Pi like this: <code>smb://192.168.0.200/TimeMachine</code><br>
 <span class=click-zoom>
 <label>
 <input type=checkbox>
@@ -335,44 +235,37 @@ pi@raspberrypi:~ $
 </label>
 </span>
 <br>
-Authenticate with your user credentials when prompted.</p>
-<br>
+Authenticate with your user credentials when prompted.</p><br>
 <h3 id=configuring-avahi>
 <a class=blog-heading-anchor href=#configuring-avahi>
 Configuring Avahi
 </a>
-</h3>
-<p>You can make the process of logging in to your TimeMachine and NAS from your Mac a lot easier by configuring <a href=https://www.avahi.org/ target=_blank>Avahi</a> to advertise the <a href=https://www.samba.org/ target=_blank>Samba</a> shares on your network.</p>
-<p>You have to create a new service in <code>/etc/avahi/services/samba.service</code>:</p>
-<pre><code class=language-console data-lang=console>sudo nano /etc/avahi/services/samba.service
-</code></pre><p>Then add the following configuration that I shamelessly stole from <a href=https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/#configuring-avahi target=_blank>here</a> (where a detailed description is available):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=cp>&lt;?xml version=&#34;1.0&#34; standalone=&#39;no&#39;?&gt;</span><span class=c>&lt;!--*-nxml-*--&gt;</span>
-<span class=cp>&lt;!DOCTYPE service-group SYSTEM &#34;avahi-service.dtd&#34;&gt;</span>
-<span class=nt>&lt;service-group&gt;</span>
-  <span class=nt>&lt;name</span> <span class=na>replace-wildcards=</span><span class=s>&#34;yes&#34;</span><span class=nt>&gt;</span>%h<span class=nt>&lt;/name&gt;</span>
-  <span class=nt>&lt;service&gt;</span>
-    <span class=nt>&lt;type&gt;</span>_smb._tcp<span class=nt>&lt;/type&gt;</span>
-    <span class=nt>&lt;port&gt;</span>445<span class=nt>&lt;/port&gt;</span>
-  <span class=nt>&lt;/service&gt;</span>
-  <span class=nt>&lt;service&gt;</span>
-    <span class=nt>&lt;type&gt;</span>_adisk._tcp<span class=nt>&lt;/type&gt;</span>
-    <span class=nt>&lt;port&gt;</span>9<span class=nt>&lt;/port&gt;</span>
-    <span class=nt>&lt;txt-record&gt;</span>dk0=adVN=TimeMachine,adVF=0x82<span class=nt>&lt;/txt-record&gt;</span>
-    <span class=nt>&lt;txt-record&gt;</span>sys=adVF=0x100<span class=nt>&lt;/txt-record&gt;</span>
-  <span class=nt>&lt;/service&gt;</span>
-  <span class=nt>&lt;service&gt;</span>
-    <span class=nt>&lt;type&gt;</span>_device-info._tcp<span class=nt>&lt;/type&gt;</span>
-    <span class=nt>&lt;port&gt;</span>9<span class=nt>&lt;/port&gt;</span>
-    <span class=nt>&lt;txt-record&gt;</span>model=MacPro7,1@ECOLOR=226,226,224<span class=nt>&lt;/txt-record&gt;</span>
-  <span class=nt>&lt;/service&gt;</span>
-<span class=nt>&lt;/service-group&gt;</span>
-</code></pre></div><p>In short, you are declaring 3 services.</p>
-<p>The first 2 services configures <a href=https://www.avahi.org/ target=_blank>Avahi</a> to follow Apples <a href=https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html#//apple_ref/doc/uid/TP40017496-CH1-SW1 target=_blank>Advertising Time Machine Availability Through Bonjour</a> documentation by:<br>
+</h3><p>You can make the process of logging in to your TimeMachine and NAS from your Mac a lot easier by configuring <a href=https://www.avahi.org/ target=_blank>Avahi</a> to advertise the <a href=https://www.samba.org/ target=_blank>Samba</a> shares on your network.</p><p>You have to create a new service in <code>/etc/avahi/services/samba.service</code>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano /etc/avahi/services/samba.service
+</span></span></span></code></pre></div><p>Then add the following configuration that I shamelessly stole from <a href=https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/#configuring-avahi target=_blank>here</a> (where a detailed description is available):</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; standalone=&#39;no&#39;?&gt;</span><span class=c>&lt;!--*-nxml-*--&gt;</span>
+</span></span><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE service-group SYSTEM &#34;avahi-service.dtd&#34;&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;service-group&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;name</span> <span class=na>replace-wildcards=</span><span class=s>&#34;yes&#34;</span><span class=nt>&gt;</span>%h<span class=nt>&lt;/name&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;service&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;type&gt;</span>_smb._tcp<span class=nt>&lt;/type&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;port&gt;</span>445<span class=nt>&lt;/port&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/service&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;service&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;type&gt;</span>_adisk._tcp<span class=nt>&lt;/type&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;port&gt;</span>9<span class=nt>&lt;/port&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;txt-record&gt;</span>dk0=adVN=TimeMachine,adVF=0x82<span class=nt>&lt;/txt-record&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;txt-record&gt;</span>sys=adVF=0x100<span class=nt>&lt;/txt-record&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/service&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;service&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;type&gt;</span>_device-info._tcp<span class=nt>&lt;/type&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;port&gt;</span>9<span class=nt>&lt;/port&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;txt-record&gt;</span>model=MacPro7,1@ECOLOR=226,226,224<span class=nt>&lt;/txt-record&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/service&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/service-group&gt;</span>
+</span></span></code></pre></div><p>In short, you are declaring 3 services.</p><p>The first 2 services configures <a href=https://www.avahi.org/ target=_blank>Avahi</a> to follow Apples <a href=https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html#//apple_ref/doc/uid/TP40017496-CH1-SW1 target=_blank>Advertising Time Machine Availability Through Bonjour</a> documentation by:<br>
 <span>
 1. Advertising that your Raspberry Pi is running a <a href=https://www.samba.org/ target=_blank>Samba</a> on port 445.<br>
 2. Advertising that the share named &ldquo;TimeMachine&rdquo; is available for TimeMachine backups.<br>
-</span></p>
-<p>The 3&rsquo;rd service configures <a href=https://www.avahi.org/ target=_blank>Avahi</a> to advertise the Raspberry Pi as a <a href=https://support.apple.com/kb/SP810 target=_blank>Mac Pro (Rack, 2019)</a>, which sets a nice icon in macOS Finder.<br>
+</span></p><p>The 3&rsquo;rd service configures <a href=https://www.avahi.org/ target=_blank>Avahi</a> to advertise the Raspberry Pi as a <a href=https://support.apple.com/kb/SP810 target=_blank>Mac Pro (Rack, 2019)</a>, which sets a nice icon in macOS Finder.<br>
 You can change this icon to any device name listed in <code style=word-wrap:break-word>/System/Library/CoreServices/CoreTypes.bundle/Contents/Info.plist</code>. Open the file with Xcode and search for &ldquo;@ECOLOR&rdquo; to easily highlight your available options.<br>
 <span class=click-zoom>
 <label>
@@ -380,98 +273,64 @@ You can change this icon to any device name listed in <code style=word-wrap:brea
 <img alt="Device naves for Avahi" src=/img/blog/03/Xcode_Device_Names_for_Avahi.png class=blog-image>
 </label>
 </span>
-</p>
-<p><a href=https://www.avahi.org/ target=_blank>Avahi</a> should pick up your changes automatically and your Raspberry Pi should now appear in the sidebar of Finder.<br>
+</p><p><a href=https://www.avahi.org/ target=_blank>Avahi</a> should pick up your changes automatically and your Raspberry Pi should now appear in the sidebar of Finder.<br>
 <span class=click-zoom>
 <label>
 <input type=checkbox>
 <img alt="Avahi displays Raspberry Pi in Finder" src=/img/blog/03/Raspberry_Pi_in_Finder.png class=blog-image>
 </label>
 </span>
-</p>
-<p>If it doesn&rsquo;t, you can restart the <a href=https://manpages.debian.org/bullseye/avahi-daemon/avahi-daemon.8.en.html target=_blank class=code-doc><code>avahi-daemon</code></a> <a href=https://manpages.debian.org/bullseye/init-system-helpers/service.8.en.html target=_blank class=code-doc><code>service</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo service avahi-daemon restart
-</code></pre><br>
-<p><strong>And there you have it! Your very own Raspberry Pi TimeMachine and NAS server.</strong></p>
-<h2 id=nas-backup-optional>
+</p><p>If it doesn&rsquo;t, you can restart the <a href=https://manpages.debian.org/bullseye/avahi-daemon/avahi-daemon.8.en.html target=_blank class=code-doc><code>avahi-daemon</code></a> <a href=https://manpages.debian.org/bullseye/init-system-helpers/service.8.en.html target=_blank class=code-doc><code>service</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo service avahi-daemon restart
+</span></span></span></code></pre></div><br>
+<p><strong>And there you have it! Your very own Raspberry Pi TimeMachine and NAS server.</strong></p><h2 id=nas-backup-optional>
 <a class=blog-heading-anchor href=#nas-backup-optional>
 NAS Backup (Optional)
 </a>
-</h2>
-<p>Now that your Mac is automatically backed up by TimeMachine, and your Raspberry Pi is backed up automatically using the script from <a href=/2023/02/raspberry-pi-backup/#automating-the-process title="Raspberry Pi Backup">part 2</a>. you might be wondering; how do I backup the data on my NAS?</p>
-<p>Well, a simple and reliable method of doing just that is using <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> to periodically sync the contents on your NAS with another drive.</p>
-<br>
+</h2><p>Now that your Mac is automatically backed up by TimeMachine, and your Raspberry Pi is backed up automatically using the script from <a href=/2023/02/raspberry-pi-backup/#automating-the-process title="Raspberry Pi Backup">part 2</a>. you might be wondering; how do I backup the data on my NAS?</p><p>Well, a simple and reliable method of doing just that is using <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> to periodically sync the contents on your NAS with another drive.</p><br>
 <h3 id=backup-script>
 <a class=blog-heading-anchor href=#backup-script>
 Backup script
 </a>
-</h3>
-<p>First make sure your new backup drive is mounted correctly.</p>
-<p>Then create a new file for the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> backup script with <a href=https://manpages.debian.org/bullseye/coreutils/touch.1.en.html target=_blank class=code-doc><code>touch</code></a> and set execution permissions with <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a>:</p>
-<pre><code class=language-console data-lang=console>touch ./Documents/nas-backup.sh
-chmod +x ./Documents/nas-backup.sh
-</code></pre><p>Edit the file in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p>
-<pre><code class=language-console data-lang=console>sudo nano ./Documents/nas-backup.sh
-</code></pre><p>And paste the following (make sure the variables <code>SOURCE_DIRECTORY</code> and <code>BACKUP_DIRECTORY</code> are correct for you):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
-</span><span class=cp></span>
-<span class=nv>SOURCE_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/NAS/&#34;</span>
-<span class=nv>BACKUP_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/BACKUP/NAS&#34;</span>
-
-<span class=c1># Exit script if Backup Directory does not exist</span>
-<span class=k>if</span> <span class=o>[</span> ! -d <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
-  <span class=nb>echo</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2> does not exist&#34;</span>
-  <span class=nb>exit</span> <span class=m>1</span>
-<span class=k>fi</span>
-
-<span class=nv>START_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
-<span class=nb>echo</span> <span class=s2>&#34;rsync start: </span><span class=si>${</span><span class=nv>START_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
-<span class=nb>echo</span> <span class=s2>&#34;rsync start: </span><span class=si>${</span><span class=nv>START_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span>
-
-<span class=c1># rsync entire NAS to BACKUP </span>
-/usr/bin/rsync -aP --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>SOURCE_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
-
-<span class=nv>END_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
-<span class=nb>echo</span> <span class=s2>&#34;rsync finished: </span><span class=si>${</span><span class=nv>END_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
-<span class=nb>echo</span> <span class=s2>&#34;rsync finished: </span><span class=si>${</span><span class=nv>END_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span>
-</code></pre></div><p>Open <a href=https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html target=_blank class=code-doc><code>crontab</code></a> with the commend:</p>
-<pre><code class=language-console data-lang=console>crontab -e
-</code></pre><p>At the end of the document, type the frequency of script execution in the following manner</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=m>0</span> <span class=m>0</span> * * * /home/pi/Documents/nas-backup.sh
-</code></pre></div><p>I recommend running this script at least once a day.<br>
-The script only copies the delta between each sync, so after the first sync only new changes are added.</p>
-<p>Files deleted from your NAS accidentally or intentionally will not be automatically removed from your backup.</p>
-<p>You can follow what the script has been and actively is syncing, by looking in <code>./Documents/nas-backup.log</code>:
-<a href=https://manpages.debian.org/bullseye/coreutils/tail.1.en.html target=_blank class=code-doc><code>tail</code></a></p>
-<pre><code class=language-console data-lang=console>tail -F -s20 ./Documents/nas-backup.log
-</code></pre><br>
+</h3><p>First make sure your new backup drive is mounted correctly.</p><p>Then create a new file for the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> backup script with <a href=https://manpages.debian.org/bullseye/coreutils/touch.1.en.html target=_blank class=code-doc><code>touch</code></a> and set execution permissions with <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>touch ./Documents/nas-backup.sh
+</span></span></span><span class=line><span class=cl><span class=go>chmod +x ./Documents/nas-backup.sh
+</span></span></span></code></pre></div><p>Edit the file in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo nano ./Documents/nas-backup.sh
+</span></span></span></code></pre></div><p>And paste the following (make sure the variables <code>SOURCE_DIRECTORY</code> and <code>BACKUP_DIRECTORY</code> are correct for you):</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=nv>SOURCE_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/NAS/&#34;</span>
+</span></span><span class=line><span class=cl><span class=nv>BACKUP_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/BACKUP/NAS&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Exit script if Backup Directory does not exist</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=o>[</span> ! -d <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>  <span class=nb>echo</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2> does not exist&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=k>fi</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>START_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;rsync start: </span><span class=si>${</span><span class=nv>START_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;rsync start: </span><span class=si>${</span><span class=nv>START_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># rsync entire NAS to BACKUP </span>
+</span></span><span class=line><span class=cl>/usr/bin/rsync -aP --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>SOURCE_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>END_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;rsync finished: </span><span class=si>${</span><span class=nv>END_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span> &gt;&gt; ./Documents/nas-backup.log
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;rsync finished: </span><span class=si>${</span><span class=nv>END_DATETIME</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span></code></pre></div><p>Open <a href=https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html target=_blank class=code-doc><code>crontab</code></a> with the commend:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>crontab -e
+</span></span></span></code></pre></div><p>At the end of the document, type the frequency of script execution in the following manner</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=m>0</span> <span class=m>0</span> * * * /home/pi/Documents/nas-backup.sh
+</span></span></code></pre></div><p>I recommend running this script at least once a day.<br>
+The script only copies the delta between each sync, so after the first sync only new changes are added.</p><p>Files deleted from your NAS accidentally or intentionally will not be automatically removed from your backup.</p><p>You can follow what the script has been and actively is syncing, by looking in <code>./Documents/nas-backup.log</code>:
+<a href=https://manpages.debian.org/bullseye/coreutils/tail.1.en.html target=_blank class=code-doc><code>tail</code></a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>tail -F -s20 ./Documents/nas-backup.log
+</span></span></span></code></pre></div><br>
 <h3 id=backup-cleanup>
 <a class=blog-heading-anchor href=#backup-cleanup>
 Backup cleanup
 </a>
-</h3>
-<p>Since the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> script never deletes files in the backup directory automatically, you may at some point want to clean your backup directory of old files (deleted files, temporary rsync files, etc.).</p>
-<p>To perform a dry-run, and verify that you are deleting the correct files use this command:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/usr/bin/rsync -aPn --del --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> /media/pi/NAS/ /media/pi/BACKUP/NAS
-</code></pre></div><p>To delete all files from your backup directory, that are not in your source directory use this command (please verify with dry-run first):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>/usr/bin/rsync -aP --del --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> /media/pi/NAS/ /media/pi/BACKUP/NAS
-</code></pre></div><h1 style=font-size:100%>Sources</h1>
-<ul>
-<li><a href=https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/ target=_blank>Using a Raspberry Pi for Time Machine</a></li>
-<li><a href=https://jansblog.org/2021/05/16/samba-based-timemachine-with-big-sur/ target=_blank>Samba-based TimeMachine with Big Sur</a></li>
-<li><a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target=_blank>USB storage auto-mount in /media/pi</a></li>
-<li><a href="https://forums.raspberrypi.com/viewtopic.php?p=1165998" target=_blank>SSH connection refused if external hdd is not present</a></li>
-<li><a href=https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X target=_blank>Configure Samba to Work Better with Mac OS X</a></li>
-<li><a href=https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html target=_blank>Time Machine over SMB Specification</a></li>
-</ul>
-<div class=post-bottom>Christophe Knage · <span class=publishdate>2023-02-24</span></div>
-</div>
-<div class=post-comments>
+</h3><p>Since the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> script never deletes files in the backup directory automatically, you may at some point want to clean your backup directory of old files (deleted files, temporary rsync files, etc.).</p><p>To perform a dry-run, and verify that you are deleting the correct files use this command:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/usr/bin/rsync -aPn --del --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> /media/pi/NAS/ /media/pi/BACKUP/NAS
+</span></span></code></pre></div><p>To delete all files from your backup directory, that are not in your source directory use this command (please verify with dry-run first):</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/usr/bin/rsync -aP --del --exclude<span class=o>=</span><span class=s2>&#34;lost+found&#34;</span> /media/pi/NAS/ /media/pi/BACKUP/NAS
+</span></span></code></pre></div><h1 style=font-size:100%>Sources</h1><ul>
+<li><a href=https://mudge.name/2019/11/12/using-a-raspberry-pi-for-time-machine/ target=_blank>Using a Raspberry Pi for Time Machine</a></li><li><a href=https://jansblog.org/2021/05/16/samba-based-timemachine-with-big-sur/ target=_blank>Samba-based TimeMachine with Big Sur</a></li><li><a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target=_blank>USB storage auto-mount in /media/pi</a></li><li><a href="https://forums.raspberrypi.com/viewtopic.php?p=1165998" target=_blank>SSH connection refused if external hdd is not present</a></li><li><a href=https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X target=_blank>Configure Samba to Work Better with Mac OS X</a></li><li><a href=https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/index.html target=_blank>Time Machine over SMB Specification</a></li></ul><div class=post-bottom>Christophe Knage · <span class=publishdate>2023-02-24</span></div></div><div class=post-comments>
 <script src=https://giscus.app/client.js data-repo=cvknage/cvknage.github.io data-repo-id="MDEwOlJlcG9zaXRvcnkzMzQ1MjQ4NDE=" data-category=Comments data-category-id=DIC_kwDOE_Bxqc4CT2xk data-mapping=pathname data-strict=0 data-reactions-enabled=0 data-emit-metadata=0 data-input-position=top data-theme=light data-lang=en data-loading=lazy crossorigin=anonymous async></script>
-</div>
-</div>
-</section>
-<footer id=footer>
+</div></div></section><footer id=footer>
 <div class=footer-menu>
 <div class=footer-logo>
 <a href=/>
@@ -479,18 +338,7 @@ Backup cleanup
 </a>
 <span class=license><a href=https://creativecommons.org/licenses/by-sa/4.0/>Licensed under CC BY-SA 4.0</a></span>
 <span class=disclaimer>All product names, logos, and brands are property of their respective owners.</span>
-</div>
-<div class=footer-links>
+</div><div class=footer-links>
 <ul class=footer-services>
-<li><a href=https://github.com/cvknage target=_blank><i class="fab fa-github"></i></a></li>
-<li><a href=https://linkedin.com/in/knage/ target=_blank><i class="fab fa-linkedin"></i></a></li>
-</ul>
-<ul class=footer-menu-container>
-<li><a href=/cv/>Curriculum Vitae</a></li>
-<li><a href=/blog>Blog</a></li>
-</ul>
-</div>
-</div>
-</footer>
-</body>
-</html>
+<li><a href=https://github.com/cvknage target=_blank><i class="fab fa-github"></i></a></li><li><a href=https://linkedin.com/in/knage/ target=_blank><i class="fab fa-linkedin"></i></a></li></ul><ul class=footer-menu-container>
+<li><a href=/cv/>Curriculum Vitae</a></li><li><a href=/blog>Blog</a></li></ul></div></div></footer></body></html>

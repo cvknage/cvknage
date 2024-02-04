@@ -1,8 +1,7 @@
 <!doctype html><html lang=en>
 <head>
 <meta charset=utf-8>
-<title>Raspberry Pi Backup - Christophe Knage</title>
-<link rel=stylesheet href=/css/main.css?652ea216>
+<title>Raspberry Pi Backup - Christophe Knage</title><link rel=stylesheet href=/css/main.css?652ea216>
 <link rel=stylesheet href=/css/syntax.css?04afe1b7>
 <link href=https://use.fontawesome.com/releases/v5.6.1/css/all.css rel=stylesheet>
 <link rel=preconnect href=https://fonts.gstatic.com>
@@ -11,19 +10,12 @@
 <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes">
 <meta property="og:image" content="/img/logo.png">
 <meta property="og:title" content="Raspberry Pi Backup -  Christophe Knage">
-</head>
-<body>
+</head><body>
 <header id=header>
 <div class=header-logo>
 <a href=/><img src=/img/logo.png class=logo alt=logo></a>
-</div>
-<div class=header-menu>
-<ul class="menu-container flex-container"><li><a href=/cv/>Curriculum Vitae</a></li>
-<li><a href=/blog>Blog</a></li>
-</ul>
-</div>
-</header>
-<section id=post-section>
+</div><div class=header-menu>
+<ul class="menu-container flex-container"><li><a href=/cv/>Curriculum Vitae</a></li><li><a href=/blog>Blog</a></li></ul></div></header><section id=post-section>
 <div class=post-wrapper>
 <div class=post>
 <div id=breadcrumbs>
@@ -38,72 +30,35 @@ Blogs
 <a href=https://knage.net/2023/02/raspberry-pi-backup/>
 Raspberry Pi Backup
 </a>
-</div>
-<div class=blog-header>
-<h1 class=entry-title>Raspberry Pi Backup</h1>
-<ul class=blog-nav>
+</div><div class=blog-header>
+<h1 class=entry-title>Raspberry Pi Backup</h1><ul class=blog-nav>
 <li>
 <a href=https://knage.net/2023/01/raspberry-pi-headless-setup/><i class="fas fa-arrow-left"></i>Previous</a>
-</li>
-<li class=nav-spacer></li>
-<li>
+</li><li class=nav-spacer></li><li>
 <a class=next href=https://knage.net/2023/02/raspberry-pi-timemachine-and-nas/>Next<i class="fas fa-arrow-right"></i></a>
-</li>
-</ul>
-</div>
-<p><strong>This post covers implementing an effective backup strategy for your Raspberry Pi</strong></p>
-<p>Having a plan for how to recover when things break down is essential when you depend on your server.</p>
-<blockquote>
+</li></ul></div><p><strong>This post covers implementing an effective backup strategy for your Raspberry Pi</strong></p><p>Having a plan for how to recover when things break down is essential when you depend on your server.</p><blockquote>
 <p>This is part 2 of 4 in a mini series where we will configure a headless Raspberry Pi 4 B as an efficient home server, capable of hosting <a href=https://en.wikipedia.org/wiki/Network-attached_storage target=_blank>Network Attached Storage (NAS)</a>, <a href=https://support.apple.com/en-gb/HT201250 target=_blank>TimeMachine</a> and <a href=https://www.plex.tv target=_blank>Plex Media Server</a>.<br>
-Through this series we will also look at how we can make automatic backups to keep uor data safe.</p>
-</blockquote>
-<p><strong>Prerequisites</strong></p>
-<p>Hardware Requirements</p>
-<ul>
-<li><a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target=_blank>Raspberry Pi 4 B</a></li>
-<li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards target=_blank>microSD</a></li>
-<li>External Storage (e.g. SSD in a USB 3.0 enclosure)</li>
-</ul>
-<p>Software Requirements</p>
-<ul>
-<li><a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a></li>
-</ul>
-<br>
+Through this series we will also look at how we can make automatic backups to keep uor data safe.</p></blockquote><p><strong>Prerequisites</strong></p><p>Hardware Requirements</p><ul>
+<li><a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target=_blank>Raspberry Pi 4 B</a></li><li><a href=https://www.raspberrypi.com/documentation/computers/getting-started.html#sd-cards target=_blank>microSD</a></li><li>External Storage (e.g. SSD in a USB 3.0 enclosure)</li></ul><p>Software Requirements</p><ul>
+<li><a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a></li></ul><br>
 <div class=toc>
 <strong>Table of Contents</strong>
 <nav id=TableOfContents>
 <ul>
 <li><a href=#backing-up-the-raspberry-pi>Backing up the Raspberry Pi</a>
 <ul>
-<li><a href=#setting-up-the-external-storage>Setting up the external storage</a></li>
-<li><a href=#backing-up-the-microsd-card>Backing up the microSD card</a></li>
-<li><a href=#compressing-the-backup-with-pishrink>Compressing the backup with PiShrink</a></li>
-</ul>
-</li>
-<li><a href=#automating-the-process>Automating the process</a></li>
-</ul>
-</nav>
-</div>
-<br>
-<p>In this post I assume you have read <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a> in this series and thus have a Raspberry Pi with Desktop you can <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a> in to @ <code>raspberrypi.local</code>.</p>
-<h2 id=backing-up-the-raspberry-pi>
+<li><a href=#setting-up-the-external-storage>Setting up the external storage</a></li><li><a href=#backing-up-the-microsd-card>Backing up the microSD card</a></li><li><a href=#compressing-the-backup-with-pishrink>Compressing the backup with PiShrink</a></li></ul></li><li><a href=#automating-the-process>Automating the process</a></li></ul></nav></div><br>
+<p>In this post I assume you have read <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a> in this series and thus have a Raspberry Pi with Desktop you can <a href=https://manpages.debian.org/bullseye/openssh-client/ssh.1.en.html target=_blank class=code-doc><code>SSH</code></a> in to @ <code>raspberrypi.local</code>.</p><h2 id=backing-up-the-raspberry-pi>
 <a class=blog-heading-anchor href=#backing-up-the-raspberry-pi>
 Backing up the Raspberry Pi
 </a>
-</h2>
-<p>The easiest way to get back up and running after it&rsquo;s gone all wrong, is having a full bootable system image ready to flash on to your microSD card with Raspberry Pi Imager.</p>
-<p>On your Raspberry Pi, you can create such an image using the <a href=https://manpages.debian.org/bullseye/coreutils/dd.1.en.html target=_blank class=code-doc><code>dd</code></a> command to copy the current running installation to an .img file on some external storage plugged in to the Raspberry Pi&rsquo;s USB port.</p>
-<br>
+</h2><p>The easiest way to get back up and running after it&rsquo;s gone all wrong, is having a full bootable system image ready to flash on to your microSD card with Raspberry Pi Imager.</p><p>On your Raspberry Pi, you can create such an image using the <a href=https://manpages.debian.org/bullseye/coreutils/dd.1.en.html target=_blank class=code-doc><code>dd</code></a> command to copy the current running installation to an .img file on some external storage plugged in to the Raspberry Pi&rsquo;s USB port.</p><br>
 <h3 id=setting-up-the-external-storage>
 <a class=blog-heading-anchor href=#setting-up-the-external-storage>
 Setting up the external storage
 </a>
-</h3>
-<p>First you need to plug your external storage in to the Raspberry Pi&rsquo;s USB port.</p>
-<p>You can use the <a href=https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html target=_blank class=code-doc><code>lsblk</code></a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:</p>
-<pre><code class=language-console data-lang=console>lsblk -f
-</code></pre><p>[output]</p>
-<pre><code>pi@raspberrypi:~ $ lsblk -f
+</h3><p>First you need to plug your external storage in to the Raspberry Pi&rsquo;s USB port.</p><p>You can use the <a href=https://manpages.debian.org/bullseye/util-linux/lsblk.8.en.html target=_blank class=code-doc><code>lsblk</code></a> tool to get at list of all the block devices currently attached to your Raspberry Pi, and their mount points using this command:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>lsblk -f
+</span></span></span></code></pre></div><p>[output]</p><pre tabindex=0><code>pi@raspberrypi:~ $ lsblk -f
 NAME        FSTYPE  FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINT
 sda                                                                                       
 ├─sda1      vfat    FAT32 EFI         D2D7-4855                                           
@@ -116,90 +71,58 @@ mmcblk0
 └─mmcblk0p2 ext4    1.0   rootfs      665507c3-aee6-41bc-8be8-3594a65468d9   19.4G    28% /
 pi@raspberrypi:~ $ 
 </code></pre><p><code>mmcblk0</code> is the microSD card with your full installation on it that you wish to backup.<br>
-<code>sda</code> is my SSD with 5 partitions on it. In this post I will use partition <code>sda5</code> labeled NAS mounted at <code>/media/pi/NAS</code> as the destination for the backup.</p>
-<p>Because you installed Raspberry Pi with Desktop (in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>), removable media will be auto mounted to <code>/media/pi</code> by the the <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process.</p>
-<p><a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> uses <a href=https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html target=_blank class=code-doc><code>udisksctl</code></a> on the backend to mount your drive, so you can also mount the <code>sda5</code> partition manually like this:</p>
-<pre><code class=language-console data-lang=console>udisksctl mount -b /dev/sda5
-</code></pre><br>
+<code>sda</code> is my SSD with 5 partitions on it. In this post I will use partition <code>sda5</code> labeled NAS mounted at <code>/media/pi/NAS</code> as the destination for the backup.</p><p>Because you installed Raspberry Pi with Desktop (in <a href=/2023/01/raspberry-pi-headless-setup/ title="Headless Raspberry Pi Server">part 1</a>), removable media will be auto mounted to <code>/media/pi</code> by the the <a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> desktop process.</p><p><a href=https://manpages.debian.org/bullseye/pcmanfm/pcmanfm.1.en.html target=_blank class=code-doc><code>pcmanfm</code></a> uses <a href=https://manpages.debian.org/bullseye/udisks2/udisksctl.1.en.html target=_blank class=code-doc><code>udisksctl</code></a> on the backend to mount your drive, so you can also mount the <code>sda5</code> partition manually like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>udisksctl mount -b /dev/sda5
+</span></span></span></code></pre></div><br>
 <h3 id=backing-up-the-microsd-card>
 <a class=blog-heading-anchor href=#backing-up-the-microsd-card>
 Backing up the microSD card
 </a>
-</h3>
-<p>With your drive properly mounted, you can use <a href=https://manpages.debian.org/bullseye/coreutils/mkdir.1.en.html target=_blank class=code-doc><code>mkdir</code></a> to create a directory to store the backup:</p>
-<pre><code class=language-console data-lang=console>sudo mkdir /media/pi/NAS/Raspberry/BACKUPS
-</code></pre><p>Then make your first backup of your mocroSD card with <a href=https://manpages.debian.org/bullseye/coreutils/dd.1.en.html target=_blank class=code-doc><code>dd</code></a>. This will take some time:</p>
-<pre><code class=language-console data-lang=console>sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/'RaspberryPi-(year-month-date).img' bs=1M
-</code></pre>
-<p>After some time, you should have the file <code>RaspberryPi-(year-month-date).img</code> in your backup directory. the .img file will be the full size of your microSD card, in my case ca. 31 GB.</p>
-<br>
+</h3><p>With your drive properly mounted, you can use <a href=https://manpages.debian.org/bullseye/coreutils/mkdir.1.en.html target=_blank class=code-doc><code>mkdir</code></a> to create a directory to store the backup:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo mkdir /media/pi/NAS/Raspberry/BACKUPS
+</span></span></span></code></pre></div><p>Then make your first backup of your mocroSD card with <a href=https://manpages.debian.org/bullseye/coreutils/dd.1.en.html target=_blank class=code-doc><code>dd</code></a>. This will take some time:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo dd if=/dev/mmcblk0 of=/media/pi/NAS/Raspberry/BACKUPS/&#39;RaspberryPi-(year-month-date).img&#39; bs=1M
+</span></span></span></code></pre></div><p>After some time, you should have the file <code>RaspberryPi-(year-month-date).img</code> in your backup directory. the .img file will be the full size of your microSD card, in my case ca. 31 GB.</p><br>
 <h3 id=compressing-the-backup-with-pishrink>
 <a class=blog-heading-anchor href=#compressing-the-backup-with-pishrink>
 Compressing the backup with PiShrink
 </a>
-</h3>
-<p>You can then use a script called <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> to shrink the .img files size and compresses it with <a href=https://manpages.debian.org/bullseye/gzip/gzip.1.en.html target=_blank class=code-doc><code>gzip</code></a>. <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> also modifies your image so that it will expand itself to take all the available space on your microSD on first boot.</p>
-<p>This is really good because if your current microSD card gives up, your new card might not be the same size as the old one.</p>
-<br>
-<p>Install <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> with <a href=https://manpages.debian.org/bullseye/wget/wget.1.en.html target=_blank class=code-doc><code>wget</code></a>, <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a> and <a href=https://manpages.debian.org/bullseye/coreutils/mv.1.en.html target=_blank class=code-doc><code>mv</code></a>:</p>
-<pre><code class=language-console data-lang=console>wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh
-chmod +x pishrink.sh
-sudo mv pishrink.sh /usr/local/bin
-</code></pre><p>Then shrink your image like this. Again, this will take some time:</p>
-<pre><code class=language-console data-lang=console>sudo pishrink.sh -z &quot;/media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img&quot;
-</code></pre>
-<p>This will leave you with a significantly smaller file <code>RaspberryPi-(year-month-date).img.gz</code>, in my case ca. 4.6 GB.</p>
-<h2 id=automating-the-process>
+</h3><p>You can then use a script called <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> to shrink the .img files size and compresses it with <a href=https://manpages.debian.org/bullseye/gzip/gzip.1.en.html target=_blank class=code-doc><code>gzip</code></a>. <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> also modifies your image so that it will expand itself to take all the available space on your microSD on first boot.</p><p>This is really good because if your current microSD card gives up, your new card might not be the same size as the old one.</p><br>
+<p>Install <a href=https://github.com/Drewsif/PiShrink target=_blank>PiShrink</a> with <a href=https://manpages.debian.org/bullseye/wget/wget.1.en.html target=_blank class=code-doc><code>wget</code></a>, <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a> and <a href=https://manpages.debian.org/bullseye/coreutils/mv.1.en.html target=_blank class=code-doc><code>mv</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>wget https://raw.githubusercontent.com/Drewsif/PiShrink/master/pishrink.sh
+</span></span></span><span class=line><span class=cl><span class=go>chmod +x pishrink.sh
+</span></span></span><span class=line><span class=cl><span class=go>sudo mv pishrink.sh /usr/local/bin
+</span></span></span></code></pre></div><p>Then shrink your image like this. Again, this will take some time:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>sudo pishrink.sh -z &#34;/media/pi/NAS/Raspberry/BACKUPS/RaspberryPi-(year-month-date).img&#34;
+</span></span></span></code></pre></div><p>This will leave you with a significantly smaller file <code>RaspberryPi-(year-month-date).img.gz</code>, in my case ca. 4.6 GB.</p><h2 id=automating-the-process>
 <a class=blog-heading-anchor href=#automating-the-process>
 Automating the process
 </a>
-</h2>
-<p>The backup process can easily be scripted, so it happens periodically on a cadence to your liking.</p>
-<p>First, create a new file for the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> backup script with <a href=https://manpages.debian.org/bullseye/coreutils/touch.1.en.html target=_blank class=code-doc><code>touch</code></a> and set execution permissions with <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a>:</p>
-<pre><code class=language-console data-lang=console>touch ./Documents/sd-card-backup.sh
-chmod +x ./Documents/sd-card-backup.sh
-</code></pre><p>Edit the file in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p>
-<pre><code class=language-console data-lang=console>nano ./Documents/sd-card-backup.sh
-</code></pre><p>And paste the following (make sure the <code>SD_CARD</code> and <code>BACKUP_DIRECTORY</code> variables are correct for you)</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
-</span><span class=cp></span>
-<span class=nv>CURRENT_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
-<span class=nv>SD_CARD</span><span class=o>=</span><span class=s2>&#34;/dev/mmcblk0&#34;</span>
-<span class=nv>BACKUP_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/NAS/Raspberry/BACKUPS&#34;</span>
-<span class=nv>BACKUP_FILENAME</span><span class=o>=</span><span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>/RaspberryPi-(</span><span class=si>${</span><span class=nv>CURRENT_DATETIME</span><span class=si>}</span><span class=s2>).img&#34;</span>
-
-<span class=c1># Exit script if Backup Directory does not exist</span>
-<span class=k>if</span> <span class=o>[</span> ! -d <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
-  <span class=nb>echo</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2> does not exist&#34;</span>
-  <span class=nb>exit</span> <span class=m>1</span>
-<span class=k>fi</span>
-
-<span class=c1># Create dump of SD Card in Backup Directory</span>
-sudo dd <span class=k>if</span><span class=o>=</span><span class=si>${</span><span class=nv>SD_CARD</span><span class=si>}</span> <span class=nv>of</span><span class=o>=</span><span class=si>${</span><span class=nv>BACKUP_FILENAME</span><span class=si>}</span> <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>status</span><span class=o>=</span>progress
-
-<span class=c1># Shrink backup image with PiShrink</span>
-sudo pishrink.sh -z <span class=si>${</span><span class=nv>BACKUP_FILENAME</span><span class=si>}</span>
-
-<span class=c1># Delete backups older than 365 days</span>
-find <span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span> -maxdepth <span class=m>1</span> -name <span class=s2>&#34;*.img.gz&#34;</span>  -type f -mtime +365  -delete
-</code></pre></div><p>Open <a href=https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html target=_blank class=code-doc><code>crontab</code></a> with the commend:</p>
-<pre><code class=language-console data-lang=console>crontab -e
-</code></pre><p>At the end of the document, type the frequency of script execution in the following manner</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=m>0</span> <span class=m>0</span> <span class=m>1</span> */1 * /home/pi/Documents/sd-card-backup.sh
-</code></pre></div><p>The above line means that the script with run <strong>At 00:00 on day-of-month 1 in every month</strong>. You can configure this according to your needs. I recommend using <a href=https://crontab.guru/#0_0_1_*/1_* target=_blank>crontab.guru</a> to get the right settings for you.</p>
-<h1 style=font-size:100%>Sources</h1>
-<ul>
-<li><a href=https://robotzero.one/headless-pi-zero-backup-clone/ target=_blank>Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink</a></li>
-<li><a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target=_blank>USB storage auto-mount in /media/pi</a></li>
-</ul>
-<div class=post-bottom>Christophe Knage · <span class=publishdate>2023-02-10</span></div>
-</div>
-<div class=post-comments>
+</h2><p>The backup process can easily be scripted, so it happens periodically on a cadence to your liking.</p><p>First, create a new file for the <a href=https://manpages.debian.org/bullseye/rsync/rsync.1.en.html target=_blank class=code-doc><code>rsync</code></a> backup script with <a href=https://manpages.debian.org/bullseye/coreutils/touch.1.en.html target=_blank class=code-doc><code>touch</code></a> and set execution permissions with <a href=https://manpages.debian.org/bullseye/coreutils/chmod.1.en.html target=_blank class=code-doc><code>chmod</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>touch ./Documents/sd-card-backup.sh
+</span></span></span><span class=line><span class=cl><span class=go>chmod +x ./Documents/sd-card-backup.sh
+</span></span></span></code></pre></div><p>Edit the file in <a href=https://manpages.debian.org/bullseye/nano/nano.1.en.html target=_blank class=code-doc><code>nano</code></a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>nano ./Documents/sd-card-backup.sh
+</span></span></span></code></pre></div><p>And paste the following (make sure the <code>SD_CARD</code> and <code>BACKUP_DIRECTORY</code> variables are correct for you)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=cp>#!/bin/bash
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=nv>CURRENT_DATETIME</span><span class=o>=</span><span class=sb>`</span>date +<span class=s2>&#34;%Y-%m-%dT%H-%M-%S&#34;</span><span class=sb>`</span>
+</span></span><span class=line><span class=cl><span class=nv>SD_CARD</span><span class=o>=</span><span class=s2>&#34;/dev/mmcblk0&#34;</span>
+</span></span><span class=line><span class=cl><span class=nv>BACKUP_DIRECTORY</span><span class=o>=</span><span class=s2>&#34;/media/pi/NAS/Raspberry/BACKUPS&#34;</span>
+</span></span><span class=line><span class=cl><span class=nv>BACKUP_FILENAME</span><span class=o>=</span><span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>/RaspberryPi-(</span><span class=si>${</span><span class=nv>CURRENT_DATETIME</span><span class=si>}</span><span class=s2>).img&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Exit script if Backup Directory does not exist</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=o>[</span> ! -d <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>  <span class=nb>echo</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span><span class=s2> does not exist&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=k>fi</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Create dump of SD Card in Backup Directory</span>
+</span></span><span class=line><span class=cl>sudo dd <span class=k>if</span><span class=o>=</span><span class=si>${</span><span class=nv>SD_CARD</span><span class=si>}</span> <span class=nv>of</span><span class=o>=</span><span class=si>${</span><span class=nv>BACKUP_FILENAME</span><span class=si>}</span> <span class=nv>bs</span><span class=o>=</span>1M <span class=nv>status</span><span class=o>=</span>progress
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Shrink backup image with PiShrink</span>
+</span></span><span class=line><span class=cl>sudo pishrink.sh -z <span class=si>${</span><span class=nv>BACKUP_FILENAME</span><span class=si>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Delete backups older than 365 days</span>
+</span></span><span class=line><span class=cl>find <span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=si>}</span> -maxdepth <span class=m>1</span> -name <span class=s2>&#34;*.img.gz&#34;</span>  -type f -mtime +365  -delete
+</span></span></code></pre></div><p>Open <a href=https://manpages.debian.org/bullseye/systemd-cron/crontab.1.en.html target=_blank class=code-doc><code>crontab</code></a> with the commend:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=line><span class=cl><span class=go>crontab -e
+</span></span></span></code></pre></div><p>At the end of the document, type the frequency of script execution in the following manner</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=m>0</span> <span class=m>0</span> <span class=m>1</span> */1 * /home/pi/Documents/sd-card-backup.sh
+</span></span></code></pre></div><p>The above line means that the script with run <strong>At 00:00 on day-of-month 1 in every month</strong>. You can configure this according to your needs. I recommend using <a href=https://crontab.guru/#0_0_1_*/1_* target=_blank>crontab.guru</a> to get the right settings for you.</p><h1 style=font-size:100%>Sources</h1><ul>
+<li><a href=https://robotzero.one/headless-pi-zero-backup-clone/ target=_blank>Back Up Headless Raspberry Pi Zero with RPI-Clone or PiShrink</a></li><li><a href="https://forums.raspberrypi.com/viewtopic.php?t=276494#p1675675" target=_blank>USB storage auto-mount in /media/pi</a></li></ul><div class=post-bottom>Christophe Knage · <span class=publishdate>2023-02-10</span></div></div><div class=post-comments>
 <script src=https://giscus.app/client.js data-repo=cvknage/cvknage.github.io data-repo-id="MDEwOlJlcG9zaXRvcnkzMzQ1MjQ4NDE=" data-category=Comments data-category-id=DIC_kwDOE_Bxqc4CT2xk data-mapping=pathname data-strict=0 data-reactions-enabled=0 data-emit-metadata=0 data-input-position=top data-theme=light data-lang=en data-loading=lazy crossorigin=anonymous async></script>
-</div>
-</div>
-</section>
-<footer id=footer>
+</div></div></section><footer id=footer>
 <div class=footer-menu>
 <div class=footer-logo>
 <a href=/>
@@ -207,18 +130,7 @@ find <span class=si>${</span><span class=nv>BACKUP_DIRECTORY</span><span class=s
 </a>
 <span class=license><a href=https://creativecommons.org/licenses/by-sa/4.0/>Licensed under CC BY-SA 4.0</a></span>
 <span class=disclaimer>All product names, logos, and brands are property of their respective owners.</span>
-</div>
-<div class=footer-links>
+</div><div class=footer-links>
 <ul class=footer-services>
-<li><a href=https://github.com/cvknage target=_blank><i class="fab fa-github"></i></a></li>
-<li><a href=https://linkedin.com/in/knage/ target=_blank><i class="fab fa-linkedin"></i></a></li>
-</ul>
-<ul class=footer-menu-container>
-<li><a href=/cv/>Curriculum Vitae</a></li>
-<li><a href=/blog>Blog</a></li>
-</ul>
-</div>
-</div>
-</footer>
-</body>
-</html>
+<li><a href=https://github.com/cvknage target=_blank><i class="fab fa-github"></i></a></li><li><a href=https://linkedin.com/in/knage/ target=_blank><i class="fab fa-linkedin"></i></a></li></ul><ul class=footer-menu-container>
+<li><a href=/cv/>Curriculum Vitae</a></li><li><a href=/blog>Blog</a></li></ul></div></div></footer></body></html>
