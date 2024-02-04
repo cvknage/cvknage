@@ -13,10 +13,9 @@ Nationalitet: Dansk
 Hjemmeside: [https://knage.net]({{<ref"/">}})  
 
 ## Resumé
-Jeg arbejder som Software Udvikler på et Scrum Team dedikeret til udviklingen af Alka Mobils website <a href="https://alkamobil.dk" target="_blank">https&#58;//alkamobil.dk</a>.  
-Her er ansvarlig for nyudvikling og vedligeholdelse på vores backend og frontend systemer samt de integrationer vi har til service udbydere som f.eks. MobilePay.
+Jeg arbejder som Software Udvikler på et agilt team dedikeret yil at udvikle en ny skræddersyet Secure Remote Access (SRA) løsning til industrielle netværk og OT udstyr.
 
-Udover min seneste erfaring med C# og en fuld Vue.js JavaScript web stak, har jeg arbejdet som Agil Coach på PFAs SAFe implementering og jeg har ligeledes adskillige år som Scrum Mastrer på bagen. 
+Udover min seneste erfaring med C# .Net Core, Kubernetes og Istio, har jeg ekstensiv frontend erfaring med en fuld Vue.js JavaScript web stak.
 
 Som person er jeg åben over for nye input. Jeg fungerer godt i et team, men jeg er også istand til at arbejde effektivt på egen hånd. Jeg er pålidelig og hurtig til at tilegne mig ny viden. Jeg er ikke bange for en udfordring. 
 
@@ -28,39 +27,43 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 -- [Scrum Master](/documents/Christophe-Knage-ScrumAlliance_CSM_Certificate.pdf)  
 
 ## Erhvervskompetencer
-
 ### Bruger aktivt
-*Frontend*  
--- JavaScript, HTML 5 & CSS 3  
--- Vue.js, Sass, Tailwind & webpack  
--- NPM  
--- Node.js  
-
 *Backend*  
--- C# .NET & Sitecore 9.3  
--- MsSQL med Entity Framework  
+-- C# .NET Core  
+-- Redis  
+-- CouchDB  
+-- Docker  
+-- Kubernetes  
+-- Istio  
+-- Azure
 
-*Versionsstyring*  
--- Git & TFS  
+*Version control*  
+-- Git  
 
 *APIs*  
 -- JSON REST  
 
 ### Har tidligere brugt
 *Frontend*  
+-- JavaScript, HTML 5 & CSS 3  
+-- Vue.js, Sass, Tailwind & webpack  
+-- NPM  
+-- Node.js  
 -- AngularJS, Gulp & Bootstrap  
 -- TypeScript 2 & Angular 2  
 -- Flex (ActionSctipt 3 & MXML)  
 -- Bower & Yarn  
 
 *Backend*  
+-- C# .NET Framework & Sitecore 9.3  
+-- MsSQL with Entity Framework  
 -- Java / Java EE.  
 -- Tomcat, Maven, Jenkins  
 
-*Versionsstyring*  
--- Subversion  
+*Version control*  
+-- Subversion & TFS  
 
-*Mobil App udvikling*  
+*Mobile App development*  
 -- iOS (Objective C)  
 -- Android (Java)  
 -- X-platform (Ionic 2 & Cordova)  
@@ -83,6 +86,9 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 
 ## Erhvervserfaring
 ### 09.2018 - Nu: Software Udvikler, Alka Forsikring (Alka Mobil)
+Udvikling af en ny cloud baseret platform for Secomea; en skræddersyet Secure Remote Access (SRA) løsning til industrielle netværk og OT udstyr.
+
+### 09.2018 - 07.2023: Software Udvikler, Alka Forsikring (Alka Mobil)
 Jeg har været i berørring med flere områder af Alkas software organisation, men noget af det arbejde jeg er stoltest af inkluderer: 
 
 At drive forandring i organissationen når det kommer til kode kvalitet, genbrugelige komponenter, automatiserede tests og bygge processer. 

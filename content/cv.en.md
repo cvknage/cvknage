@@ -13,10 +13,9 @@ Nationality: Danish
 Website: [https://knage.net]({{<ref"/">}})  
 
 ## Resumé
-I currently work as a Software Developer on a Scrum Team dedicated to the debelopment of Alka Mobils website <a href="https://alkamobil.dk" target="_blank">https&#58;//alkamobil.dk</a>.  
-Here I am responsible for development and maintenance of our backend and frontend systems as well as integrations to our service partners like MobilePay.
+I currently work as a Software Develpper on a agile team dedicated to building a new Secure Remote Access (SRA) solution purpose-built for industrial networks and OT equipment.
 
-Apart from recent experience in languages such as C# and a full Vue.js JavaScript web stack, I have worked as an Agile Coach on a large scale SAFe implementation and have several years as a scrum master under my belt.
+Apart from recent experience with C# .Net Core, Kubernetes and Istio, I have extensive experience frontend experience, with a full Vue.js JavaScript web stack.
 
 As a person I am open for new inputs. I function well in a group, but am also capable of working effectively on my own. I am responsible and a fast learner. I am not afraid to take on a challenge.
 
@@ -29,35 +28,40 @@ I aspire to build products that help people and improve quality of life.
 
 ## Work competences
 ### Currently using
-*Frontend*  
--- JavaScript, HTML 5 & CSS 3  
--- Vue.js, Sass, Tailwind & webpack  
--- NPM  
--- Node.js  
-
 *Backend*  
--- C# .NET & Sitecore 9.3  
--- MsSQL with Entity Framework  
+-- C# .NET Core  
+-- Redis  
+-- CouchDB  
+-- Docker  
+-- Kubernetes  
+-- Istio  
+-- Azure
 
 *Version control*  
--- Git & TFS  
+-- Git  
 
 *APIs*  
 -- JSON REST  
 
 ### Previously used
 *Frontend*  
+-- JavaScript, HTML 5 & CSS 3  
+-- Vue.js, Sass, Tailwind & webpack  
+-- NPM  
+-- Node.js  
 -- AngularJS, Gulp & Bootstrap  
 -- TypeScript 2 & Angular 2  
 -- Flex (ActionSctipt 3 & MXML)  
 -- Bower & Yarn  
 
 *Backend*  
+-- C# .NET Framework & Sitecore 9.3  
+-- MsSQL with Entity Framework  
 -- Java / Java EE.  
 -- Tomcat, Maven, Jenkins  
 
 *Version control*  
--- Subversion  
+-- Subversion & TFS  
 
 *Mobile App development*  
 -- iOS (Objective C)  
@@ -81,14 +85,17 @@ I aspire to build products that help people and improve quality of life.
 -- Unified Process (UP)  
 
 ## Work experience
-### 09.2018 - Present: Software Developer, Alka Forsikring (Alka Mobil)
+### 08.2018 - Present: Software Developer, Secomea
+Developing a new cloud based platform for Seaomeas; Secure Remote Access (SRA) solution purpose-built for industrial networks and OT equipment.
+
+### 09.2018 - 07.2023: Software Developer, Alka Forsikring (Alka Mobil)
 I have touched on several areas of the Alka Software Development organisation, but some of the work I am the proudest of includes:
 
 Driving change in the organisation regarding code quality, reusable components, and automated testing and build pipelines.
 
-Working in the Alka Mobile team, where we in a short time have managed to build a scalable infrastructure that enables us to quickly develop new features and create a fantastic customer experience.
+Working on the Alka Mobile team, where we in a short time have managed to build a scalable infrastructure that enables us to quickly develop new features and create a fantastic customer experience.
 
-Working in the online claims team. Where we strive to make it as easy as possible for the customers to get the help they need in a matter of minutes.
+Working on the online claims team. Where we strive to make it as easy as possible for the customers to get the help they need in a matter of minutes.
 
 ### 04.2017-08.2018: Agile Coach, PFA
 -- Agile Coach on the SAFe implementation in PFA  
