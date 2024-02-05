@@ -85,7 +85,7 @@ I aspire to build products that help people and improve quality of life.
 -- Unified Process (UP)  
 
 ## Work experience
-### 08.2018 - Present: Software Developer, Secomea
+### 08.2023 - Present: Software Developer, Secomea
 Developing a new cloud based platform for Seaomeas; Secure Remote Access (SRA) solution purpose-built for industrial networks and OT equipment.
 
 ### 09.2018 - 07.2023: Software Developer, Alka Forsikring (Alka Mobil)
