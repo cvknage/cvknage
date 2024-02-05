@@ -85,7 +85,7 @@ Mit mål er at bygge produkter der hjælper andre og øger livskvalitet
 -- Unified Process (UP)  
 
 ## Erhvervserfaring
-### 09.2023 - Nu: Software Udvikler, Alka Forsikring (Alka Mobil)
+### 08.2023 - Nu: Software Udvikler, Secomea
 Udvikling af en ny cloud baseret platform for Secomea; en skræddersyet Secure Remote Access (SRA) løsning til industrielle netværk og OT udstyr.
 
 ### 09.2018 - 07.2023: Software Udvikler, Alka Forsikring (Alka Mobil)
